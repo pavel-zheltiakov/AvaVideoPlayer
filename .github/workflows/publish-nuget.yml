@@ -1,0 +1,68 @@
+name: Publish AvaVideoPlayer to NuGet
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Existing GitHub preview release version (without v)
+        required: true
+        default: 0.1.0-preview.1
+        type: string
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: 10.0.x
+      - name: Download the single reviewed release package
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_VERSION: ${{ inputs.version }}
+        run: |
+          python3 - <<'PY'
+          import os,re
+          version=os.environ['RELEASE_VERSION']
+          if not re.fullmatch(r'\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?',version):
+              raise SystemExit('Invalid release version')
+          PY
+          mkdir -p release-package
+          gh release download "v$RELEASE_VERSION" --repo "$GITHUB_REPOSITORY" --pattern "AvaVideoPlayer.$RELEASE_VERSION.nupkg" --pattern SHA256SUMS --dir release-package
+          cd release-package
+          sha256sum --check --ignore-missing SHA256SUMS
+      - name: Verify package identity and exact reviewed hash
+        env:
+          RELEASE_VERSION: ${{ inputs.version }}
+        run: |
+          python3 - <<'PY'
+          import hashlib,json,os,zipfile,xml.etree.ElementTree as ET
+          from pathlib import Path
+          version=os.environ['RELEASE_VERSION']
+          package=Path('release-package')/f'AvaVideoPlayer.{version}.nupkg'
+          manifest=json.loads(Path('packages/manifest.json').read_text())
+          assert len(manifest['packages'])==1
+          expected=manifest['packages'][0]
+          assert expected['id']=='AvaVideoPlayer' and expected['version']==version
+          assert hashlib.sha256(package.read_bytes()).hexdigest()==expected['sha256']
+          with zipfile.ZipFile(package) as z:
+              spec=ET.fromstring(z.read('AvaVideoPlayer.nuspec'))
+              fields={e.tag.split('}')[-1]:e.text for e in spec.iter()}
+              assert fields['id']=='AvaVideoPlayer' and fields['version']==version
+              assert not any(e.get('id','').startswith('AvaVideoPlayer') for e in spec.iter() if e.tag.endswith('dependency'))
+          PY
+      - name: NuGet login with trusted publishing
+        uses: NuGet/login@v1
+        id: login
+        with:
+          user: PavelZheltiakov
+      - name: Publish the single package
+        env:
+          NUGET_API_KEY: ${{ steps.login.outputs.NUGET_API_KEY }}
+          RELEASE_VERSION: ${{ inputs.version }}
+        run: dotnet nuget push "release-package/AvaVideoPlayer.$RELEASE_VERSION.nupkg" --api-key "$NUGET_API_KEY" --source https://api.nuget.org/v3/index.json --skip-duplicate

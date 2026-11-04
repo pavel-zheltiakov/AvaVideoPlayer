@@ -1,0 +1,4629 @@
+{
+  "generatedFrom": "Public metadata of the exact packaged assemblies; declared public members only.",
+  "types": [
+    {
+      "fullName": "AvaVideoPlayer.Browser.BrowserVideoBackend",
+      "name": "BrowserVideoBackend",
+      "namespace": "AvaVideoPlayer.Browser",
+      "assembly": "AvaVideoPlayer.Browser",
+      "kind": "class",
+      "baseType": "System.Object",
+      "members": [
+        {
+          "kind": "Constructors",
+          "name": "BrowserVideoBackend",
+          "signature": "BrowserVideoBackend()",
+          "anchor": "member-81dfcc3ff0d9"
+        },
+        {
+          "kind": "Properties",
+          "name": "View",
+          "signature": "Control View { get; }",
+          "anchor": "member-6063c4a8b27f"
+        },
+        {
+          "kind": "Methods",
+          "name": "RegisterAsync",
+          "signature": "static Task RegisterAsync(string moduleUrl = default)",
+          "anchor": "member-6690d87f626f"
+        },
+        {
+          "kind": "Methods",
+          "name": "OpenAsync",
+          "signature": "Task OpenAsync(Uri source, CancellationToken cancellationToken = default)",
+          "anchor": "member-93df635273e6"
+        },
+        {
+          "kind": "Methods",
+          "name": "PlayAsync",
+          "signature": "Task PlayAsync()",
+          "anchor": "member-144123a15d1a"
+        },
+        {
+          "kind": "Methods",
+          "name": "PauseAsync",
+          "signature": "Task PauseAsync()",
+          "anchor": "member-817d2e29fdd6"
+        },
+        {
+          "kind": "Methods",
+          "name": "StopAsync",
+          "signature": "Task StopAsync()",
+          "anchor": "member-e16d67ba098e"
+        },
+        {
+          "kind": "Methods",
+          "name": "SeekAsync",
+          "signature": "Task SeekAsync(TimeSpan position)",
+          "anchor": "member-898d253a5683"
+        },
+        {
+          "kind": "Methods",
+          "name": "SetSpeedAsync",
+          "signature": "Task SetSpeedAsync(double speed)",
+          "anchor": "member-0ae816466e57"
+        },
+        {
+          "kind": "Methods",
+          "name": "SetVolumeAsync",
+          "signature": "Task SetVolumeAsync(double volume, bool muted)",
+          "anchor": "member-5c248636bd16"
+        },
+        {
+          "kind": "Methods",
+          "name": "SelectAudioTrackAsync",
+          "signature": "Task SelectAudioTrackAsync(int id)",
+          "anchor": "member-65feee80f16a"
+        },
+        {
+          "kind": "Methods",
+          "name": "SelectSubtitleTrackAsync",
+          "signature": "Task SelectSubtitleTrackAsync(int id)",
+          "anchor": "member-2b3c76aad5fe"
+        },
+        {
+          "kind": "Methods",
+          "name": "SetSubtitleDelayAsync",
+          "signature": "Task SetSubtitleDelayAsync(TimeSpan delay)",
+          "anchor": "member-620514291580"
+        },
+        {
+          "kind": "Methods",
+          "name": "AddSubtitleAsync",
+          "signature": "Task AddSubtitleAsync(string content, string name, string language = default)",
+          "anchor": "member-d963aed08416"
+        },
+        {
+          "kind": "Methods",
+          "name": "OpenVideoFileAsync",
+          "signature": "Task OpenVideoFileAsync()",
+          "anchor": "member-2670b3d8b377"
+        },
+        {
+          "kind": "Methods",
+          "name": "ToggleFullscreenAsync",
+          "signature": "Task ToggleFullscreenAsync()",
+          "anchor": "member-a106145c28d0"
+        },
+        {
+          "kind": "Methods",
+          "name": "SetView",
+          "signature": "void SetView(VideoProjection projection, StereoLayout stereo, OrbitCamera camera)",
+          "anchor": "member-197f5ae41b38"
+        },
+        {
+          "kind": "Methods",
+          "name": "GetSnapshot",
+          "signature": "PlaybackSnapshot GetSnapshot()",
+          "anchor": "member-56bd04e8cc70"
+        },
+        {
+          "kind": "Methods",
+          "name": "DisposeAsync",
+          "signature": "ValueTask DisposeAsync()",
+          "anchor": "member-05b877b950be"
+        },
+        {
+          "kind": "Events",
+          "name": "CameraChanged",
+          "signature": "event EventHandler<OrbitCamera> CameraChanged",
+          "anchor": "member-2bb58e138336"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.Browser.BrowserVideoBackend.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.IBrowserFilePicker",
+      "name": "IBrowserFilePicker",
+      "namespace": "AvaVideoPlayer",
+      "assembly": "AvaVideoPlayer",
+      "kind": "interface",
+      "baseType": null,
+      "members": [
+        {
+          "kind": "Methods",
+          "name": "OpenVideoFileAsync",
+          "signature": "Task OpenVideoFileAsync()",
+          "anchor": "member-2670b3d8b377"
+        },
+        {
+          "kind": "Methods",
+          "name": "ToggleFullscreenAsync",
+          "signature": "Task ToggleFullscreenAsync()",
+          "anchor": "member-a106145c28d0"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.IBrowserFilePicker.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.IVideoBackend",
+      "name": "IVideoBackend",
+      "namespace": "AvaVideoPlayer",
+      "assembly": "AvaVideoPlayer",
+      "kind": "interface",
+      "baseType": null,
+      "members": [
+        {
+          "kind": "Properties",
+          "name": "View",
+          "signature": "Control View { get; }",
+          "anchor": "member-6063c4a8b27f"
+        },
+        {
+          "kind": "Methods",
+          "name": "OpenAsync",
+          "signature": "Task OpenAsync(Uri source, CancellationToken cancellationToken = default)",
+          "anchor": "member-93df635273e6"
+        },
+        {
+          "kind": "Methods",
+          "name": "PlayAsync",
+          "signature": "Task PlayAsync()",
+          "anchor": "member-144123a15d1a"
+        },
+        {
+          "kind": "Methods",
+          "name": "PauseAsync",
+          "signature": "Task PauseAsync()",
+          "anchor": "member-817d2e29fdd6"
+        },
+        {
+          "kind": "Methods",
+          "name": "StopAsync",
+          "signature": "Task StopAsync()",
+          "anchor": "member-e16d67ba098e"
+        },
+        {
+          "kind": "Methods",
+          "name": "SeekAsync",
+          "signature": "Task SeekAsync(TimeSpan position)",
+          "anchor": "member-898d253a5683"
+        },
+        {
+          "kind": "Methods",
+          "name": "SetSpeedAsync",
+          "signature": "Task SetSpeedAsync(double speed)",
+          "anchor": "member-0ae816466e57"
+        },
+        {
+          "kind": "Methods",
+          "name": "SetVolumeAsync",
+          "signature": "Task SetVolumeAsync(double volume, bool muted)",
+          "anchor": "member-5c248636bd16"
+        },
+        {
+          "kind": "Methods",
+          "name": "SelectAudioTrackAsync",
+          "signature": "Task SelectAudioTrackAsync(int id)",
+          "anchor": "member-65feee80f16a"
+        },
+        {
+          "kind": "Methods",
+          "name": "SelectSubtitleTrackAsync",
+          "signature": "Task SelectSubtitleTrackAsync(int id)",
+          "anchor": "member-2b3c76aad5fe"
+        },
+        {
+          "kind": "Methods",
+          "name": "AddSubtitleAsync",
+          "signature": "Task AddSubtitleAsync(string content, string name, string language = default)",
+          "anchor": "member-d963aed08416"
+        },
+        {
+          "kind": "Methods",
+          "name": "SetSubtitleDelayAsync",
+          "signature": "Task SetSubtitleDelayAsync(TimeSpan delay)",
+          "anchor": "member-620514291580"
+        },
+        {
+          "kind": "Methods",
+          "name": "SetView",
+          "signature": "void SetView(VideoProjection projection, StereoLayout stereo, OrbitCamera camera)",
+          "anchor": "member-197f5ae41b38"
+        },
+        {
+          "kind": "Methods",
+          "name": "GetSnapshot",
+          "signature": "PlaybackSnapshot GetSnapshot()",
+          "anchor": "member-56bd04e8cc70"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.IVideoBackend.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.IVideoFramePresenter",
+      "name": "IVideoFramePresenter",
+      "namespace": "AvaVideoPlayer",
+      "assembly": "AvaVideoPlayer",
+      "kind": "interface",
+      "baseType": null,
+      "members": [
+        {
+          "kind": "Properties",
+          "name": "View",
+          "signature": "Control View { get; }",
+          "anchor": "member-6063c4a8b27f"
+        },
+        {
+          "kind": "Methods",
+          "name": "SetView",
+          "signature": "void SetView(bool spherical, StereoLayout stereo, OrbitCamera camera)",
+          "anchor": "member-577153f038ac"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.IVideoFramePresenter.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.IVideoOrbitInput",
+      "name": "IVideoOrbitInput",
+      "namespace": "AvaVideoPlayer",
+      "assembly": "AvaVideoPlayer",
+      "kind": "interface",
+      "baseType": null,
+      "members": [
+        {
+          "kind": "Events",
+          "name": "CameraChanged",
+          "signature": "event EventHandler<OrbitCamera> CameraChanged",
+          "anchor": "member-2bb58e138336"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.IVideoOrbitInput.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.OrbitCamera",
+      "name": "OrbitCamera",
+      "namespace": "AvaVideoPlayer",
+      "assembly": "AvaVideoPlayer",
+      "kind": "struct",
+      "baseType": "System.ValueType",
+      "members": [
+        {
+          "kind": "Constructors",
+          "name": "OrbitCamera",
+          "signature": "OrbitCamera(double Yaw = default, double Pitch = default, double FieldOfView = default)",
+          "anchor": "member-2552f2438f09"
+        },
+        {
+          "kind": "Constructors",
+          "name": "OrbitCamera",
+          "signature": "OrbitCamera()",
+          "anchor": "member-d6148eb32a70"
+        },
+        {
+          "kind": "Properties",
+          "name": "Yaw",
+          "signature": "double Yaw { get; set; }",
+          "anchor": "member-ba011a3edeed"
+        },
+        {
+          "kind": "Properties",
+          "name": "Pitch",
+          "signature": "double Pitch { get; set; }",
+          "anchor": "member-0f6e68b3514c"
+        },
+        {
+          "kind": "Properties",
+          "name": "FieldOfView",
+          "signature": "double FieldOfView { get; set; }",
+          "anchor": "member-a75c9321a22d"
+        },
+        {
+          "kind": "Properties",
+          "name": "Default",
+          "signature": "OrbitCamera Default { get; }",
+          "anchor": "member-ca242122ae35"
+        },
+        {
+          "kind": "Methods",
+          "name": "Normalize",
+          "signature": "OrbitCamera Normalize()",
+          "anchor": "member-eb8bfdfa3dcb"
+        },
+        {
+          "kind": "Methods",
+          "name": "Orbit",
+          "signature": "OrbitCamera Orbit(double dx, double dy)",
+          "anchor": "member-286be6011a87"
+        },
+        {
+          "kind": "Methods",
+          "name": "Zoom",
+          "signature": "OrbitCamera Zoom(double delta)",
+          "anchor": "member-2a18b1774dcf"
+        },
+        {
+          "kind": "Methods",
+          "name": "Sample",
+          "signature": "ValueTuple<double, double> Sample(double nx, double ny, double aspect)",
+          "anchor": "member-2537aff22321"
+        },
+        {
+          "kind": "Methods",
+          "name": "CreatePixelMap",
+          "signature": "int[] CreatePixelMap(int sourceWidth, int sourceHeight, int width, int height, StereoLayout stereo)",
+          "anchor": "member-1cab43455d9e"
+        },
+        {
+          "kind": "Methods",
+          "name": "CreatePixelMap",
+          "signature": "int[] CreatePixelMap(int sourceWidth, int sourceHeight, int width, int height, StereoLayout stereo, VideoDisplayGeometry geometry)",
+          "anchor": "member-4c3464666b8e"
+        },
+        {
+          "kind": "Methods",
+          "name": "ToString",
+          "signature": "string ToString()",
+          "anchor": "member-5346dee2233a"
+        },
+        {
+          "kind": "Operators",
+          "name": "op_Inequality",
+          "signature": "static bool op_Inequality(OrbitCamera left, OrbitCamera right)",
+          "anchor": "member-1a60c3470b5f"
+        },
+        {
+          "kind": "Operators",
+          "name": "op_Equality",
+          "signature": "static bool op_Equality(OrbitCamera left, OrbitCamera right)",
+          "anchor": "member-75f2891fe377"
+        },
+        {
+          "kind": "Methods",
+          "name": "GetHashCode",
+          "signature": "int GetHashCode()",
+          "anchor": "member-18d5ba4e3dcc"
+        },
+        {
+          "kind": "Methods",
+          "name": "Equals",
+          "signature": "bool Equals(object obj)",
+          "anchor": "member-6601f37efc3c"
+        },
+        {
+          "kind": "Methods",
+          "name": "Equals",
+          "signature": "bool Equals(OrbitCamera other)",
+          "anchor": "member-a51a1978c8b7"
+        },
+        {
+          "kind": "Methods",
+          "name": "Deconstruct",
+          "signature": "void Deconstruct(out double Yaw, out double Pitch, out double FieldOfView)",
+          "anchor": "member-b67bce019761"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.OrbitCamera.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.SubtitleCue",
+      "name": "SubtitleCue",
+      "namespace": "AvaVideoPlayer",
+      "assembly": "AvaVideoPlayer",
+      "kind": "class",
+      "baseType": "System.Object",
+      "members": [
+        {
+          "kind": "Constructors",
+          "name": "SubtitleCue",
+          "signature": "SubtitleCue(TimeSpan Start, TimeSpan End, string Text)",
+          "anchor": "member-7c56a2db9bde"
+        },
+        {
+          "kind": "Properties",
+          "name": "Start",
+          "signature": "TimeSpan Start { get; set; }",
+          "anchor": "member-0903b6dca1b8"
+        },
+        {
+          "kind": "Properties",
+          "name": "End",
+          "signature": "TimeSpan End { get; set; }",
+          "anchor": "member-0f735451fd18"
+        },
+        {
+          "kind": "Properties",
+          "name": "Text",
+          "signature": "string Text { get; set; }",
+          "anchor": "member-75be4a131315"
+        },
+        {
+          "kind": "Methods",
+          "name": "ToString",
+          "signature": "string ToString()",
+          "anchor": "member-5346dee2233a"
+        },
+        {
+          "kind": "Operators",
+          "name": "op_Inequality",
+          "signature": "static bool op_Inequality(SubtitleCue left, SubtitleCue right)",
+          "anchor": "member-6e9d0f11a5c0"
+        },
+        {
+          "kind": "Operators",
+          "name": "op_Equality",
+          "signature": "static bool op_Equality(SubtitleCue left, SubtitleCue right)",
+          "anchor": "member-7dd7c05641e5"
+        },
+        {
+          "kind": "Methods",
+          "name": "GetHashCode",
+          "signature": "int GetHashCode()",
+          "anchor": "member-18d5ba4e3dcc"
+        },
+        {
+          "kind": "Methods",
+          "name": "Equals",
+          "signature": "bool Equals(object obj)",
+          "anchor": "member-6601f37efc3c"
+        },
+        {
+          "kind": "Methods",
+          "name": "Equals",
+          "signature": "bool Equals(SubtitleCue other)",
+          "anchor": "member-cd6398d2b624"
+        },
+        {
+          "kind": "Methods",
+          "name": "Deconstruct",
+          "signature": "void Deconstruct(out TimeSpan Start, out TimeSpan End, out string Text)",
+          "anchor": "member-4b9659eb1de6"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.SubtitleCue.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.SubtitleDocument",
+      "name": "SubtitleDocument",
+      "namespace": "AvaVideoPlayer",
+      "assembly": "AvaVideoPlayer",
+      "kind": "class",
+      "baseType": "System.Object",
+      "members": [
+        {
+          "kind": "Properties",
+          "name": "Cues",
+          "signature": "IReadOnlyList<SubtitleCue> Cues { get; }",
+          "anchor": "member-6d5c0fe7f011"
+        },
+        {
+          "kind": "Methods",
+          "name": "Parse",
+          "signature": "static SubtitleDocument Parse(string content)",
+          "anchor": "member-0e363b149cc8"
+        },
+        {
+          "kind": "Methods",
+          "name": "At",
+          "signature": "string At(TimeSpan position, TimeSpan delay = default)",
+          "anchor": "member-96ef079dba12"
+        },
+        {
+          "kind": "Methods",
+          "name": "ToWebVtt",
+          "signature": "string ToWebVtt()",
+          "anchor": "member-60a54bc6d5aa"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.SubtitleDocument.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.VideoFramePresenter",
+      "name": "VideoFramePresenter",
+      "namespace": "AvaVideoPlayer",
+      "assembly": "AvaVideoPlayer",
+      "kind": "class",
+      "baseType": "Avalonia.Controls.Control",
+      "members": [
+        {
+          "kind": "Constructors",
+          "name": "VideoFramePresenter",
+          "signature": "VideoFramePresenter(IVideoFrameSource source, VideoPresentationOptions options = default)",
+          "anchor": "member-2e1bbfb63d46"
+        },
+        {
+          "kind": "Properties",
+          "name": "PresentedVersion",
+          "signature": "long PresentedVersion { get; }",
+          "anchor": "member-cb4178dbfc00"
+        },
+        {
+          "kind": "Properties",
+          "name": "View",
+          "signature": "Control View { get; }",
+          "anchor": "member-6063c4a8b27f"
+        },
+        {
+          "kind": "Methods",
+          "name": "SetView",
+          "signature": "void SetView(bool spherical, StereoLayout stereo, OrbitCamera camera)",
+          "anchor": "member-577153f038ac"
+        },
+        {
+          "kind": "Methods",
+          "name": "Render",
+          "signature": "void Render(DrawingContext context)",
+          "anchor": "member-5306de9d7e49"
+        },
+        {
+          "kind": "Methods",
+          "name": "Dispose",
+          "signature": "void Dispose()",
+          "anchor": "member-49db0e493c8b"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.VideoFramePresenter.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.VideoPlayer",
+      "name": "VideoPlayer",
+      "namespace": "AvaVideoPlayer",
+      "assembly": "AvaVideoPlayer",
+      "kind": "class",
+      "baseType": "Avalonia.Controls.UserControl",
+      "members": [
+        {
+          "kind": "Constructors",
+          "name": "VideoPlayer",
+          "signature": "VideoPlayer()",
+          "anchor": "member-eececee83cdf"
+        },
+        {
+          "kind": "Properties",
+          "name": "Source",
+          "signature": "Uri Source { get; set; }",
+          "anchor": "member-67d662ea54db"
+        },
+        {
+          "kind": "Properties",
+          "name": "ShowControls",
+          "signature": "bool ShowControls { get; set; }",
+          "anchor": "member-ad4f1cdebd14"
+        },
+        {
+          "kind": "Properties",
+          "name": "Backend",
+          "signature": "IVideoBackend Backend { get; }",
+          "anchor": "member-c24aa06ebcbf"
+        },
+        {
+          "kind": "Properties",
+          "name": "Information",
+          "signature": "MediaInformation Information { get; }",
+          "anchor": "member-d05a7b8ab370"
+        },
+        {
+          "kind": "Properties",
+          "name": "Snapshot",
+          "signature": "PlaybackSnapshot Snapshot { get; }",
+          "anchor": "member-3e4dceb33e5f"
+        },
+        {
+          "kind": "Properties",
+          "name": "Camera",
+          "signature": "OrbitCamera Camera { get; }",
+          "anchor": "member-052d1c352888"
+        },
+        {
+          "kind": "Properties",
+          "name": "Projection",
+          "signature": "VideoProjection Projection { get; }",
+          "anchor": "member-96b02e89d8b5"
+        },
+        {
+          "kind": "Properties",
+          "name": "Stereo",
+          "signature": "StereoLayout Stereo { get; }",
+          "anchor": "member-229153cc84f4"
+        },
+        {
+          "kind": "Properties",
+          "name": "IsSpherical",
+          "signature": "bool IsSpherical { get; }",
+          "anchor": "member-04fcb2f2424b"
+        },
+        {
+          "kind": "Methods",
+          "name": "ResetCamera",
+          "signature": "void ResetCamera()",
+          "anchor": "member-315ee110eba0"
+        },
+        {
+          "kind": "Methods",
+          "name": "SetCamera",
+          "signature": "void SetCamera(OrbitCamera camera)",
+          "anchor": "member-b8633619a405"
+        },
+        {
+          "kind": "Methods",
+          "name": "SetProjection",
+          "signature": "void SetProjection(VideoProjection projection, StereoLayout stereo = default)",
+          "anchor": "member-0b936c02c581"
+        },
+        {
+          "kind": "Methods",
+          "name": "OpenAsync",
+          "signature": "Task OpenAsync(Uri source, CancellationToken cancellationToken = default)",
+          "anchor": "member-93df635273e6"
+        },
+        {
+          "kind": "Methods",
+          "name": "PlayAsync",
+          "signature": "Task PlayAsync()",
+          "anchor": "member-144123a15d1a"
+        },
+        {
+          "kind": "Methods",
+          "name": "PauseAsync",
+          "signature": "Task PauseAsync()",
+          "anchor": "member-817d2e29fdd6"
+        },
+        {
+          "kind": "Methods",
+          "name": "StopAsync",
+          "signature": "Task StopAsync()",
+          "anchor": "member-e16d67ba098e"
+        },
+        {
+          "kind": "Methods",
+          "name": "SeekAsync",
+          "signature": "Task SeekAsync(TimeSpan position)",
+          "anchor": "member-898d253a5683"
+        },
+        {
+          "kind": "Methods",
+          "name": "SkipAsync",
+          "signature": "Task SkipAsync(TimeSpan offset)",
+          "anchor": "member-c5169ba32e90"
+        },
+        {
+          "kind": "Methods",
+          "name": "AddSubtitleAsync",
+          "signature": "Task AddSubtitleAsync(string content, string name, string language = default)",
+          "anchor": "member-d963aed08416"
+        },
+        {
+          "kind": "Methods",
+          "name": "SetPlaybackSpeedAsync",
+          "signature": "Task SetPlaybackSpeedAsync(double speed)",
+          "anchor": "member-d17cb5359b14"
+        },
+        {
+          "kind": "Methods",
+          "name": "SetVolumeAsync",
+          "signature": "Task SetVolumeAsync(double volume, bool muted = default)",
+          "anchor": "member-c890d864bccc"
+        },
+        {
+          "kind": "Methods",
+          "name": "SelectAudioTrackAsync",
+          "signature": "Task SelectAudioTrackAsync(int id)",
+          "anchor": "member-65feee80f16a"
+        },
+        {
+          "kind": "Methods",
+          "name": "SelectSubtitleTrackAsync",
+          "signature": "Task SelectSubtitleTrackAsync(int id)",
+          "anchor": "member-2b3c76aad5fe"
+        },
+        {
+          "kind": "Methods",
+          "name": "SetSubtitleDelayAsync",
+          "signature": "Task SetSubtitleDelayAsync(TimeSpan delay)",
+          "anchor": "member-620514291580"
+        },
+        {
+          "kind": "Methods",
+          "name": "TogglePlaybackAsync",
+          "signature": "Task TogglePlaybackAsync()",
+          "anchor": "member-43666c81f062"
+        },
+        {
+          "kind": "Methods",
+          "name": "OpenFileAsync",
+          "signature": "Task OpenFileAsync()",
+          "anchor": "member-f1f375730763"
+        },
+        {
+          "kind": "Methods",
+          "name": "OpenSubtitleAsync",
+          "signature": "Task OpenSubtitleAsync()",
+          "anchor": "member-643bbcebe68f"
+        },
+        {
+          "kind": "Methods",
+          "name": "ToggleFullscreenAsync",
+          "signature": "Task ToggleFullscreenAsync()",
+          "anchor": "member-a106145c28d0"
+        },
+        {
+          "kind": "Methods",
+          "name": "DisposeAsync",
+          "signature": "ValueTask DisposeAsync()",
+          "anchor": "member-05b877b950be"
+        },
+        {
+          "kind": "Events",
+          "name": "PlaybackChanged",
+          "signature": "event EventHandler<PlaybackSnapshot> PlaybackChanged",
+          "anchor": "member-7bc289c26b4c"
+        },
+        {
+          "kind": "Events",
+          "name": "PlaybackError",
+          "signature": "event EventHandler<string> PlaybackError",
+          "anchor": "member-956f92b9f2e6"
+        },
+        {
+          "kind": "Fields",
+          "name": "SourceProperty",
+          "signature": "StyledProperty<Uri> SourceProperty",
+          "anchor": "member-242758661b2e"
+        },
+        {
+          "kind": "Fields",
+          "name": "ShowControlsProperty",
+          "signature": "StyledProperty<bool> ShowControlsProperty",
+          "anchor": "member-d72e76fead8f"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.VideoPlayer.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.VideoPlayerPlatform",
+      "name": "VideoPlayerPlatform",
+      "namespace": "AvaVideoPlayer",
+      "assembly": "AvaVideoPlayer",
+      "kind": "class",
+      "baseType": "System.Object",
+      "members": [
+        {
+          "kind": "Properties",
+          "name": "CreateBackend",
+          "signature": "Func<IVideoBackend> CreateBackend { get; set; }",
+          "anchor": "member-16b696ce0b1f"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.VideoPlayerPlatform.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.VideoPresentationOptions",
+      "name": "VideoPresentationOptions",
+      "namespace": "AvaVideoPlayer",
+      "assembly": "AvaVideoPlayer",
+      "kind": "class",
+      "baseType": "System.Object",
+      "members": [
+        {
+          "kind": "Constructors",
+          "name": "VideoPresentationOptions",
+          "signature": "VideoPresentationOptions()",
+          "anchor": "member-d23224dfcde8"
+        },
+        {
+          "kind": "Properties",
+          "name": "MaxProjectionWidth",
+          "signature": "int MaxProjectionWidth { get; set; }",
+          "anchor": "member-41f194a8372b"
+        },
+        {
+          "kind": "Properties",
+          "name": "MaxProjectionHeight",
+          "signature": "int MaxProjectionHeight { get; set; }",
+          "anchor": "member-1d9cf72cecb6"
+        },
+        {
+          "kind": "Properties",
+          "name": "UpdatesPerSecond",
+          "signature": "int UpdatesPerSecond { get; set; }",
+          "anchor": "member-eeb651dba78c"
+        },
+        {
+          "kind": "Methods",
+          "name": "ToString",
+          "signature": "string ToString()",
+          "anchor": "member-5346dee2233a"
+        },
+        {
+          "kind": "Operators",
+          "name": "op_Inequality",
+          "signature": "static bool op_Inequality(VideoPresentationOptions left, VideoPresentationOptions right)",
+          "anchor": "member-5da8fa948819"
+        },
+        {
+          "kind": "Operators",
+          "name": "op_Equality",
+          "signature": "static bool op_Equality(VideoPresentationOptions left, VideoPresentationOptions right)",
+          "anchor": "member-1ad4e872666f"
+        },
+        {
+          "kind": "Methods",
+          "name": "GetHashCode",
+          "signature": "int GetHashCode()",
+          "anchor": "member-18d5ba4e3dcc"
+        },
+        {
+          "kind": "Methods",
+          "name": "Equals",
+          "signature": "bool Equals(object obj)",
+          "anchor": "member-6601f37efc3c"
+        },
+        {
+          "kind": "Methods",
+          "name": "Equals",
+          "signature": "bool Equals(VideoPresentationOptions other)",
+          "anchor": "member-e212cf53c1a2"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.VideoPresentationOptions.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.Engine.AudioInterruptionReason",
+      "name": "AudioInterruptionReason",
+      "namespace": "AvaVideoPlayer.Engine",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "enum",
+      "baseType": "System.Enum",
+      "members": [
+        {
+          "kind": "Values",
+          "name": "FocusLoss",
+          "signature": "FocusLoss = 0",
+          "anchor": "member-953e403e9095"
+        },
+        {
+          "kind": "Values",
+          "name": "AppSuspended",
+          "signature": "AppSuspended = 1",
+          "anchor": "member-c68eaf55b357"
+        },
+        {
+          "kind": "Values",
+          "name": "DeviceChange",
+          "signature": "DeviceChange = 2",
+          "anchor": "member-3f452be15855"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.Engine.AudioInterruptionReason.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.Engine.AudioOutputFormat",
+      "name": "AudioOutputFormat",
+      "namespace": "AvaVideoPlayer.Engine",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "struct",
+      "baseType": "System.ValueType",
+      "members": [
+        {
+          "kind": "Constructors",
+          "name": "AudioOutputFormat",
+          "signature": "AudioOutputFormat(int SampleRate, int Channels)",
+          "anchor": "member-217584c4b245"
+        },
+        {
+          "kind": "Properties",
+          "name": "SampleRate",
+          "signature": "int SampleRate { get; set; }",
+          "anchor": "member-69fd06982927"
+        },
+        {
+          "kind": "Properties",
+          "name": "Channels",
+          "signature": "int Channels { get; set; }",
+          "anchor": "member-89c9a4157687"
+        },
+        {
+          "kind": "Methods",
+          "name": "ToString",
+          "signature": "string ToString()",
+          "anchor": "member-5346dee2233a"
+        },
+        {
+          "kind": "Operators",
+          "name": "op_Inequality",
+          "signature": "static bool op_Inequality(AudioOutputFormat left, AudioOutputFormat right)",
+          "anchor": "member-d21b7354bacf"
+        },
+        {
+          "kind": "Operators",
+          "name": "op_Equality",
+          "signature": "static bool op_Equality(AudioOutputFormat left, AudioOutputFormat right)",
+          "anchor": "member-1a9f9f1ca580"
+        },
+        {
+          "kind": "Methods",
+          "name": "GetHashCode",
+          "signature": "int GetHashCode()",
+          "anchor": "member-18d5ba4e3dcc"
+        },
+        {
+          "kind": "Methods",
+          "name": "Equals",
+          "signature": "bool Equals(object obj)",
+          "anchor": "member-6601f37efc3c"
+        },
+        {
+          "kind": "Methods",
+          "name": "Equals",
+          "signature": "bool Equals(AudioOutputFormat other)",
+          "anchor": "member-8715431361a3"
+        },
+        {
+          "kind": "Methods",
+          "name": "Deconstruct",
+          "signature": "void Deconstruct(out int SampleRate, out int Channels)",
+          "anchor": "member-ce54dd38210e"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.Engine.AudioOutputFormat.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.Engine.AudioOutputInterruptionEventArgs",
+      "name": "AudioOutputInterruptionEventArgs",
+      "namespace": "AvaVideoPlayer.Engine",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "class",
+      "baseType": "System.EventArgs",
+      "members": [
+        {
+          "kind": "Constructors",
+          "name": "AudioOutputInterruptionEventArgs",
+          "signature": "AudioOutputInterruptionEventArgs(AudioInterruptionReason reason, string message)",
+          "anchor": "member-b918b046e447"
+        },
+        {
+          "kind": "Properties",
+          "name": "Reason",
+          "signature": "AudioInterruptionReason Reason { get; }",
+          "anchor": "member-34c3db0fb21e"
+        },
+        {
+          "kind": "Properties",
+          "name": "Message",
+          "signature": "string Message { get; }",
+          "anchor": "member-efb7053e199f"
+        },
+        {
+          "kind": "Properties",
+          "name": "OutputSequence",
+          "signature": "long OutputSequence { get; set; }",
+          "anchor": "member-5441b81566bb"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.Engine.AudioOutputInterruptionEventArgs.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.Engine.AudioOutputPolicy",
+      "name": "AudioOutputPolicy",
+      "namespace": "AvaVideoPlayer.Engine",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "enum",
+      "baseType": "System.Enum",
+      "members": [
+        {
+          "kind": "Values",
+          "name": "Required",
+          "signature": "Required = 0",
+          "anchor": "member-cf359247bc23"
+        },
+        {
+          "kind": "Values",
+          "name": "AllowSilentFallback",
+          "signature": "AllowSilentFallback = 1",
+          "anchor": "member-be424d1d5fd1"
+        },
+        {
+          "kind": "Values",
+          "name": "Disabled",
+          "signature": "Disabled = 2",
+          "anchor": "member-edcdef2fe006"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.Engine.AudioOutputPolicy.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.Engine.AudioOutputUnavailableException",
+      "name": "AudioOutputUnavailableException",
+      "namespace": "AvaVideoPlayer.Engine",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "class",
+      "baseType": "System.Exception",
+      "members": [
+        {
+          "kind": "Constructors",
+          "name": "AudioOutputUnavailableException",
+          "signature": "AudioOutputUnavailableException(string message)",
+          "anchor": "member-e4705b50de25"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.Engine.AudioOutputUnavailableException.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.Engine.AudioPlaybackPosition",
+      "name": "AudioPlaybackPosition",
+      "namespace": "AvaVideoPlayer.Engine",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "struct",
+      "baseType": "System.ValueType",
+      "members": [
+        {
+          "kind": "Constructors",
+          "name": "AudioPlaybackPosition",
+          "signature": "AudioPlaybackPosition(long FramesPresented, int SampleRate, int QueuedFrames, long DeviceGeneration, long Underruns, bool IsRunning, bool ClockReliable)",
+          "anchor": "member-32812a67bb60"
+        },
+        {
+          "kind": "Properties",
+          "name": "FramesPresented",
+          "signature": "long FramesPresented { get; set; }",
+          "anchor": "member-f519bb01c38e"
+        },
+        {
+          "kind": "Properties",
+          "name": "SampleRate",
+          "signature": "int SampleRate { get; set; }",
+          "anchor": "member-69fd06982927"
+        },
+        {
+          "kind": "Properties",
+          "name": "QueuedFrames",
+          "signature": "int QueuedFrames { get; set; }",
+          "anchor": "member-c68fa498687a"
+        },
+        {
+          "kind": "Properties",
+          "name": "DeviceGeneration",
+          "signature": "long DeviceGeneration { get; set; }",
+          "anchor": "member-ceb3b1de3ba1"
+        },
+        {
+          "kind": "Properties",
+          "name": "Underruns",
+          "signature": "long Underruns { get; set; }",
+          "anchor": "member-e117ae033524"
+        },
+        {
+          "kind": "Properties",
+          "name": "IsRunning",
+          "signature": "bool IsRunning { get; set; }",
+          "anchor": "member-1e1956913d03"
+        },
+        {
+          "kind": "Properties",
+          "name": "ClockReliable",
+          "signature": "bool ClockReliable { get; set; }",
+          "anchor": "member-e641a216832d"
+        },
+        {
+          "kind": "Methods",
+          "name": "ToString",
+          "signature": "string ToString()",
+          "anchor": "member-5346dee2233a"
+        },
+        {
+          "kind": "Operators",
+          "name": "op_Inequality",
+          "signature": "static bool op_Inequality(AudioPlaybackPosition left, AudioPlaybackPosition right)",
+          "anchor": "member-4943f51d5ceb"
+        },
+        {
+          "kind": "Operators",
+          "name": "op_Equality",
+          "signature": "static bool op_Equality(AudioPlaybackPosition left, AudioPlaybackPosition right)",
+          "anchor": "member-b220d3a824de"
+        },
+        {
+          "kind": "Methods",
+          "name": "GetHashCode",
+          "signature": "int GetHashCode()",
+          "anchor": "member-18d5ba4e3dcc"
+        },
+        {
+          "kind": "Methods",
+          "name": "Equals",
+          "signature": "bool Equals(object obj)",
+          "anchor": "member-6601f37efc3c"
+        },
+        {
+          "kind": "Methods",
+          "name": "Equals",
+          "signature": "bool Equals(AudioPlaybackPosition other)",
+          "anchor": "member-b1e3ca22d745"
+        },
+        {
+          "kind": "Methods",
+          "name": "Deconstruct",
+          "signature": "void Deconstruct(out long FramesPresented, out int SampleRate, out int QueuedFrames, out long DeviceGeneration, out long Underruns, out bool IsRunning, out bool ClockReliable)",
+          "anchor": "member-d5de9a4ec2c9"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.Engine.AudioPlaybackPosition.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.Engine.AudioTimelineNormalizer",
+      "name": "AudioTimelineNormalizer",
+      "namespace": "AvaVideoPlayer.Engine",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "class",
+      "baseType": "System.Object",
+      "members": [
+        {
+          "kind": "Constructors",
+          "name": "AudioTimelineNormalizer",
+          "signature": "AudioTimelineNormalizer(TimeSpan discardBefore)",
+          "anchor": "member-f6180664afac"
+        },
+        {
+          "kind": "Methods",
+          "name": "Normalize",
+          "signature": "IEnumerable<DecodedAudioFrame> Normalize(DecodedAudioFrame frame, CancellationToken token = default)",
+          "anchor": "member-0bdc81e46174"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.Engine.AudioTimelineNormalizer.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.Engine.BoundedFrameQueue`1",
+      "name": "BoundedFrameQueue<TFrame>",
+      "namespace": "AvaVideoPlayer.Engine",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "class",
+      "baseType": "System.Object",
+      "members": [
+        {
+          "kind": "Constructors",
+          "name": "BoundedFrameQueue`1",
+          "signature": "BoundedFrameQueue<TFrame>(int maxCount, long maxBytes, TimeSpan maxDuration)",
+          "anchor": "member-116d6c5a5d49"
+        },
+        {
+          "kind": "Properties",
+          "name": "Snapshot",
+          "signature": "FrameQueueSnapshot Snapshot { get; }",
+          "anchor": "member-30652c99247e"
+        },
+        {
+          "kind": "Methods",
+          "name": "EnqueueAsync",
+          "signature": "ValueTask EnqueueAsync(TFrame frame, CancellationToken token = default)",
+          "anchor": "member-776ba2aa700b"
+        },
+        {
+          "kind": "Methods",
+          "name": "TryDequeue",
+          "signature": "bool TryDequeue(out TFrame frame)",
+          "anchor": "member-f6a3ddee22f0"
+        },
+        {
+          "kind": "Methods",
+          "name": "DequeueAsync",
+          "signature": "ValueTask<TFrame> DequeueAsync(CancellationToken token = default)",
+          "anchor": "member-fa3207beb25c"
+        },
+        {
+          "kind": "Methods",
+          "name": "Complete",
+          "signature": "void Complete(Exception error = default)",
+          "anchor": "member-b413c078d930"
+        },
+        {
+          "kind": "Methods",
+          "name": "Dispose",
+          "signature": "void Dispose()",
+          "anchor": "member-49db0e493c8b"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.Engine.BoundedFrameQueue-1.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.Engine.DecodedAudioFrame",
+      "name": "DecodedAudioFrame",
+      "namespace": "AvaVideoPlayer.Engine",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "class",
+      "baseType": "AvaVideoPlayer.Engine.DecodedMediaFrame",
+      "members": [
+        {
+          "kind": "Constructors",
+          "name": "DecodedAudioFrame",
+          "signature": "DecodedAudioFrame(int streamId, TimeSpan timestamp, TimeSpan duration, MediaBuffer buffer, int sampleRate, int channels, int sampleCount)",
+          "anchor": "member-a944c6038b81"
+        },
+        {
+          "kind": "Properties",
+          "name": "Kind",
+          "signature": "DecodedFrameKind Kind { get; }",
+          "anchor": "member-7f5d2576dc3e"
+        },
+        {
+          "kind": "Properties",
+          "name": "SampleRate",
+          "signature": "int SampleRate { get; }",
+          "anchor": "member-5b142c6a3c92"
+        },
+        {
+          "kind": "Properties",
+          "name": "Channels",
+          "signature": "int Channels { get; }",
+          "anchor": "member-4dbaac7141fd"
+        },
+        {
+          "kind": "Properties",
+          "name": "SampleCount",
+          "signature": "int SampleCount { get; }",
+          "anchor": "member-4c0418316cc0"
+        },
+        {
+          "kind": "Methods",
+          "name": "Retain",
+          "signature": "DecodedAudioFrame Retain()",
+          "anchor": "member-43033b6df95a"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.Engine.DecodedAudioFrame.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.Engine.DecodedFrameKind",
+      "name": "DecodedFrameKind",
+      "namespace": "AvaVideoPlayer.Engine",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "enum",
+      "baseType": "System.Enum",
+      "members": [
+        {
+          "kind": "Values",
+          "name": "Video",
+          "signature": "Video = 1",
+          "anchor": "member-1c5360ee1dda"
+        },
+        {
+          "kind": "Values",
+          "name": "Audio",
+          "signature": "Audio = 2",
+          "anchor": "member-9539b63b1e22"
+        },
+        {
+          "kind": "Values",
+          "name": "Subtitle",
+          "signature": "Subtitle = 3",
+          "anchor": "member-16849925f58c"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.Engine.DecodedFrameKind.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.Engine.DecodedMediaFrame",
+      "name": "DecodedMediaFrame",
+      "namespace": "AvaVideoPlayer.Engine",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "class",
+      "baseType": "System.Object",
+      "members": [
+        {
+          "kind": "Properties",
+          "name": "StreamId",
+          "signature": "int StreamId { get; }",
+          "anchor": "member-c5c76c49a408"
+        },
+        {
+          "kind": "Properties",
+          "name": "Timestamp",
+          "signature": "TimeSpan Timestamp { get; }",
+          "anchor": "member-b5e62c8d8234"
+        },
+        {
+          "kind": "Properties",
+          "name": "Duration",
+          "signature": "TimeSpan Duration { get; }",
+          "anchor": "member-292d9e3ee18d"
+        },
+        {
+          "kind": "Properties",
+          "name": "Buffer",
+          "signature": "MediaBuffer Buffer { get; }",
+          "anchor": "member-f70aba91bcaa"
+        },
+        {
+          "kind": "Properties",
+          "name": "Kind",
+          "signature": "DecodedFrameKind Kind { get; }",
+          "anchor": "member-7f5d2576dc3e"
+        },
+        {
+          "kind": "Methods",
+          "name": "Dispose",
+          "signature": "void Dispose()",
+          "anchor": "member-49db0e493c8b"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.Engine.DecodedMediaFrame.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.Engine.DecodedPixelFormat",
+      "name": "DecodedPixelFormat",
+      "namespace": "AvaVideoPlayer.Engine",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "enum",
+      "baseType": "System.Enum",
+      "members": [
+        {
+          "kind": "Values",
+          "name": "Bgra32",
+          "signature": "Bgra32 = 1",
+          "anchor": "member-b5db78b66e1f"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.Engine.DecodedPixelFormat.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.Engine.DecodedSubtitleFrame",
+      "name": "DecodedSubtitleFrame",
+      "namespace": "AvaVideoPlayer.Engine",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "class",
+      "baseType": "AvaVideoPlayer.Engine.DecodedMediaFrame",
+      "members": [
+        {
+          "kind": "Constructors",
+          "name": "DecodedSubtitleFrame",
+          "signature": "DecodedSubtitleFrame(int streamId, TimeSpan timestamp, TimeSpan duration, MediaBuffer buffer, SubtitlePayloadKind payloadKind, int x = default, int y = default, int width = default, int height = default, int stride = default, int canvasWidth = default, int canvasHeight = default)",
+          "anchor": "member-58846038abd1"
+        },
+        {
+          "kind": "Properties",
+          "name": "Kind",
+          "signature": "DecodedFrameKind Kind { get; }",
+          "anchor": "member-7f5d2576dc3e"
+        },
+        {
+          "kind": "Properties",
+          "name": "PayloadKind",
+          "signature": "SubtitlePayloadKind PayloadKind { get; }",
+          "anchor": "member-b55b032b09bd"
+        },
+        {
+          "kind": "Properties",
+          "name": "Text",
+          "signature": "string Text { get; }",
+          "anchor": "member-5937037ca093"
+        },
+        {
+          "kind": "Properties",
+          "name": "UntilReplaced",
+          "signature": "bool UntilReplaced { get; set; }",
+          "anchor": "member-e484071b2511"
+        },
+        {
+          "kind": "Properties",
+          "name": "CompositionId",
+          "signature": "long CompositionId { get; set; }",
+          "anchor": "member-598c7fd7d74c"
+        },
+        {
+          "kind": "Properties",
+          "name": "X",
+          "signature": "int X { get; }",
+          "anchor": "member-60ea4789fc19"
+        },
+        {
+          "kind": "Properties",
+          "name": "Y",
+          "signature": "int Y { get; }",
+          "anchor": "member-3b730f1e9f08"
+        },
+        {
+          "kind": "Properties",
+          "name": "Width",
+          "signature": "int Width { get; }",
+          "anchor": "member-2a58f2a419eb"
+        },
+        {
+          "kind": "Properties",
+          "name": "Height",
+          "signature": "int Height { get; }",
+          "anchor": "member-c78564ca58c5"
+        },
+        {
+          "kind": "Properties",
+          "name": "Stride",
+          "signature": "int Stride { get; }",
+          "anchor": "member-c2fbf6e9828a"
+        },
+        {
+          "kind": "Properties",
+          "name": "CanvasWidth",
+          "signature": "int CanvasWidth { get; }",
+          "anchor": "member-00b0a90e11a5"
+        },
+        {
+          "kind": "Properties",
+          "name": "CanvasHeight",
+          "signature": "int CanvasHeight { get; }",
+          "anchor": "member-4abe6931d1ec"
+        },
+        {
+          "kind": "Methods",
+          "name": "Retain",
+          "signature": "DecodedSubtitleFrame Retain()",
+          "anchor": "member-dc1b35a000c7"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.Engine.DecodedSubtitleFrame.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.Engine.DecodedVideoFrame",
+      "name": "DecodedVideoFrame",
+      "namespace": "AvaVideoPlayer.Engine",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "class",
+      "baseType": "AvaVideoPlayer.Engine.DecodedMediaFrame",
+      "members": [
+        {
+          "kind": "Constructors",
+          "name": "DecodedVideoFrame",
+          "signature": "DecodedVideoFrame(int streamId, TimeSpan timestamp, TimeSpan duration, MediaBuffer buffer, int width, int height, int stride)",
+          "anchor": "member-d35ad766d68f"
+        },
+        {
+          "kind": "Properties",
+          "name": "Kind",
+          "signature": "DecodedFrameKind Kind { get; }",
+          "anchor": "member-7f5d2576dc3e"
+        },
+        {
+          "kind": "Properties",
+          "name": "Format",
+          "signature": "DecodedPixelFormat Format { get; }",
+          "anchor": "member-7420c9943bae"
+        },
+        {
+          "kind": "Properties",
+          "name": "Width",
+          "signature": "int Width { get; }",
+          "anchor": "member-2a58f2a419eb"
+        },
+        {
+          "kind": "Properties",
+          "name": "Height",
+          "signature": "int Height { get; }",
+          "anchor": "member-c78564ca58c5"
+        },
+        {
+          "kind": "Properties",
+          "name": "Stride",
+          "signature": "int Stride { get; }",
+          "anchor": "member-c2fbf6e9828a"
+        },
+        {
+          "kind": "Properties",
+          "name": "WasHardwareDecoded",
+          "signature": "bool WasHardwareDecoded { get; set; }",
+          "anchor": "member-4daab6ede43a"
+        },
+        {
+          "kind": "Properties",
+          "name": "DisplayGeometry",
+          "signature": "VideoDisplayGeometry DisplayGeometry { get; set; }",
+          "anchor": "member-b647ed6e8edd"
+        },
+        {
+          "kind": "Methods",
+          "name": "Retain",
+          "signature": "DecodedVideoFrame Retain()",
+          "anchor": "member-b1fe665b8b65"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.Engine.DecodedVideoFrame.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.Engine.DecoderOptions",
+      "name": "DecoderOptions",
+      "namespace": "AvaVideoPlayer.Engine",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "class",
+      "baseType": "System.Object",
+      "members": [
+        {
+          "kind": "Constructors",
+          "name": "DecoderOptions",
+          "signature": "DecoderOptions()",
+          "anchor": "member-516e69960e5c"
+        },
+        {
+          "kind": "Properties",
+          "name": "IoTimeout",
+          "signature": "TimeSpan IoTimeout { get; set; }",
+          "anchor": "member-e1974d40f8d4"
+        },
+        {
+          "kind": "Properties",
+          "name": "AudioSampleRate",
+          "signature": "int AudioSampleRate { get; set; }",
+          "anchor": "member-05cd372fdeec"
+        },
+        {
+          "kind": "Properties",
+          "name": "AudioChannels",
+          "signature": "int AudioChannels { get; set; }",
+          "anchor": "member-dadbd13222ae"
+        },
+        {
+          "kind": "Properties",
+          "name": "MaxFrameBytes",
+          "signature": "long MaxFrameBytes { get; set; }",
+          "anchor": "member-48b0ba2a0f95"
+        },
+        {
+          "kind": "Properties",
+          "name": "MaxAttachmentBytes",
+          "signature": "long MaxAttachmentBytes { get; set; }",
+          "anchor": "member-a690e08d4269"
+        },
+        {
+          "kind": "Properties",
+          "name": "PreferHardwareDecoding",
+          "signature": "bool PreferHardwareDecoding { get; set; }",
+          "anchor": "member-cca0d2fdcf75"
+        },
+        {
+          "kind": "Properties",
+          "name": "RequireHardwareDecoding",
+          "signature": "bool RequireHardwareDecoding { get; set; }",
+          "anchor": "member-6c6f4263e895"
+        },
+        {
+          "kind": "Properties",
+          "name": "HardwareDevice",
+          "signature": "string HardwareDevice { get; set; }",
+          "anchor": "member-7ff2786a48b3"
+        },
+        {
+          "kind": "Properties",
+          "name": "MaxHardwareReplayBytes",
+          "signature": "long MaxHardwareReplayBytes { get; set; }",
+          "anchor": "member-e5ec8aff02cd"
+        },
+        {
+          "kind": "Properties",
+          "name": "MaxHardwareReplayPackets",
+          "signature": "int MaxHardwareReplayPackets { get; set; }",
+          "anchor": "member-1bdde07d7a13"
+        },
+        {
+          "kind": "Properties",
+          "name": "MaxSubtitleWindowBytes",
+          "signature": "long MaxSubtitleWindowBytes { get; set; }",
+          "anchor": "member-1b84d0198f2a"
+        },
+        {
+          "kind": "Properties",
+          "name": "MaxSubtitleWindowFrames",
+          "signature": "int MaxSubtitleWindowFrames { get; set; }",
+          "anchor": "member-182bdf8fb5f8"
+        },
+        {
+          "kind": "Properties",
+          "name": "AllowNetwork",
+          "signature": "bool AllowNetwork { get; set; }",
+          "anchor": "member-af46d97311fd"
+        },
+        {
+          "kind": "Methods",
+          "name": "ToString",
+          "signature": "string ToString()",
+          "anchor": "member-5346dee2233a"
+        },
+        {
+          "kind": "Operators",
+          "name": "op_Inequality",
+          "signature": "static bool op_Inequality(DecoderOptions left, DecoderOptions right)",
+          "anchor": "member-959921feba1d"
+        },
+        {
+          "kind": "Operators",
+          "name": "op_Equality",
+          "signature": "static bool op_Equality(DecoderOptions left, DecoderOptions right)",
+          "anchor": "member-62d444d9417c"
+        },
+        {
+          "kind": "Methods",
+          "name": "GetHashCode",
+          "signature": "int GetHashCode()",
+          "anchor": "member-18d5ba4e3dcc"
+        },
+        {
+          "kind": "Methods",
+          "name": "Equals",
+          "signature": "bool Equals(object obj)",
+          "anchor": "member-6601f37efc3c"
+        },
+        {
+          "kind": "Methods",
+          "name": "Equals",
+          "signature": "bool Equals(DecoderOptions other)",
+          "anchor": "member-d03000fcdbf0"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.Engine.DecoderOptions.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.Engine.FrameQueueSnapshot",
+      "name": "FrameQueueSnapshot",
+      "namespace": "AvaVideoPlayer.Engine",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "struct",
+      "baseType": "System.ValueType",
+      "members": [
+        {
+          "kind": "Constructors",
+          "name": "FrameQueueSnapshot",
+          "signature": "FrameQueueSnapshot(int Count, long Bytes, TimeSpan BufferedDuration, bool Completed)",
+          "anchor": "member-895ce28f4ef5"
+        },
+        {
+          "kind": "Properties",
+          "name": "Count",
+          "signature": "int Count { get; set; }",
+          "anchor": "member-a94f3368fb61"
+        },
+        {
+          "kind": "Properties",
+          "name": "Bytes",
+          "signature": "long Bytes { get; set; }",
+          "anchor": "member-811e47db7306"
+        },
+        {
+          "kind": "Properties",
+          "name": "BufferedDuration",
+          "signature": "TimeSpan BufferedDuration { get; set; }",
+          "anchor": "member-33d16c5ab06d"
+        },
+        {
+          "kind": "Properties",
+          "name": "Completed",
+          "signature": "bool Completed { get; set; }",
+          "anchor": "member-c1eb7e1d659f"
+        },
+        {
+          "kind": "Methods",
+          "name": "ToString",
+          "signature": "string ToString()",
+          "anchor": "member-5346dee2233a"
+        },
+        {
+          "kind": "Operators",
+          "name": "op_Inequality",
+          "signature": "static bool op_Inequality(FrameQueueSnapshot left, FrameQueueSnapshot right)",
+          "anchor": "member-a3473987c00d"
+        },
+        {
+          "kind": "Operators",
+          "name": "op_Equality",
+          "signature": "static bool op_Equality(FrameQueueSnapshot left, FrameQueueSnapshot right)",
+          "anchor": "member-151aeee5a0f0"
+        },
+        {
+          "kind": "Methods",
+          "name": "GetHashCode",
+          "signature": "int GetHashCode()",
+          "anchor": "member-18d5ba4e3dcc"
+        },
+        {
+          "kind": "Methods",
+          "name": "Equals",
+          "signature": "bool Equals(object obj)",
+          "anchor": "member-6601f37efc3c"
+        },
+        {
+          "kind": "Methods",
+          "name": "Equals",
+          "signature": "bool Equals(FrameQueueSnapshot other)",
+          "anchor": "member-8b16f66cf023"
+        },
+        {
+          "kind": "Methods",
+          "name": "Deconstruct",
+          "signature": "void Deconstruct(out int Count, out long Bytes, out TimeSpan BufferedDuration, out bool Completed)",
+          "anchor": "member-a44f4e22ec09"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.Engine.FrameQueueSnapshot.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.Engine.IAudioFrameProcessor",
+      "name": "IAudioFrameProcessor",
+      "namespace": "AvaVideoPlayer.Engine",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "interface",
+      "baseType": null,
+      "members": [
+        {
+          "kind": "Methods",
+          "name": "Process",
+          "signature": "IEnumerable<DecodedAudioFrame> Process(DecodedAudioFrame frame, CancellationToken token = default)",
+          "anchor": "member-4dba8fed7233"
+        },
+        {
+          "kind": "Methods",
+          "name": "Drain",
+          "signature": "IEnumerable<DecodedAudioFrame> Drain(CancellationToken token = default)",
+          "anchor": "member-b48f60a4bd1f"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.Engine.IAudioFrameProcessor.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.Engine.IAudioOutput",
+      "name": "IAudioOutput",
+      "namespace": "AvaVideoPlayer.Engine",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "interface",
+      "baseType": null,
+      "members": [
+        {
+          "kind": "Properties",
+          "name": "Name",
+          "signature": "string Name { get; }",
+          "anchor": "member-3f9e23844350"
+        },
+        {
+          "kind": "Properties",
+          "name": "DiagnosticWarning",
+          "signature": "string DiagnosticWarning { get; }",
+          "anchor": "member-74fb72235ca2"
+        },
+        {
+          "kind": "Properties",
+          "name": "Format",
+          "signature": "AudioOutputFormat Format { get; }",
+          "anchor": "member-51d7e009e021"
+        },
+        {
+          "kind": "Properties",
+          "name": "BufferCapacityFrames",
+          "signature": "int BufferCapacityFrames { get; }",
+          "anchor": "member-5442eb75b2e6"
+        },
+        {
+          "kind": "Properties",
+          "name": "Position",
+          "signature": "AudioPlaybackPosition Position { get; }",
+          "anchor": "member-ccba735603e8"
+        },
+        {
+          "kind": "Methods",
+          "name": "OpenAsync",
+          "signature": "ValueTask OpenAsync(AudioOutputFormat format, CancellationToken token = default)",
+          "anchor": "member-7b151ed21cd8"
+        },
+        {
+          "kind": "Methods",
+          "name": "Write",
+          "signature": "int Write(ReadOnlySpan<float> interleavedSamples)",
+          "anchor": "member-4fe1f8fa3334"
+        },
+        {
+          "kind": "Methods",
+          "name": "Start",
+          "signature": "void Start()",
+          "anchor": "member-8ff43a3fb5f0"
+        },
+        {
+          "kind": "Methods",
+          "name": "Start",
+          "signature": "void Start(bool playbackRequested)",
+          "anchor": "member-09d33df59d5a"
+        },
+        {
+          "kind": "Methods",
+          "name": "Pause",
+          "signature": "void Pause()",
+          "anchor": "member-19678f452ea1"
+        },
+        {
+          "kind": "Methods",
+          "name": "Reset",
+          "signature": "void Reset()",
+          "anchor": "member-bd7450243249"
+        },
+        {
+          "kind": "Methods",
+          "name": "SetVolume",
+          "signature": "void SetVolume(double volume, bool muted)",
+          "anchor": "member-935d707a91b6"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.Engine.IAudioOutput.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.Engine.IAudioOutputNotifications",
+      "name": "IAudioOutputNotifications",
+      "namespace": "AvaVideoPlayer.Engine",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "interface",
+      "baseType": null,
+      "members": [
+        {
+          "kind": "Methods",
+          "name": "IsCurrentInterruption",
+          "signature": "bool IsCurrentInterruption(AudioOutputInterruptionEventArgs interruption)",
+          "anchor": "member-b364e6cf5ba1"
+        },
+        {
+          "kind": "Events",
+          "name": "Interrupted",
+          "signature": "event EventHandler<AudioOutputInterruptionEventArgs> Interrupted",
+          "anchor": "member-d108fe361523"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.Engine.IAudioOutputNotifications.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.Engine.IAudioProcessorFactory",
+      "name": "IAudioProcessorFactory",
+      "namespace": "AvaVideoPlayer.Engine",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "interface",
+      "baseType": null,
+      "members": [
+        {
+          "kind": "Methods",
+          "name": "Create",
+          "signature": "IAudioFrameProcessor Create(AudioOutputFormat format, double speed)",
+          "anchor": "member-3772894c38b4"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.Engine.IAudioProcessorFactory.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.Engine.IDecoderFactory",
+      "name": "IDecoderFactory",
+      "namespace": "AvaVideoPlayer.Engine",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "interface",
+      "baseType": null,
+      "members": [
+        {
+          "kind": "Methods",
+          "name": "OpenAsync",
+          "signature": "Task<IDecoderSession> OpenAsync(Uri source, DecoderOptions options = default, CancellationToken cancellationToken = default)",
+          "anchor": "member-86a98dddf24a"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.Engine.IDecoderFactory.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.Engine.IDecoderSession",
+      "name": "IDecoderSession",
+      "namespace": "AvaVideoPlayer.Engine",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "interface",
+      "baseType": null,
+      "members": [
+        {
+          "kind": "Properties",
+          "name": "VideoDecoding",
+          "signature": "VideoDecodeDiagnostics VideoDecoding { get; }",
+          "anchor": "member-7ba47a469882"
+        },
+        {
+          "kind": "Properties",
+          "name": "Information",
+          "signature": "MediaInformation Information { get; }",
+          "anchor": "member-d05a7b8ab370"
+        },
+        {
+          "kind": "Properties",
+          "name": "SelectedVideoTrack",
+          "signature": "int SelectedVideoTrack { get; }",
+          "anchor": "member-e7a1ab8bda8d"
+        },
+        {
+          "kind": "Properties",
+          "name": "SelectedAudioTrack",
+          "signature": "int SelectedAudioTrack { get; }",
+          "anchor": "member-b5b39a613c0a"
+        },
+        {
+          "kind": "Properties",
+          "name": "SelectedSubtitleTrack",
+          "signature": "int SelectedSubtitleTrack { get; }",
+          "anchor": "member-e022afda8231"
+        },
+        {
+          "kind": "Methods",
+          "name": "Read",
+          "signature": "DecodedMediaFrame Read(CancellationToken cancellationToken = default)",
+          "anchor": "member-e893741558d6"
+        },
+        {
+          "kind": "Methods",
+          "name": "Seek",
+          "signature": "void Seek(TimeSpan position, CancellationToken cancellationToken = default)",
+          "anchor": "member-146043ff3f87"
+        },
+        {
+          "kind": "Methods",
+          "name": "SelectTrack",
+          "signature": "void SelectTrack(MediaTrackKind kind, int id, CancellationToken cancellationToken = default)",
+          "anchor": "member-9429d71bab59"
+        },
+        {
+          "kind": "Methods",
+          "name": "ReadAttachment",
+          "signature": "byte[] ReadAttachment(int id)",
+          "anchor": "member-cce47110209a"
+        },
+        {
+          "kind": "Methods",
+          "name": "Interrupt",
+          "signature": "void Interrupt()",
+          "anchor": "member-ca62dafe9580"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.Engine.IDecoderSession.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.Engine.ISubtitleWindowReader",
+      "name": "ISubtitleWindowReader",
+      "namespace": "AvaVideoPlayer.Engine",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "interface",
+      "baseType": null,
+      "members": [
+        {
+          "kind": "Properties",
+          "name": "Track",
+          "signature": "MediaTrack Track { get; }",
+          "anchor": "member-59cd231e5797"
+        },
+        {
+          "kind": "Methods",
+          "name": "ReadAt",
+          "signature": "IReadOnlyList<DecodedSubtitleFrame> ReadAt(TimeSpan position, CancellationToken token = default)",
+          "anchor": "member-e2ff49ec08d1"
+        },
+        {
+          "kind": "Methods",
+          "name": "Interrupt",
+          "signature": "void Interrupt()",
+          "anchor": "member-ca62dafe9580"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.Engine.ISubtitleWindowReader.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.Engine.ISubtitleWindowReaderFactory",
+      "name": "ISubtitleWindowReaderFactory",
+      "namespace": "AvaVideoPlayer.Engine",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "interface",
+      "baseType": null,
+      "members": [
+        {
+          "kind": "Properties",
+          "name": "SupportsSubtitleWindows",
+          "signature": "bool SupportsSubtitleWindows { get; }",
+          "anchor": "member-2ba33e565261"
+        },
+        {
+          "kind": "Methods",
+          "name": "OpenSubtitleReader",
+          "signature": "ISubtitleWindowReader OpenSubtitleReader(int track, CancellationToken token = default)",
+          "anchor": "member-39941c8abe3e"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.Engine.ISubtitleWindowReaderFactory.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.Engine.IVideoFrameSource",
+      "name": "IVideoFrameSource",
+      "namespace": "AvaVideoPlayer.Engine",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "interface",
+      "baseType": null,
+      "members": [
+        {
+          "kind": "Properties",
+          "name": "Version",
+          "signature": "long Version { get; }",
+          "anchor": "member-89471f02984e"
+        },
+        {
+          "kind": "Methods",
+          "name": "AcquireLatest",
+          "signature": "VideoFrameLease AcquireLatest()",
+          "anchor": "member-1cd2aa1b2647"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.Engine.IVideoFrameSource.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.Engine.MediaBuffer",
+      "name": "MediaBuffer",
+      "namespace": "AvaVideoPlayer.Engine",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "class",
+      "baseType": "System.Object",
+      "members": [
+        {
+          "kind": "Properties",
+          "name": "Memory",
+          "signature": "Memory<byte> Memory { get; }",
+          "anchor": "member-d2d9fdfb32ee"
+        },
+        {
+          "kind": "Properties",
+          "name": "Length",
+          "signature": "int Length { get; }",
+          "anchor": "member-c19456de54ab"
+        },
+        {
+          "kind": "Methods",
+          "name": "Own",
+          "signature": "static MediaBuffer Own(IMemoryOwner<byte> owner, int length)",
+          "anchor": "member-0a04b04f36b5"
+        },
+        {
+          "kind": "Methods",
+          "name": "Rent",
+          "signature": "static MediaBuffer Rent(int length)",
+          "anchor": "member-444e75dc7691"
+        },
+        {
+          "kind": "Methods",
+          "name": "Retain",
+          "signature": "MediaBuffer Retain()",
+          "anchor": "member-e5f88264277f"
+        },
+        {
+          "kind": "Methods",
+          "name": "Dispose",
+          "signature": "void Dispose()",
+          "anchor": "member-49db0e493c8b"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.Engine.MediaBuffer.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.Engine.MediaDecodeException",
+      "name": "MediaDecodeException",
+      "namespace": "AvaVideoPlayer.Engine",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "class",
+      "baseType": "System.Exception",
+      "members": [
+        {
+          "kind": "Constructors",
+          "name": "MediaDecodeException",
+          "signature": "MediaDecodeException(string message, int nativeCode = default, Exception inner = default)",
+          "anchor": "member-ac9a0cc9308a"
+        },
+        {
+          "kind": "Properties",
+          "name": "NativeCode",
+          "signature": "int NativeCode { get; }",
+          "anchor": "member-802ee94b7eeb"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.Engine.MediaDecodeException.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.Engine.PlaybackClock",
+      "name": "PlaybackClock",
+      "namespace": "AvaVideoPlayer.Engine",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "class",
+      "baseType": "System.Object",
+      "members": [
+        {
+          "kind": "Constructors",
+          "name": "PlaybackClock",
+          "signature": "PlaybackClock(TimeProvider timeProvider = default)",
+          "anchor": "member-16fc634071b6"
+        },
+        {
+          "kind": "Properties",
+          "name": "AudioError",
+          "signature": "Exception AudioError { get; }",
+          "anchor": "member-57e26169a958"
+        },
+        {
+          "kind": "Properties",
+          "name": "Position",
+          "signature": "TimeSpan Position { get; }",
+          "anchor": "member-c027b57a41cc"
+        },
+        {
+          "kind": "Properties",
+          "name": "Speed",
+          "signature": "double Speed { get; }",
+          "anchor": "member-7bbc4b396f16"
+        },
+        {
+          "kind": "Properties",
+          "name": "IsRunning",
+          "signature": "bool IsRunning { get; }",
+          "anchor": "member-4c5d087109e0"
+        },
+        {
+          "kind": "Methods",
+          "name": "Reset",
+          "signature": "void Reset(TimeSpan position)",
+          "anchor": "member-b19f7d3ca825"
+        },
+        {
+          "kind": "Methods",
+          "name": "BindAudio",
+          "signature": "void BindAudio(Func<AudioPlaybackPosition> audio)",
+          "anchor": "member-b08f598fb7b8"
+        },
+        {
+          "kind": "Methods",
+          "name": "DetachAudioAndPause",
+          "signature": "void DetachAudioAndPause()",
+          "anchor": "member-13d081430f7f"
+        },
+        {
+          "kind": "Methods",
+          "name": "Start",
+          "signature": "void Start()",
+          "anchor": "member-8ff43a3fb5f0"
+        },
+        {
+          "kind": "Methods",
+          "name": "Pause",
+          "signature": "void Pause()",
+          "anchor": "member-19678f452ea1"
+        },
+        {
+          "kind": "Methods",
+          "name": "SetSpeed",
+          "signature": "void SetSpeed(double speed)",
+          "anchor": "member-01e01f8add45"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.Engine.PlaybackClock.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.Engine.PlaybackDiagnostics",
+      "name": "PlaybackDiagnostics",
+      "namespace": "AvaVideoPlayer.Engine",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "struct",
+      "baseType": "System.ValueType",
+      "members": [
+        {
+          "kind": "Constructors",
+          "name": "PlaybackDiagnostics",
+          "signature": "PlaybackDiagnostics(long Generation, long VideoFramesDecoded, long AudioFramesDecoded, long VideoFramesPresented, long VideoFramesDropped, TimeSpan PresentedVideoTimestamp, FrameQueueSnapshot VideoQueue, FrameQueueSnapshot AudioQueue, string AudioWarning)",
+          "anchor": "member-a36755d8c51a"
+        },
+        {
+          "kind": "Properties",
+          "name": "Generation",
+          "signature": "long Generation { get; set; }",
+          "anchor": "member-a86c28f534bf"
+        },
+        {
+          "kind": "Properties",
+          "name": "VideoFramesDecoded",
+          "signature": "long VideoFramesDecoded { get; set; }",
+          "anchor": "member-bbb568f57b47"
+        },
+        {
+          "kind": "Properties",
+          "name": "AudioFramesDecoded",
+          "signature": "long AudioFramesDecoded { get; set; }",
+          "anchor": "member-1f7e3ab7ad82"
+        },
+        {
+          "kind": "Properties",
+          "name": "VideoFramesPresented",
+          "signature": "long VideoFramesPresented { get; set; }",
+          "anchor": "member-6d45ae9ffcb4"
+        },
+        {
+          "kind": "Properties",
+          "name": "VideoFramesDropped",
+          "signature": "long VideoFramesDropped { get; set; }",
+          "anchor": "member-c998784c931e"
+        },
+        {
+          "kind": "Properties",
+          "name": "PresentedVideoTimestamp",
+          "signature": "TimeSpan PresentedVideoTimestamp { get; set; }",
+          "anchor": "member-716b0ddbd311"
+        },
+        {
+          "kind": "Properties",
+          "name": "VideoQueue",
+          "signature": "FrameQueueSnapshot VideoQueue { get; set; }",
+          "anchor": "member-cef2401c82b6"
+        },
+        {
+          "kind": "Properties",
+          "name": "AudioQueue",
+          "signature": "FrameQueueSnapshot AudioQueue { get; set; }",
+          "anchor": "member-0c2f6a2d8533"
+        },
+        {
+          "kind": "Properties",
+          "name": "AudioWarning",
+          "signature": "string AudioWarning { get; set; }",
+          "anchor": "member-c5be7dbf49a2"
+        },
+        {
+          "kind": "Properties",
+          "name": "RetainedGenerations",
+          "signature": "int RetainedGenerations { get; set; }",
+          "anchor": "member-215b2eddc9de"
+        },
+        {
+          "kind": "Properties",
+          "name": "AudioOutputName",
+          "signature": "string AudioOutputName { get; set; }",
+          "anchor": "member-c43566b999a6"
+        },
+        {
+          "kind": "Properties",
+          "name": "VideoDecoding",
+          "signature": "VideoDecodeDiagnostics VideoDecoding { get; set; }",
+          "anchor": "member-016cfd3f6a50"
+        },
+        {
+          "kind": "Properties",
+          "name": "AudioRebufferCount",
+          "signature": "long AudioRebufferCount { get; set; }",
+          "anchor": "member-13d3fdb915a6"
+        },
+        {
+          "kind": "Properties",
+          "name": "AudioUnderruns",
+          "signature": "long AudioUnderruns { get; set; }",
+          "anchor": "member-0f575d67017d"
+        },
+        {
+          "kind": "Methods",
+          "name": "ToString",
+          "signature": "string ToString()",
+          "anchor": "member-5346dee2233a"
+        },
+        {
+          "kind": "Operators",
+          "name": "op_Inequality",
+          "signature": "static bool op_Inequality(PlaybackDiagnostics left, PlaybackDiagnostics right)",
+          "anchor": "member-6c19871b9b6f"
+        },
+        {
+          "kind": "Operators",
+          "name": "op_Equality",
+          "signature": "static bool op_Equality(PlaybackDiagnostics left, PlaybackDiagnostics right)",
+          "anchor": "member-7bab7c31b398"
+        },
+        {
+          "kind": "Methods",
+          "name": "GetHashCode",
+          "signature": "int GetHashCode()",
+          "anchor": "member-18d5ba4e3dcc"
+        },
+        {
+          "kind": "Methods",
+          "name": "Equals",
+          "signature": "bool Equals(object obj)",
+          "anchor": "member-6601f37efc3c"
+        },
+        {
+          "kind": "Methods",
+          "name": "Equals",
+          "signature": "bool Equals(PlaybackDiagnostics other)",
+          "anchor": "member-61fe7424d447"
+        },
+        {
+          "kind": "Methods",
+          "name": "Deconstruct",
+          "signature": "void Deconstruct(out long Generation, out long VideoFramesDecoded, out long AudioFramesDecoded, out long VideoFramesPresented, out long VideoFramesDropped, out TimeSpan PresentedVideoTimestamp, out FrameQueueSnapshot VideoQueue, out FrameQueueSnapshot AudioQueue, out string AudioWarning)",
+          "anchor": "member-379caabcaac0"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.Engine.PlaybackDiagnostics.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.Engine.PlaybackEngine",
+      "name": "PlaybackEngine",
+      "namespace": "AvaVideoPlayer.Engine",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "class",
+      "baseType": "System.Object",
+      "members": [
+        {
+          "kind": "Constructors",
+          "name": "PlaybackEngine",
+          "signature": "PlaybackEngine(IDecoderFactory factory, Func<IAudioOutput> audioOutputFactory = default, PlaybackOptions options = default, TimeProvider timeProvider = default, IAudioProcessorFactory audioProcessorFactory = default)",
+          "anchor": "member-f75cd99538d0"
+        },
+        {
+          "kind": "Properties",
+          "name": "VideoFrames",
+          "signature": "VideoFrameStore VideoFrames { get; }",
+          "anchor": "member-dd431f7158b9"
+        },
+        {
+          "kind": "Properties",
+          "name": "CaptionFrames",
+          "signature": "SubtitleFrameStore CaptionFrames { get; }",
+          "anchor": "member-73f6c8d9cbce"
+        },
+        {
+          "kind": "Properties",
+          "name": "CaptionText",
+          "signature": "string CaptionText { get; }",
+          "anchor": "member-f066eb55f68e"
+        },
+        {
+          "kind": "Properties",
+          "name": "Snapshot",
+          "signature": "PlaybackSnapshot Snapshot { get; }",
+          "anchor": "member-3e4dceb33e5f"
+        },
+        {
+          "kind": "Properties",
+          "name": "Diagnostics",
+          "signature": "PlaybackDiagnostics Diagnostics { get; }",
+          "anchor": "member-f1b69c55d329"
+        },
+        {
+          "kind": "Methods",
+          "name": "OpenAsync",
+          "signature": "Task OpenAsync(Uri source, bool autoPlay = default, CancellationToken token = default)",
+          "anchor": "member-1ff1eb2e20c2"
+        },
+        {
+          "kind": "Methods",
+          "name": "PlayAsync",
+          "signature": "Task PlayAsync(CancellationToken token = default)",
+          "anchor": "member-eba5d19433a3"
+        },
+        {
+          "kind": "Methods",
+          "name": "PauseAsync",
+          "signature": "Task PauseAsync(CancellationToken token = default)",
+          "anchor": "member-aca74b3519ed"
+        },
+        {
+          "kind": "Methods",
+          "name": "StopAsync",
+          "signature": "Task StopAsync(CancellationToken token = default)",
+          "anchor": "member-0ae334a49585"
+        },
+        {
+          "kind": "Methods",
+          "name": "SeekAsync",
+          "signature": "Task SeekAsync(TimeSpan position, CancellationToken token = default)",
+          "anchor": "member-886d83c10ce7"
+        },
+        {
+          "kind": "Methods",
+          "name": "SetSpeedAsync",
+          "signature": "Task SetSpeedAsync(double speed, CancellationToken token = default)",
+          "anchor": "member-4d34cebc78ac"
+        },
+        {
+          "kind": "Methods",
+          "name": "SetVolumeAsync",
+          "signature": "Task SetVolumeAsync(double volume, bool muted, CancellationToken token = default)",
+          "anchor": "member-ba2c985d007b"
+        },
+        {
+          "kind": "Methods",
+          "name": "SelectTrackAsync",
+          "signature": "Task SelectTrackAsync(MediaTrackKind kind, int id, CancellationToken token = default)",
+          "anchor": "member-d1a4cdc6dfdb"
+        },
+        {
+          "kind": "Methods",
+          "name": "ReadAttachmentAsync",
+          "signature": "Task<byte[]> ReadAttachmentAsync(int id, CancellationToken token = default)",
+          "anchor": "member-991bc2d012a9"
+        },
+        {
+          "kind": "Methods",
+          "name": "SetSubtitleDelay",
+          "signature": "void SetSubtitleDelay(TimeSpan delay)",
+          "anchor": "member-6825622b763f"
+        },
+        {
+          "kind": "Methods",
+          "name": "SetSubtitleDelayAsync",
+          "signature": "Task SetSubtitleDelayAsync(TimeSpan delay, CancellationToken token = default)",
+          "anchor": "member-1667d102bca2"
+        },
+        {
+          "kind": "Methods",
+          "name": "DisposeAsync",
+          "signature": "ValueTask DisposeAsync()",
+          "anchor": "member-05b877b950be"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.Engine.PlaybackEngine.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.Engine.PlaybackOptions",
+      "name": "PlaybackOptions",
+      "namespace": "AvaVideoPlayer.Engine",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "class",
+      "baseType": "System.Object",
+      "members": [
+        {
+          "kind": "Constructors",
+          "name": "PlaybackOptions",
+          "signature": "PlaybackOptions()",
+          "anchor": "member-92c799ae9306"
+        },
+        {
+          "kind": "Properties",
+          "name": "Decoder",
+          "signature": "DecoderOptions Decoder { get; set; }",
+          "anchor": "member-00815847d267"
+        },
+        {
+          "kind": "Properties",
+          "name": "AudioOutput",
+          "signature": "AudioOutputPolicy AudioOutput { get; set; }",
+          "anchor": "member-205286803462"
+        },
+        {
+          "kind": "Properties",
+          "name": "MaxQueuedVideoFrames",
+          "signature": "int MaxQueuedVideoFrames { get; set; }",
+          "anchor": "member-906693366931"
+        },
+        {
+          "kind": "Properties",
+          "name": "MaxQueuedVideoBytes",
+          "signature": "long MaxQueuedVideoBytes { get; set; }",
+          "anchor": "member-96e0a1ba3803"
+        },
+        {
+          "kind": "Properties",
+          "name": "VideoBufferDuration",
+          "signature": "TimeSpan VideoBufferDuration { get; set; }",
+          "anchor": "member-fcc7f684c978"
+        },
+        {
+          "kind": "Properties",
+          "name": "MaxQueuedAudioBytes",
+          "signature": "long MaxQueuedAudioBytes { get; set; }",
+          "anchor": "member-112f766b88d8"
+        },
+        {
+          "kind": "Properties",
+          "name": "AudioBufferDuration",
+          "signature": "TimeSpan AudioBufferDuration { get; set; }",
+          "anchor": "member-fd47e055e2b4"
+        },
+        {
+          "kind": "Properties",
+          "name": "AudioRebufferDuration",
+          "signature": "TimeSpan AudioRebufferDuration { get; set; }",
+          "anchor": "member-172886486f90"
+        },
+        {
+          "kind": "Methods",
+          "name": "ToString",
+          "signature": "string ToString()",
+          "anchor": "member-5346dee2233a"
+        },
+        {
+          "kind": "Operators",
+          "name": "op_Inequality",
+          "signature": "static bool op_Inequality(PlaybackOptions left, PlaybackOptions right)",
+          "anchor": "member-0f7b4527d797"
+        },
+        {
+          "kind": "Operators",
+          "name": "op_Equality",
+          "signature": "static bool op_Equality(PlaybackOptions left, PlaybackOptions right)",
+          "anchor": "member-58122b730aea"
+        },
+        {
+          "kind": "Methods",
+          "name": "GetHashCode",
+          "signature": "int GetHashCode()",
+          "anchor": "member-18d5ba4e3dcc"
+        },
+        {
+          "kind": "Methods",
+          "name": "Equals",
+          "signature": "bool Equals(object obj)",
+          "anchor": "member-6601f37efc3c"
+        },
+        {
+          "kind": "Methods",
+          "name": "Equals",
+          "signature": "bool Equals(PlaybackOptions other)",
+          "anchor": "member-596ffac2b970"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.Engine.PlaybackOptions.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.Engine.SubtitleFrameLease",
+      "name": "SubtitleFrameLease",
+      "namespace": "AvaVideoPlayer.Engine",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "class",
+      "baseType": "System.Object",
+      "members": [
+        {
+          "kind": "Constructors",
+          "name": "SubtitleFrameLease",
+          "signature": "SubtitleFrameLease(IReadOnlyList<DecodedSubtitleFrame> frames, long version, TimeSpan position)",
+          "anchor": "member-42ef0d9ab6d3"
+        },
+        {
+          "kind": "Properties",
+          "name": "Frames",
+          "signature": "IReadOnlyList<DecodedSubtitleFrame> Frames { get; }",
+          "anchor": "member-728537353ae9"
+        },
+        {
+          "kind": "Properties",
+          "name": "Version",
+          "signature": "long Version { get; }",
+          "anchor": "member-89471f02984e"
+        },
+        {
+          "kind": "Properties",
+          "name": "Position",
+          "signature": "TimeSpan Position { get; }",
+          "anchor": "member-c027b57a41cc"
+        },
+        {
+          "kind": "Methods",
+          "name": "Dispose",
+          "signature": "void Dispose()",
+          "anchor": "member-49db0e493c8b"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.Engine.SubtitleFrameLease.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.Engine.SubtitleFrameStore",
+      "name": "SubtitleFrameStore",
+      "namespace": "AvaVideoPlayer.Engine",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "class",
+      "baseType": "System.Object",
+      "members": [
+        {
+          "kind": "Constructors",
+          "name": "SubtitleFrameStore",
+          "signature": "SubtitleFrameStore()",
+          "anchor": "member-26c7c708c147"
+        },
+        {
+          "kind": "Methods",
+          "name": "Present",
+          "signature": "void Present(IReadOnlyList<DecodedSubtitleFrame> frames, TimeSpan position)",
+          "anchor": "member-8154fd888548"
+        },
+        {
+          "kind": "Methods",
+          "name": "AcquireLatest",
+          "signature": "SubtitleFrameLease AcquireLatest()",
+          "anchor": "member-caf0dac80cc9"
+        },
+        {
+          "kind": "Methods",
+          "name": "Clear",
+          "signature": "void Clear()",
+          "anchor": "member-9974fc7d0fbe"
+        },
+        {
+          "kind": "Methods",
+          "name": "Dispose",
+          "signature": "void Dispose()",
+          "anchor": "member-49db0e493c8b"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.Engine.SubtitleFrameStore.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.Engine.SubtitlePayloadKind",
+      "name": "SubtitlePayloadKind",
+      "namespace": "AvaVideoPlayer.Engine",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "enum",
+      "baseType": "System.Enum",
+      "members": [
+        {
+          "kind": "Values",
+          "name": "Text",
+          "signature": "Text = 0",
+          "anchor": "member-e43ad5db3725"
+        },
+        {
+          "kind": "Values",
+          "name": "Ass",
+          "signature": "Ass = 1",
+          "anchor": "member-d47d9b95d18c"
+        },
+        {
+          "kind": "Values",
+          "name": "Bitmap",
+          "signature": "Bitmap = 2",
+          "anchor": "member-d16238668063"
+        },
+        {
+          "kind": "Values",
+          "name": "Clear",
+          "signature": "Clear = 3",
+          "anchor": "member-d80e9be4432e"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.Engine.SubtitlePayloadKind.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.Engine.SubtitleTimeline",
+      "name": "SubtitleTimeline",
+      "namespace": "AvaVideoPlayer.Engine",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "class",
+      "baseType": "System.Object",
+      "members": [
+        {
+          "kind": "Constructors",
+          "name": "SubtitleTimeline",
+          "signature": "SubtitleTimeline(long maxBytes = default, int maxFrames = default)",
+          "anchor": "member-c6c9e3df7126"
+        },
+        {
+          "kind": "Properties",
+          "name": "Count",
+          "signature": "int Count { get; }",
+          "anchor": "member-7950de37f19d"
+        },
+        {
+          "kind": "Properties",
+          "name": "Bytes",
+          "signature": "long Bytes { get; }",
+          "anchor": "member-1c8e1ad49f73"
+        },
+        {
+          "kind": "Methods",
+          "name": "Add",
+          "signature": "void Add(DecodedSubtitleFrame frame, TimeSpan position)",
+          "anchor": "member-e4dce915884e"
+        },
+        {
+          "kind": "Methods",
+          "name": "At",
+          "signature": "IReadOnlyList<DecodedSubtitleFrame> At(TimeSpan position)",
+          "anchor": "member-3c4ee3170d4c"
+        },
+        {
+          "kind": "Methods",
+          "name": "Clear",
+          "signature": "void Clear()",
+          "anchor": "member-9974fc7d0fbe"
+        },
+        {
+          "kind": "Methods",
+          "name": "Dispose",
+          "signature": "void Dispose()",
+          "anchor": "member-49db0e493c8b"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.Engine.SubtitleTimeline.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.Engine.SubtitleTiming",
+      "name": "SubtitleTiming",
+      "namespace": "AvaVideoPlayer.Engine",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "class",
+      "baseType": "System.Object",
+      "members": [
+        {
+          "kind": "Methods",
+          "name": "Position",
+          "signature": "static TimeSpan Position(TimeSpan media, TimeSpan delay)",
+          "anchor": "member-e553d015c96a"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.Engine.SubtitleTiming.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.Engine.VideoDecodeDiagnostics",
+      "name": "VideoDecodeDiagnostics",
+      "namespace": "AvaVideoPlayer.Engine",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "class",
+      "baseType": "System.Object",
+      "members": [
+        {
+          "kind": "Constructors",
+          "name": "VideoDecodeDiagnostics",
+          "signature": "VideoDecodeDiagnostics(bool HardwareRequested, bool HardwareRequired, VideoDecodePath Path, string Device, long HardwareFrames, long SoftwareFrames, long SoftwareRecoveries, string Warning)",
+          "anchor": "member-41c6cecf98ba"
+        },
+        {
+          "kind": "Properties",
+          "name": "HardwareRequested",
+          "signature": "bool HardwareRequested { get; set; }",
+          "anchor": "member-05950fc4d6de"
+        },
+        {
+          "kind": "Properties",
+          "name": "HardwareRequired",
+          "signature": "bool HardwareRequired { get; set; }",
+          "anchor": "member-25733956d416"
+        },
+        {
+          "kind": "Properties",
+          "name": "Path",
+          "signature": "VideoDecodePath Path { get; set; }",
+          "anchor": "member-962d02e5c348"
+        },
+        {
+          "kind": "Properties",
+          "name": "Device",
+          "signature": "string Device { get; set; }",
+          "anchor": "member-66e7a622028f"
+        },
+        {
+          "kind": "Properties",
+          "name": "HardwareFrames",
+          "signature": "long HardwareFrames { get; set; }",
+          "anchor": "member-8ef09d346182"
+        },
+        {
+          "kind": "Properties",
+          "name": "SoftwareFrames",
+          "signature": "long SoftwareFrames { get; set; }",
+          "anchor": "member-823e86661ee9"
+        },
+        {
+          "kind": "Properties",
+          "name": "SoftwareRecoveries",
+          "signature": "long SoftwareRecoveries { get; set; }",
+          "anchor": "member-5a016056c272"
+        },
+        {
+          "kind": "Properties",
+          "name": "Warning",
+          "signature": "string Warning { get; set; }",
+          "anchor": "member-199889595b0e"
+        },
+        {
+          "kind": "Methods",
+          "name": "ToString",
+          "signature": "string ToString()",
+          "anchor": "member-5346dee2233a"
+        },
+        {
+          "kind": "Operators",
+          "name": "op_Inequality",
+          "signature": "static bool op_Inequality(VideoDecodeDiagnostics left, VideoDecodeDiagnostics right)",
+          "anchor": "member-2e3744a2db10"
+        },
+        {
+          "kind": "Operators",
+          "name": "op_Equality",
+          "signature": "static bool op_Equality(VideoDecodeDiagnostics left, VideoDecodeDiagnostics right)",
+          "anchor": "member-2b839371e76e"
+        },
+        {
+          "kind": "Methods",
+          "name": "GetHashCode",
+          "signature": "int GetHashCode()",
+          "anchor": "member-18d5ba4e3dcc"
+        },
+        {
+          "kind": "Methods",
+          "name": "Equals",
+          "signature": "bool Equals(object obj)",
+          "anchor": "member-6601f37efc3c"
+        },
+        {
+          "kind": "Methods",
+          "name": "Equals",
+          "signature": "bool Equals(VideoDecodeDiagnostics other)",
+          "anchor": "member-f3bcdf910402"
+        },
+        {
+          "kind": "Methods",
+          "name": "Deconstruct",
+          "signature": "void Deconstruct(out bool HardwareRequested, out bool HardwareRequired, out VideoDecodePath Path, out string Device, out long HardwareFrames, out long SoftwareFrames, out long SoftwareRecoveries, out string Warning)",
+          "anchor": "member-f212ddf7d793"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.Engine.VideoDecodeDiagnostics.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.Engine.VideoDecodePath",
+      "name": "VideoDecodePath",
+      "namespace": "AvaVideoPlayer.Engine",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "enum",
+      "baseType": "System.Enum",
+      "members": [
+        {
+          "kind": "Values",
+          "name": "Software",
+          "signature": "Software = 0",
+          "anchor": "member-ab498cdd24d6"
+        },
+        {
+          "kind": "Values",
+          "name": "PendingDevice",
+          "signature": "PendingDevice = 1",
+          "anchor": "member-a23780b9755b"
+        },
+        {
+          "kind": "Values",
+          "name": "Device",
+          "signature": "Device = 2",
+          "anchor": "member-ff3fad5b3b1e"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.Engine.VideoDecodePath.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.Engine.VideoDisplayGeometry",
+      "name": "VideoDisplayGeometry",
+      "namespace": "AvaVideoPlayer.Engine",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "class",
+      "baseType": "System.Object",
+      "members": [
+        {
+          "kind": "Constructors",
+          "name": "VideoDisplayGeometry",
+          "signature": "VideoDisplayGeometry()",
+          "anchor": "member-a5b413a279fd"
+        },
+        {
+          "kind": "Properties",
+          "name": "Identity",
+          "signature": "VideoDisplayGeometry Identity { get; }",
+          "anchor": "member-2d465af884a9"
+        },
+        {
+          "kind": "Properties",
+          "name": "PixelAspectRatio",
+          "signature": "double PixelAspectRatio { get; set; }",
+          "anchor": "member-0117dd13d1fd"
+        },
+        {
+          "kind": "Properties",
+          "name": "M11",
+          "signature": "double M11 { get; set; }",
+          "anchor": "member-12873dddbbc1"
+        },
+        {
+          "kind": "Properties",
+          "name": "M12",
+          "signature": "double M12 { get; set; }",
+          "anchor": "member-447bbdcc8723"
+        },
+        {
+          "kind": "Properties",
+          "name": "M21",
+          "signature": "double M21 { get; set; }",
+          "anchor": "member-b2bc7f1c1524"
+        },
+        {
+          "kind": "Properties",
+          "name": "M22",
+          "signature": "double M22 { get; set; }",
+          "anchor": "member-ba7706179d44"
+        },
+        {
+          "kind": "Properties",
+          "name": "TransformSupported",
+          "signature": "bool TransformSupported { get; set; }",
+          "anchor": "member-83bdf318cfe4"
+        },
+        {
+          "kind": "Properties",
+          "name": "Warning",
+          "signature": "string Warning { get; }",
+          "anchor": "member-5a36c2d21b71"
+        },
+        {
+          "kind": "Methods",
+          "name": "Layout",
+          "signature": "VideoDisplayLayout Layout(int width, int height)",
+          "anchor": "member-3e500076405c"
+        },
+        {
+          "kind": "Methods",
+          "name": "ToString",
+          "signature": "string ToString()",
+          "anchor": "member-5346dee2233a"
+        },
+        {
+          "kind": "Operators",
+          "name": "op_Inequality",
+          "signature": "static bool op_Inequality(VideoDisplayGeometry left, VideoDisplayGeometry right)",
+          "anchor": "member-5e49cbbda123"
+        },
+        {
+          "kind": "Operators",
+          "name": "op_Equality",
+          "signature": "static bool op_Equality(VideoDisplayGeometry left, VideoDisplayGeometry right)",
+          "anchor": "member-1dc321ab3c67"
+        },
+        {
+          "kind": "Methods",
+          "name": "GetHashCode",
+          "signature": "int GetHashCode()",
+          "anchor": "member-18d5ba4e3dcc"
+        },
+        {
+          "kind": "Methods",
+          "name": "Equals",
+          "signature": "bool Equals(object obj)",
+          "anchor": "member-6601f37efc3c"
+        },
+        {
+          "kind": "Methods",
+          "name": "Equals",
+          "signature": "bool Equals(VideoDisplayGeometry other)",
+          "anchor": "member-11e0ccd4a7fd"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.Engine.VideoDisplayGeometry.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.Engine.VideoDisplayLayout",
+      "name": "VideoDisplayLayout",
+      "namespace": "AvaVideoPlayer.Engine",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "struct",
+      "baseType": "System.ValueType",
+      "members": [
+        {
+          "kind": "Constructors",
+          "name": "VideoDisplayLayout",
+          "signature": "VideoDisplayLayout(double M11, double M12, double M21, double M22, double OffsetX, double OffsetY, double Width, double Height, int SourceWidth, int SourceHeight)",
+          "anchor": "member-b67ce9fdfd30"
+        },
+        {
+          "kind": "Properties",
+          "name": "M11",
+          "signature": "double M11 { get; set; }",
+          "anchor": "member-12873dddbbc1"
+        },
+        {
+          "kind": "Properties",
+          "name": "M12",
+          "signature": "double M12 { get; set; }",
+          "anchor": "member-447bbdcc8723"
+        },
+        {
+          "kind": "Properties",
+          "name": "M21",
+          "signature": "double M21 { get; set; }",
+          "anchor": "member-b2bc7f1c1524"
+        },
+        {
+          "kind": "Properties",
+          "name": "M22",
+          "signature": "double M22 { get; set; }",
+          "anchor": "member-ba7706179d44"
+        },
+        {
+          "kind": "Properties",
+          "name": "OffsetX",
+          "signature": "double OffsetX { get; set; }",
+          "anchor": "member-a0b4bb32fc43"
+        },
+        {
+          "kind": "Properties",
+          "name": "OffsetY",
+          "signature": "double OffsetY { get; set; }",
+          "anchor": "member-dc3a629567c5"
+        },
+        {
+          "kind": "Properties",
+          "name": "Width",
+          "signature": "double Width { get; set; }",
+          "anchor": "member-8cc90f1523d6"
+        },
+        {
+          "kind": "Properties",
+          "name": "Height",
+          "signature": "double Height { get; set; }",
+          "anchor": "member-6645e79d7b03"
+        },
+        {
+          "kind": "Properties",
+          "name": "SourceWidth",
+          "signature": "int SourceWidth { get; set; }",
+          "anchor": "member-b28968264aa3"
+        },
+        {
+          "kind": "Properties",
+          "name": "SourceHeight",
+          "signature": "int SourceHeight { get; set; }",
+          "anchor": "member-8f9d14f20986"
+        },
+        {
+          "kind": "Properties",
+          "name": "InverseX",
+          "signature": "ValueTuple<double, double, double> InverseX { get; }",
+          "anchor": "member-b57deffd417c"
+        },
+        {
+          "kind": "Properties",
+          "name": "InverseY",
+          "signature": "ValueTuple<double, double, double> InverseY { get; }",
+          "anchor": "member-ac8094116ff6"
+        },
+        {
+          "kind": "Methods",
+          "name": "SourceAt",
+          "signature": "ValueTuple<double, double> SourceAt(double u, double v)",
+          "anchor": "member-9f8a02ef36ae"
+        },
+        {
+          "kind": "Methods",
+          "name": "ToString",
+          "signature": "string ToString()",
+          "anchor": "member-5346dee2233a"
+        },
+        {
+          "kind": "Operators",
+          "name": "op_Inequality",
+          "signature": "static bool op_Inequality(VideoDisplayLayout left, VideoDisplayLayout right)",
+          "anchor": "member-d42f9d569278"
+        },
+        {
+          "kind": "Operators",
+          "name": "op_Equality",
+          "signature": "static bool op_Equality(VideoDisplayLayout left, VideoDisplayLayout right)",
+          "anchor": "member-b38af4b5eb46"
+        },
+        {
+          "kind": "Methods",
+          "name": "GetHashCode",
+          "signature": "int GetHashCode()",
+          "anchor": "member-18d5ba4e3dcc"
+        },
+        {
+          "kind": "Methods",
+          "name": "Equals",
+          "signature": "bool Equals(object obj)",
+          "anchor": "member-6601f37efc3c"
+        },
+        {
+          "kind": "Methods",
+          "name": "Equals",
+          "signature": "bool Equals(VideoDisplayLayout other)",
+          "anchor": "member-06a99cade092"
+        },
+        {
+          "kind": "Methods",
+          "name": "Deconstruct",
+          "signature": "void Deconstruct(out double M11, out double M12, out double M21, out double M22, out double OffsetX, out double OffsetY, out double Width, out double Height, out int SourceWidth, out int SourceHeight)",
+          "anchor": "member-33df59f57f3f"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.Engine.VideoDisplayLayout.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.Engine.VideoFrameLease",
+      "name": "VideoFrameLease",
+      "namespace": "AvaVideoPlayer.Engine",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "class",
+      "baseType": "System.Object",
+      "members": [
+        {
+          "kind": "Constructors",
+          "name": "VideoFrameLease",
+          "signature": "VideoFrameLease(DecodedVideoFrame frame, long version)",
+          "anchor": "member-e0642f9214b3"
+        },
+        {
+          "kind": "Properties",
+          "name": "Frame",
+          "signature": "DecodedVideoFrame Frame { get; }",
+          "anchor": "member-b374d00ec2ea"
+        },
+        {
+          "kind": "Properties",
+          "name": "Version",
+          "signature": "long Version { get; }",
+          "anchor": "member-89471f02984e"
+        },
+        {
+          "kind": "Methods",
+          "name": "Dispose",
+          "signature": "void Dispose()",
+          "anchor": "member-49db0e493c8b"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.Engine.VideoFrameLease.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.Engine.VideoFrameStore",
+      "name": "VideoFrameStore",
+      "namespace": "AvaVideoPlayer.Engine",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "class",
+      "baseType": "System.Object",
+      "members": [
+        {
+          "kind": "Constructors",
+          "name": "VideoFrameStore",
+          "signature": "VideoFrameStore()",
+          "anchor": "member-33b036233616"
+        },
+        {
+          "kind": "Properties",
+          "name": "Version",
+          "signature": "long Version { get; }",
+          "anchor": "member-89471f02984e"
+        },
+        {
+          "kind": "Methods",
+          "name": "Present",
+          "signature": "void Present(DecodedVideoFrame frame)",
+          "anchor": "member-56a926222b31"
+        },
+        {
+          "kind": "Methods",
+          "name": "AcquireLatest",
+          "signature": "VideoFrameLease AcquireLatest()",
+          "anchor": "member-1cd2aa1b2647"
+        },
+        {
+          "kind": "Methods",
+          "name": "Clear",
+          "signature": "void Clear()",
+          "anchor": "member-9974fc7d0fbe"
+        },
+        {
+          "kind": "Methods",
+          "name": "Dispose",
+          "signature": "void Dispose()",
+          "anchor": "member-49db0e493c8b"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.Engine.VideoFrameStore.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.MediaAttachment",
+      "name": "MediaAttachment",
+      "namespace": "AvaVideoPlayer",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "class",
+      "baseType": "System.Object",
+      "members": [
+        {
+          "kind": "Constructors",
+          "name": "MediaAttachment",
+          "signature": "MediaAttachment(int Id, string Name, string MimeType, long ByteLength, bool IsCoverArt = default)",
+          "anchor": "member-e9c9a8467fd8"
+        },
+        {
+          "kind": "Properties",
+          "name": "Id",
+          "signature": "int Id { get; set; }",
+          "anchor": "member-88ae2e7702d6"
+        },
+        {
+          "kind": "Properties",
+          "name": "Name",
+          "signature": "string Name { get; set; }",
+          "anchor": "member-540a378de801"
+        },
+        {
+          "kind": "Properties",
+          "name": "MimeType",
+          "signature": "string MimeType { get; set; }",
+          "anchor": "member-343ece82ea6e"
+        },
+        {
+          "kind": "Properties",
+          "name": "ByteLength",
+          "signature": "long ByteLength { get; set; }",
+          "anchor": "member-006c490fddba"
+        },
+        {
+          "kind": "Properties",
+          "name": "IsCoverArt",
+          "signature": "bool IsCoverArt { get; set; }",
+          "anchor": "member-c38a53c8ac3d"
+        },
+        {
+          "kind": "Methods",
+          "name": "ToString",
+          "signature": "string ToString()",
+          "anchor": "member-5346dee2233a"
+        },
+        {
+          "kind": "Operators",
+          "name": "op_Inequality",
+          "signature": "static bool op_Inequality(MediaAttachment left, MediaAttachment right)",
+          "anchor": "member-8fdb0483e8fa"
+        },
+        {
+          "kind": "Operators",
+          "name": "op_Equality",
+          "signature": "static bool op_Equality(MediaAttachment left, MediaAttachment right)",
+          "anchor": "member-223812446c01"
+        },
+        {
+          "kind": "Methods",
+          "name": "GetHashCode",
+          "signature": "int GetHashCode()",
+          "anchor": "member-18d5ba4e3dcc"
+        },
+        {
+          "kind": "Methods",
+          "name": "Equals",
+          "signature": "bool Equals(object obj)",
+          "anchor": "member-6601f37efc3c"
+        },
+        {
+          "kind": "Methods",
+          "name": "Equals",
+          "signature": "bool Equals(MediaAttachment other)",
+          "anchor": "member-25e0070dd592"
+        },
+        {
+          "kind": "Methods",
+          "name": "Deconstruct",
+          "signature": "void Deconstruct(out int Id, out string Name, out string MimeType, out long ByteLength, out bool IsCoverArt)",
+          "anchor": "member-ec050461591b"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.MediaAttachment.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.MediaChapter",
+      "name": "MediaChapter",
+      "namespace": "AvaVideoPlayer",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "class",
+      "baseType": "System.Object",
+      "members": [
+        {
+          "kind": "Constructors",
+          "name": "MediaChapter",
+          "signature": "MediaChapter(int Id, string Name, TimeSpan Start, TimeSpan Duration)",
+          "anchor": "member-bd95324919a9"
+        },
+        {
+          "kind": "Properties",
+          "name": "Id",
+          "signature": "int Id { get; set; }",
+          "anchor": "member-88ae2e7702d6"
+        },
+        {
+          "kind": "Properties",
+          "name": "Name",
+          "signature": "string Name { get; set; }",
+          "anchor": "member-540a378de801"
+        },
+        {
+          "kind": "Properties",
+          "name": "Start",
+          "signature": "TimeSpan Start { get; set; }",
+          "anchor": "member-0903b6dca1b8"
+        },
+        {
+          "kind": "Properties",
+          "name": "Duration",
+          "signature": "TimeSpan Duration { get; set; }",
+          "anchor": "member-65d46aee44cc"
+        },
+        {
+          "kind": "Methods",
+          "name": "ToString",
+          "signature": "string ToString()",
+          "anchor": "member-5346dee2233a"
+        },
+        {
+          "kind": "Operators",
+          "name": "op_Inequality",
+          "signature": "static bool op_Inequality(MediaChapter left, MediaChapter right)",
+          "anchor": "member-e489167037c9"
+        },
+        {
+          "kind": "Operators",
+          "name": "op_Equality",
+          "signature": "static bool op_Equality(MediaChapter left, MediaChapter right)",
+          "anchor": "member-9f404c1bc494"
+        },
+        {
+          "kind": "Methods",
+          "name": "GetHashCode",
+          "signature": "int GetHashCode()",
+          "anchor": "member-18d5ba4e3dcc"
+        },
+        {
+          "kind": "Methods",
+          "name": "Equals",
+          "signature": "bool Equals(object obj)",
+          "anchor": "member-6601f37efc3c"
+        },
+        {
+          "kind": "Methods",
+          "name": "Equals",
+          "signature": "bool Equals(MediaChapter other)",
+          "anchor": "member-7769015b117b"
+        },
+        {
+          "kind": "Methods",
+          "name": "Deconstruct",
+          "signature": "void Deconstruct(out int Id, out string Name, out TimeSpan Start, out TimeSpan Duration)",
+          "anchor": "member-2d3144db383c"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.MediaChapter.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.MediaInformation",
+      "name": "MediaInformation",
+      "namespace": "AvaVideoPlayer",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "class",
+      "baseType": "System.Object",
+      "members": [
+        {
+          "kind": "Constructors",
+          "name": "MediaInformation",
+          "signature": "MediaInformation()",
+          "anchor": "member-cf5171f61e8f"
+        },
+        {
+          "kind": "Properties",
+          "name": "Title",
+          "signature": "string Title { get; set; }",
+          "anchor": "member-294866a83302"
+        },
+        {
+          "kind": "Properties",
+          "name": "Source",
+          "signature": "Uri Source { get; set; }",
+          "anchor": "member-67d662ea54db"
+        },
+        {
+          "kind": "Properties",
+          "name": "Duration",
+          "signature": "TimeSpan Duration { get; set; }",
+          "anchor": "member-65d46aee44cc"
+        },
+        {
+          "kind": "Properties",
+          "name": "Is360",
+          "signature": "bool Is360 { get; set; }",
+          "anchor": "member-b325d06f67ed"
+        },
+        {
+          "kind": "Properties",
+          "name": "Metadata",
+          "signature": "IReadOnlyDictionary<string, string> Metadata { get; set; }",
+          "anchor": "member-962cd368f7dd"
+        },
+        {
+          "kind": "Properties",
+          "name": "Tracks",
+          "signature": "IReadOnlyList<MediaTrack> Tracks { get; set; }",
+          "anchor": "member-e26e6a808925"
+        },
+        {
+          "kind": "Properties",
+          "name": "Chapters",
+          "signature": "IReadOnlyList<MediaChapter> Chapters { get; set; }",
+          "anchor": "member-41248971de4a"
+        },
+        {
+          "kind": "Properties",
+          "name": "Attachments",
+          "signature": "IReadOnlyList<MediaAttachment> Attachments { get; set; }",
+          "anchor": "member-71bc23ad38fb"
+        },
+        {
+          "kind": "Properties",
+          "name": "Features",
+          "signature": "PlaybackCapabilities Features { get; set; }",
+          "anchor": "member-79cd192caedc"
+        },
+        {
+          "kind": "Properties",
+          "name": "Backend",
+          "signature": "string Backend { get; set; }",
+          "anchor": "member-38e451e2e6d8"
+        },
+        {
+          "kind": "Properties",
+          "name": "Capabilities",
+          "signature": "string Capabilities { get; set; }",
+          "anchor": "member-7edf04ece957"
+        },
+        {
+          "kind": "Properties",
+          "name": "VideoDecoding",
+          "signature": "VideoDecodeDiagnostics VideoDecoding { get; set; }",
+          "anchor": "member-016cfd3f6a50"
+        },
+        {
+          "kind": "Methods",
+          "name": "ToString",
+          "signature": "string ToString()",
+          "anchor": "member-5346dee2233a"
+        },
+        {
+          "kind": "Operators",
+          "name": "op_Inequality",
+          "signature": "static bool op_Inequality(MediaInformation left, MediaInformation right)",
+          "anchor": "member-674a75582c0b"
+        },
+        {
+          "kind": "Operators",
+          "name": "op_Equality",
+          "signature": "static bool op_Equality(MediaInformation left, MediaInformation right)",
+          "anchor": "member-b2eade96f2c0"
+        },
+        {
+          "kind": "Methods",
+          "name": "GetHashCode",
+          "signature": "int GetHashCode()",
+          "anchor": "member-18d5ba4e3dcc"
+        },
+        {
+          "kind": "Methods",
+          "name": "Equals",
+          "signature": "bool Equals(object obj)",
+          "anchor": "member-6601f37efc3c"
+        },
+        {
+          "kind": "Methods",
+          "name": "Equals",
+          "signature": "bool Equals(MediaInformation other)",
+          "anchor": "member-d374e9c9128f"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.MediaInformation.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.MediaTrack",
+      "name": "MediaTrack",
+      "namespace": "AvaVideoPlayer",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "class",
+      "baseType": "System.Object",
+      "members": [
+        {
+          "kind": "Constructors",
+          "name": "MediaTrack",
+          "signature": "MediaTrack(int Id, MediaTrackKind Kind, string Name, string Language = default, string Codec = default, long Bitrate = default, int Width = default, int Height = default, double FrameRate = default, int Channels = default, int SampleRate = default, string Encoding = default)",
+          "anchor": "member-f45c4f002987"
+        },
+        {
+          "kind": "Properties",
+          "name": "Id",
+          "signature": "int Id { get; set; }",
+          "anchor": "member-88ae2e7702d6"
+        },
+        {
+          "kind": "Properties",
+          "name": "Kind",
+          "signature": "MediaTrackKind Kind { get; set; }",
+          "anchor": "member-ec9dbdc3de3e"
+        },
+        {
+          "kind": "Properties",
+          "name": "Name",
+          "signature": "string Name { get; set; }",
+          "anchor": "member-540a378de801"
+        },
+        {
+          "kind": "Properties",
+          "name": "Language",
+          "signature": "string Language { get; set; }",
+          "anchor": "member-6b1ca2a57b47"
+        },
+        {
+          "kind": "Properties",
+          "name": "Codec",
+          "signature": "string Codec { get; set; }",
+          "anchor": "member-bf0f2e8da760"
+        },
+        {
+          "kind": "Properties",
+          "name": "Bitrate",
+          "signature": "long Bitrate { get; set; }",
+          "anchor": "member-fc1b283fc232"
+        },
+        {
+          "kind": "Properties",
+          "name": "Width",
+          "signature": "int Width { get; set; }",
+          "anchor": "member-da73dcf89988"
+        },
+        {
+          "kind": "Properties",
+          "name": "Height",
+          "signature": "int Height { get; set; }",
+          "anchor": "member-060b99aec77c"
+        },
+        {
+          "kind": "Properties",
+          "name": "FrameRate",
+          "signature": "double FrameRate { get; set; }",
+          "anchor": "member-60d4c73c1dfe"
+        },
+        {
+          "kind": "Properties",
+          "name": "Channels",
+          "signature": "int Channels { get; set; }",
+          "anchor": "member-89c9a4157687"
+        },
+        {
+          "kind": "Properties",
+          "name": "SampleRate",
+          "signature": "int SampleRate { get; set; }",
+          "anchor": "member-69fd06982927"
+        },
+        {
+          "kind": "Properties",
+          "name": "Encoding",
+          "signature": "string Encoding { get; set; }",
+          "anchor": "member-22d6a231e456"
+        },
+        {
+          "kind": "Properties",
+          "name": "Disposition",
+          "signature": "MediaTrackDisposition Disposition { get; set; }",
+          "anchor": "member-48e89584fe7b"
+        },
+        {
+          "kind": "Properties",
+          "name": "CanDecode",
+          "signature": "bool CanDecode { get; set; }",
+          "anchor": "member-7c9b8af3e52d"
+        },
+        {
+          "kind": "Properties",
+          "name": "Metadata",
+          "signature": "IReadOnlyDictionary<string, string> Metadata { get; set; }",
+          "anchor": "member-962cd368f7dd"
+        },
+        {
+          "kind": "Methods",
+          "name": "ToString",
+          "signature": "string ToString()",
+          "anchor": "member-5346dee2233a"
+        },
+        {
+          "kind": "Operators",
+          "name": "op_Inequality",
+          "signature": "static bool op_Inequality(MediaTrack left, MediaTrack right)",
+          "anchor": "member-1f8b4e3db66f"
+        },
+        {
+          "kind": "Operators",
+          "name": "op_Equality",
+          "signature": "static bool op_Equality(MediaTrack left, MediaTrack right)",
+          "anchor": "member-cd519eac710c"
+        },
+        {
+          "kind": "Methods",
+          "name": "GetHashCode",
+          "signature": "int GetHashCode()",
+          "anchor": "member-18d5ba4e3dcc"
+        },
+        {
+          "kind": "Methods",
+          "name": "Equals",
+          "signature": "bool Equals(object obj)",
+          "anchor": "member-6601f37efc3c"
+        },
+        {
+          "kind": "Methods",
+          "name": "Equals",
+          "signature": "bool Equals(MediaTrack other)",
+          "anchor": "member-99613d436b1d"
+        },
+        {
+          "kind": "Methods",
+          "name": "Deconstruct",
+          "signature": "void Deconstruct(out int Id, out MediaTrackKind Kind, out string Name, out string Language, out string Codec, out long Bitrate, out int Width, out int Height, out double FrameRate, out int Channels, out int SampleRate, out string Encoding)",
+          "anchor": "member-cd069544b1f9"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.MediaTrack.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.MediaTrackDisposition",
+      "name": "MediaTrackDisposition",
+      "namespace": "AvaVideoPlayer",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "enum",
+      "baseType": "System.Enum",
+      "members": [
+        {
+          "kind": "Values",
+          "name": "None",
+          "signature": "None = 0",
+          "anchor": "member-34ac74a05b51"
+        },
+        {
+          "kind": "Values",
+          "name": "Default",
+          "signature": "Default = 1",
+          "anchor": "member-d7cbcb278202"
+        },
+        {
+          "kind": "Values",
+          "name": "Forced",
+          "signature": "Forced = 2",
+          "anchor": "member-6bae815ac5e4"
+        },
+        {
+          "kind": "Values",
+          "name": "HearingImpaired",
+          "signature": "HearingImpaired = 4",
+          "anchor": "member-66c33bd1b8a1"
+        },
+        {
+          "kind": "Values",
+          "name": "VisualImpaired",
+          "signature": "VisualImpaired = 8",
+          "anchor": "member-8082e6d7f787"
+        },
+        {
+          "kind": "Values",
+          "name": "Commentary",
+          "signature": "Commentary = 16",
+          "anchor": "member-415915b84f14"
+        },
+        {
+          "kind": "Values",
+          "name": "AttachedPicture",
+          "signature": "AttachedPicture = 32",
+          "anchor": "member-276e6653122e"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.MediaTrackDisposition.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.MediaTrackKind",
+      "name": "MediaTrackKind",
+      "namespace": "AvaVideoPlayer",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "enum",
+      "baseType": "System.Enum",
+      "members": [
+        {
+          "kind": "Values",
+          "name": "Audio",
+          "signature": "Audio = 0",
+          "anchor": "member-7483bfa6033d"
+        },
+        {
+          "kind": "Values",
+          "name": "Video",
+          "signature": "Video = 1",
+          "anchor": "member-1c5360ee1dda"
+        },
+        {
+          "kind": "Values",
+          "name": "Subtitle",
+          "signature": "Subtitle = 2",
+          "anchor": "member-8a57b0cf78dc"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.MediaTrackKind.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.PlaybackCapabilities",
+      "name": "PlaybackCapabilities",
+      "namespace": "AvaVideoPlayer",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "class",
+      "baseType": "System.Object",
+      "members": [
+        {
+          "kind": "Constructors",
+          "name": "PlaybackCapabilities",
+          "signature": "PlaybackCapabilities()",
+          "anchor": "member-b14f15472cc2"
+        },
+        {
+          "kind": "Properties",
+          "name": "CanSeek",
+          "signature": "bool CanSeek { get; set; }",
+          "anchor": "member-d2d66f7e3733"
+        },
+        {
+          "kind": "Properties",
+          "name": "CanChangeSpeed",
+          "signature": "bool CanChangeSpeed { get; set; }",
+          "anchor": "member-9fd590a38d35"
+        },
+        {
+          "kind": "Properties",
+          "name": "CanSelectVideo",
+          "signature": "bool CanSelectVideo { get; set; }",
+          "anchor": "member-dad69944446e"
+        },
+        {
+          "kind": "Properties",
+          "name": "CanSelectAudio",
+          "signature": "bool CanSelectAudio { get; set; }",
+          "anchor": "member-983b4c412e0a"
+        },
+        {
+          "kind": "Properties",
+          "name": "CanSelectSubtitles",
+          "signature": "bool CanSelectSubtitles { get; set; }",
+          "anchor": "member-b02610f04d0a"
+        },
+        {
+          "kind": "Properties",
+          "name": "CanRenderStyledSubtitles",
+          "signature": "bool CanRenderStyledSubtitles { get; set; }",
+          "anchor": "member-3c8eec2c4d1a"
+        },
+        {
+          "kind": "Properties",
+          "name": "CanRenderBitmapSubtitles",
+          "signature": "bool CanRenderBitmapSubtitles { get; set; }",
+          "anchor": "member-3c308a4bb6a4"
+        },
+        {
+          "kind": "Properties",
+          "name": "HasVideo",
+          "signature": "bool HasVideo { get; set; }",
+          "anchor": "member-13ae2144fb10"
+        },
+        {
+          "kind": "Properties",
+          "name": "HasAudio",
+          "signature": "bool HasAudio { get; set; }",
+          "anchor": "member-09929bf5b9ae"
+        },
+        {
+          "kind": "Properties",
+          "name": "HasContainerMetadata",
+          "signature": "bool HasContainerMetadata { get; set; }",
+          "anchor": "member-fec5889cb3ae"
+        },
+        {
+          "kind": "Properties",
+          "name": "HasChapters",
+          "signature": "bool HasChapters { get; set; }",
+          "anchor": "member-f65a2432b1a3"
+        },
+        {
+          "kind": "Properties",
+          "name": "HasAttachments",
+          "signature": "bool HasAttachments { get; set; }",
+          "anchor": "member-262f1a62a15a"
+        },
+        {
+          "kind": "Properties",
+          "name": "HasSphericalMetadata",
+          "signature": "bool HasSphericalMetadata { get; set; }",
+          "anchor": "member-863d407165b3"
+        },
+        {
+          "kind": "Properties",
+          "name": "HardwareDecoding",
+          "signature": "bool HardwareDecoding { get; set; }",
+          "anchor": "member-0244a4021664"
+        },
+        {
+          "kind": "Properties",
+          "name": "Limitations",
+          "signature": "string[] Limitations { get; set; }",
+          "anchor": "member-2582a1d44751"
+        },
+        {
+          "kind": "Methods",
+          "name": "ToString",
+          "signature": "string ToString()",
+          "anchor": "member-5346dee2233a"
+        },
+        {
+          "kind": "Operators",
+          "name": "op_Inequality",
+          "signature": "static bool op_Inequality(PlaybackCapabilities left, PlaybackCapabilities right)",
+          "anchor": "member-589851eef5cf"
+        },
+        {
+          "kind": "Operators",
+          "name": "op_Equality",
+          "signature": "static bool op_Equality(PlaybackCapabilities left, PlaybackCapabilities right)",
+          "anchor": "member-e83d2a8da2f0"
+        },
+        {
+          "kind": "Methods",
+          "name": "GetHashCode",
+          "signature": "int GetHashCode()",
+          "anchor": "member-18d5ba4e3dcc"
+        },
+        {
+          "kind": "Methods",
+          "name": "Equals",
+          "signature": "bool Equals(object obj)",
+          "anchor": "member-6601f37efc3c"
+        },
+        {
+          "kind": "Methods",
+          "name": "Equals",
+          "signature": "bool Equals(PlaybackCapabilities other)",
+          "anchor": "member-55f43b15d8d1"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.PlaybackCapabilities.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.PlaybackSnapshot",
+      "name": "PlaybackSnapshot",
+      "namespace": "AvaVideoPlayer",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "class",
+      "baseType": "System.Object",
+      "members": [
+        {
+          "kind": "Constructors",
+          "name": "PlaybackSnapshot",
+          "signature": "PlaybackSnapshot(PlaybackState State, TimeSpan Position, TimeSpan Duration, bool CanSeek, double Speed, double Volume, bool IsMuted, int AudioTrack, int SubtitleTrack, MediaInformation Information, string Error = default)",
+          "anchor": "member-94f39c1528dd"
+        },
+        {
+          "kind": "Properties",
+          "name": "State",
+          "signature": "PlaybackState State { get; set; }",
+          "anchor": "member-d77d40a0a552"
+        },
+        {
+          "kind": "Properties",
+          "name": "Position",
+          "signature": "TimeSpan Position { get; set; }",
+          "anchor": "member-cdccbe435a63"
+        },
+        {
+          "kind": "Properties",
+          "name": "Duration",
+          "signature": "TimeSpan Duration { get; set; }",
+          "anchor": "member-65d46aee44cc"
+        },
+        {
+          "kind": "Properties",
+          "name": "CanSeek",
+          "signature": "bool CanSeek { get; set; }",
+          "anchor": "member-d2d66f7e3733"
+        },
+        {
+          "kind": "Properties",
+          "name": "Speed",
+          "signature": "double Speed { get; set; }",
+          "anchor": "member-62bb7d51b23c"
+        },
+        {
+          "kind": "Properties",
+          "name": "Volume",
+          "signature": "double Volume { get; set; }",
+          "anchor": "member-8d54cf0e50aa"
+        },
+        {
+          "kind": "Properties",
+          "name": "IsMuted",
+          "signature": "bool IsMuted { get; set; }",
+          "anchor": "member-6cb609ece417"
+        },
+        {
+          "kind": "Properties",
+          "name": "AudioTrack",
+          "signature": "int AudioTrack { get; set; }",
+          "anchor": "member-5f28a50d31a3"
+        },
+        {
+          "kind": "Properties",
+          "name": "SubtitleTrack",
+          "signature": "int SubtitleTrack { get; set; }",
+          "anchor": "member-85a921c6eb62"
+        },
+        {
+          "kind": "Properties",
+          "name": "Information",
+          "signature": "MediaInformation Information { get; set; }",
+          "anchor": "member-75d126979a04"
+        },
+        {
+          "kind": "Properties",
+          "name": "Error",
+          "signature": "string Error { get; set; }",
+          "anchor": "member-09412eb7095f"
+        },
+        {
+          "kind": "Methods",
+          "name": "ToString",
+          "signature": "string ToString()",
+          "anchor": "member-5346dee2233a"
+        },
+        {
+          "kind": "Operators",
+          "name": "op_Inequality",
+          "signature": "static bool op_Inequality(PlaybackSnapshot left, PlaybackSnapshot right)",
+          "anchor": "member-fafdcefd2fd7"
+        },
+        {
+          "kind": "Operators",
+          "name": "op_Equality",
+          "signature": "static bool op_Equality(PlaybackSnapshot left, PlaybackSnapshot right)",
+          "anchor": "member-2af19ce3efe8"
+        },
+        {
+          "kind": "Methods",
+          "name": "GetHashCode",
+          "signature": "int GetHashCode()",
+          "anchor": "member-18d5ba4e3dcc"
+        },
+        {
+          "kind": "Methods",
+          "name": "Equals",
+          "signature": "bool Equals(object obj)",
+          "anchor": "member-6601f37efc3c"
+        },
+        {
+          "kind": "Methods",
+          "name": "Equals",
+          "signature": "bool Equals(PlaybackSnapshot other)",
+          "anchor": "member-b3e585d4297e"
+        },
+        {
+          "kind": "Methods",
+          "name": "Deconstruct",
+          "signature": "void Deconstruct(out PlaybackState State, out TimeSpan Position, out TimeSpan Duration, out bool CanSeek, out double Speed, out double Volume, out bool IsMuted, out int AudioTrack, out int SubtitleTrack, out MediaInformation Information, out string Error)",
+          "anchor": "member-437e8477e667"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.PlaybackSnapshot.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.PlaybackState",
+      "name": "PlaybackState",
+      "namespace": "AvaVideoPlayer",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "enum",
+      "baseType": "System.Enum",
+      "members": [
+        {
+          "kind": "Values",
+          "name": "Empty",
+          "signature": "Empty = 0",
+          "anchor": "member-c06bdd02ec66"
+        },
+        {
+          "kind": "Values",
+          "name": "Opening",
+          "signature": "Opening = 1",
+          "anchor": "member-61d3ef5d083f"
+        },
+        {
+          "kind": "Values",
+          "name": "Playing",
+          "signature": "Playing = 2",
+          "anchor": "member-779d8464a8b7"
+        },
+        {
+          "kind": "Values",
+          "name": "Paused",
+          "signature": "Paused = 3",
+          "anchor": "member-9c5037863c1c"
+        },
+        {
+          "kind": "Values",
+          "name": "Stopped",
+          "signature": "Stopped = 4",
+          "anchor": "member-42b2206b43cd"
+        },
+        {
+          "kind": "Values",
+          "name": "Ended",
+          "signature": "Ended = 5",
+          "anchor": "member-9a68fdcd4df2"
+        },
+        {
+          "kind": "Values",
+          "name": "Error",
+          "signature": "Error = 6",
+          "anchor": "member-58c0f88f943c"
+        },
+        {
+          "kind": "Values",
+          "name": "Buffering",
+          "signature": "Buffering = 7",
+          "anchor": "member-486f9c75486f"
+        },
+        {
+          "kind": "Values",
+          "name": "Seeking",
+          "signature": "Seeking = 8",
+          "anchor": "member-25387a6ac9da"
+        },
+        {
+          "kind": "Values",
+          "name": "Disposed",
+          "signature": "Disposed = 9",
+          "anchor": "member-d8032fe4bf6c"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.PlaybackState.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.StereoLayout",
+      "name": "StereoLayout",
+      "namespace": "AvaVideoPlayer",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "enum",
+      "baseType": "System.Enum",
+      "members": [
+        {
+          "kind": "Values",
+          "name": "Mono",
+          "signature": "Mono = 0",
+          "anchor": "member-2a45d06df805"
+        },
+        {
+          "kind": "Values",
+          "name": "TopBottom",
+          "signature": "TopBottom = 1",
+          "anchor": "member-3086d17c0ce0"
+        },
+        {
+          "kind": "Values",
+          "name": "SideBySide",
+          "signature": "SideBySide = 2",
+          "anchor": "member-27f3bdbd058a"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.StereoLayout.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.VideoProjection",
+      "name": "VideoProjection",
+      "namespace": "AvaVideoPlayer",
+      "assembly": "AvaVideoPlayer.Engine",
+      "kind": "enum",
+      "baseType": "System.Enum",
+      "members": [
+        {
+          "kind": "Values",
+          "name": "Auto",
+          "signature": "Auto = 0",
+          "anchor": "member-c7aa515acd89"
+        },
+        {
+          "kind": "Values",
+          "name": "Flat",
+          "signature": "Flat = 1",
+          "anchor": "member-3bffdc213c46"
+        },
+        {
+          "kind": "Values",
+          "name": "Equirectangular",
+          "signature": "Equirectangular = 2",
+          "anchor": "member-62aea7008e18"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.VideoProjection.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.FFmpeg.Avalonia.FFmpegVideoBackend",
+      "name": "FFmpegVideoBackend",
+      "namespace": "AvaVideoPlayer.FFmpeg.Avalonia",
+      "assembly": "AvaVideoPlayer.FFmpeg.Avalonia",
+      "kind": "class",
+      "baseType": "System.Object",
+      "members": [
+        {
+          "kind": "Constructors",
+          "name": "FFmpegVideoBackend",
+          "signature": "FFmpegVideoBackend(PlaybackOptions options = default, VideoPresentationOptions presentation = default, Func<IAudioOutput> audioOutputFactory = default, Func<IVideoFrameSource, VideoPresentationOptions, IVideoFramePresenter> presenterFactory = default)",
+          "anchor": "member-3b7cda8e4e08"
+        },
+        {
+          "kind": "Properties",
+          "name": "Engine",
+          "signature": "PlaybackEngine Engine { get; }",
+          "anchor": "member-60aef2d9a585"
+        },
+        {
+          "kind": "Properties",
+          "name": "View",
+          "signature": "Control View { get; }",
+          "anchor": "member-6063c4a8b27f"
+        },
+        {
+          "kind": "Methods",
+          "name": "Register",
+          "signature": "static void Register(PlaybackOptions options = default, VideoPresentationOptions presentation = default, Func<IVideoFrameSource, VideoPresentationOptions, IVideoFramePresenter> presenterFactory = default, Func<IAudioOutput> audioOutputFactory = default)",
+          "anchor": "member-afdacae88285"
+        },
+        {
+          "kind": "Methods",
+          "name": "OpenAsync",
+          "signature": "Task OpenAsync(Uri source, CancellationToken cancellationToken = default)",
+          "anchor": "member-93df635273e6"
+        },
+        {
+          "kind": "Methods",
+          "name": "PlayAsync",
+          "signature": "Task PlayAsync()",
+          "anchor": "member-144123a15d1a"
+        },
+        {
+          "kind": "Methods",
+          "name": "PauseAsync",
+          "signature": "Task PauseAsync()",
+          "anchor": "member-817d2e29fdd6"
+        },
+        {
+          "kind": "Methods",
+          "name": "StopAsync",
+          "signature": "Task StopAsync()",
+          "anchor": "member-e16d67ba098e"
+        },
+        {
+          "kind": "Methods",
+          "name": "SeekAsync",
+          "signature": "Task SeekAsync(TimeSpan position)",
+          "anchor": "member-898d253a5683"
+        },
+        {
+          "kind": "Methods",
+          "name": "SetSpeedAsync",
+          "signature": "Task SetSpeedAsync(double speed)",
+          "anchor": "member-0ae816466e57"
+        },
+        {
+          "kind": "Methods",
+          "name": "SetVolumeAsync",
+          "signature": "Task SetVolumeAsync(double volume, bool muted)",
+          "anchor": "member-5c248636bd16"
+        },
+        {
+          "kind": "Methods",
+          "name": "SelectAudioTrackAsync",
+          "signature": "Task SelectAudioTrackAsync(int id)",
+          "anchor": "member-65feee80f16a"
+        },
+        {
+          "kind": "Methods",
+          "name": "SelectSubtitleTrackAsync",
+          "signature": "Task SelectSubtitleTrackAsync(int id)",
+          "anchor": "member-2b3c76aad5fe"
+        },
+        {
+          "kind": "Methods",
+          "name": "AddSubtitleAsync",
+          "signature": "Task AddSubtitleAsync(string content, string name, string language = default)",
+          "anchor": "member-d963aed08416"
+        },
+        {
+          "kind": "Methods",
+          "name": "SetSubtitleDelayAsync",
+          "signature": "Task SetSubtitleDelayAsync(TimeSpan delay)",
+          "anchor": "member-620514291580"
+        },
+        {
+          "kind": "Methods",
+          "name": "SetView",
+          "signature": "void SetView(VideoProjection projection, StereoLayout stereo, OrbitCamera camera)",
+          "anchor": "member-197f5ae41b38"
+        },
+        {
+          "kind": "Methods",
+          "name": "GetSnapshot",
+          "signature": "PlaybackSnapshot GetSnapshot()",
+          "anchor": "member-56bd04e8cc70"
+        },
+        {
+          "kind": "Methods",
+          "name": "DisposeAsync",
+          "signature": "ValueTask DisposeAsync()",
+          "anchor": "member-05b877b950be"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.FFmpeg.Avalonia.FFmpegVideoBackend.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.FFmpeg.AssSubtitleRenderer",
+      "name": "AssSubtitleRenderer",
+      "namespace": "AvaVideoPlayer.FFmpeg",
+      "assembly": "AvaVideoPlayer.FFmpeg",
+      "kind": "class",
+      "baseType": "System.Object",
+      "members": [
+        {
+          "kind": "Constructors",
+          "name": "AssSubtitleRenderer",
+          "signature": "AssSubtitleRenderer(string codecHeader)",
+          "anchor": "member-9c0a537c76ed"
+        },
+        {
+          "kind": "Properties",
+          "name": "IsAvailable",
+          "signature": "bool IsAvailable { get; }",
+          "anchor": "member-afea628ed797"
+        },
+        {
+          "kind": "Methods",
+          "name": "FromScript",
+          "signature": "static AssSubtitleRenderer FromScript(string script)",
+          "anchor": "member-f7440cf0532f"
+        },
+        {
+          "kind": "Methods",
+          "name": "AddFont",
+          "signature": "void AddFont(string name, ReadOnlySpan<byte> data)",
+          "anchor": "member-90babaec22c4"
+        },
+        {
+          "kind": "Methods",
+          "name": "ClearEvents",
+          "signature": "void ClearEvents()",
+          "anchor": "member-8d939bb22b3f"
+        },
+        {
+          "kind": "Methods",
+          "name": "AddEvent",
+          "signature": "void AddEvent(string packet, TimeSpan timestamp, TimeSpan duration)",
+          "anchor": "member-848c5b7e72b6"
+        },
+        {
+          "kind": "Methods",
+          "name": "Render",
+          "signature": "DecodedSubtitleFrame Render(TimeSpan position, int width, int height, int storageWidth = default, int storageHeight = default)",
+          "anchor": "member-52001327a0a3"
+        },
+        {
+          "kind": "Methods",
+          "name": "Dispose",
+          "signature": "void Dispose()",
+          "anchor": "member-49db0e493c8b"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.FFmpeg.AssSubtitleRenderer.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.FFmpeg.FFmpegAudioProcessorFactory",
+      "name": "FFmpegAudioProcessorFactory",
+      "namespace": "AvaVideoPlayer.FFmpeg",
+      "assembly": "AvaVideoPlayer.FFmpeg",
+      "kind": "class",
+      "baseType": "System.Object",
+      "members": [
+        {
+          "kind": "Constructors",
+          "name": "FFmpegAudioProcessorFactory",
+          "signature": "FFmpegAudioProcessorFactory()",
+          "anchor": "member-e39be29c3ebe"
+        },
+        {
+          "kind": "Methods",
+          "name": "Create",
+          "signature": "IAudioFrameProcessor Create(AudioOutputFormat format, double speed)",
+          "anchor": "member-3772894c38b4"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.FFmpeg.FFmpegAudioProcessorFactory.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.FFmpeg.FFmpegDecoderFactory",
+      "name": "FFmpegDecoderFactory",
+      "namespace": "AvaVideoPlayer.FFmpeg",
+      "assembly": "AvaVideoPlayer.FFmpeg",
+      "kind": "class",
+      "baseType": "System.Object",
+      "members": [
+        {
+          "kind": "Constructors",
+          "name": "FFmpegDecoderFactory",
+          "signature": "FFmpegDecoderFactory()",
+          "anchor": "member-b95b7447cca8"
+        },
+        {
+          "kind": "Properties",
+          "name": "RuntimeVersion",
+          "signature": "string RuntimeVersion { get; }",
+          "anchor": "member-9dab662d6ecb"
+        },
+        {
+          "kind": "Methods",
+          "name": "OpenAsync",
+          "signature": "Task<IDecoderSession> OpenAsync(Uri source, DecoderOptions options = default, CancellationToken cancellationToken = default)",
+          "anchor": "member-86a98dddf24a"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.FFmpeg.FFmpegDecoderFactory.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.NativeRuntime.NativeLibraryResolver",
+      "name": "NativeLibraryResolver",
+      "namespace": "AvaVideoPlayer.NativeRuntime",
+      "assembly": "AvaVideoPlayer.NativeRuntime",
+      "kind": "class",
+      "baseType": "System.Object",
+      "members": [
+        {
+          "kind": "Properties",
+          "name": "LoadedLibraryPath",
+          "signature": "string LoadedLibraryPath { get; }",
+          "anchor": "member-ad76897b3fe4"
+        },
+        {
+          "kind": "Methods",
+          "name": "RegisterFor",
+          "signature": "static void RegisterFor(Assembly assembly)",
+          "anchor": "member-fca8dea0a600"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.NativeRuntime.NativeLibraryResolver.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.Platforms.AudioOutputException",
+      "name": "AudioOutputException",
+      "namespace": "AvaVideoPlayer.Platforms",
+      "assembly": "AvaVideoPlayer.Platforms",
+      "kind": "class",
+      "baseType": "System.Exception",
+      "members": [
+        {
+          "kind": "Constructors",
+          "name": "AudioOutputException",
+          "signature": "AudioOutputException(string message)",
+          "anchor": "member-91a03f2cd236"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.Platforms.AudioOutputException.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.Platforms.NativeAudioOutput",
+      "name": "NativeAudioOutput",
+      "namespace": "AvaVideoPlayer.Platforms",
+      "assembly": "AvaVideoPlayer.Platforms",
+      "kind": "class",
+      "baseType": "System.Object",
+      "members": [
+        {
+          "kind": "Constructors",
+          "name": "NativeAudioOutput",
+          "signature": "NativeAudioOutput()",
+          "anchor": "member-744975245d62"
+        },
+        {
+          "kind": "Properties",
+          "name": "Format",
+          "signature": "AudioOutputFormat Format { get; }",
+          "anchor": "member-51d7e009e021"
+        },
+        {
+          "kind": "Properties",
+          "name": "BufferCapacityFrames",
+          "signature": "int BufferCapacityFrames { get; }",
+          "anchor": "member-5442eb75b2e6"
+        },
+        {
+          "kind": "Properties",
+          "name": "Name",
+          "signature": "string Name { get; }",
+          "anchor": "member-3f9e23844350"
+        },
+        {
+          "kind": "Properties",
+          "name": "DriverName",
+          "signature": "string DriverName { get; }",
+          "anchor": "member-bb58a134e491"
+        },
+        {
+          "kind": "Properties",
+          "name": "Position",
+          "signature": "AudioPlaybackPosition Position { get; }",
+          "anchor": "member-ccba735603e8"
+        },
+        {
+          "kind": "Methods",
+          "name": "OpenAsync",
+          "signature": "ValueTask OpenAsync(AudioOutputFormat format, CancellationToken token = default)",
+          "anchor": "member-7b151ed21cd8"
+        },
+        {
+          "kind": "Methods",
+          "name": "Write",
+          "signature": "int Write(ReadOnlySpan<float> samples)",
+          "anchor": "member-1ecb59b9edd6"
+        },
+        {
+          "kind": "Methods",
+          "name": "Start",
+          "signature": "void Start()",
+          "anchor": "member-8ff43a3fb5f0"
+        },
+        {
+          "kind": "Methods",
+          "name": "Pause",
+          "signature": "void Pause()",
+          "anchor": "member-19678f452ea1"
+        },
+        {
+          "kind": "Methods",
+          "name": "Reset",
+          "signature": "void Reset()",
+          "anchor": "member-bd7450243249"
+        },
+        {
+          "kind": "Methods",
+          "name": "SetVolume",
+          "signature": "void SetVolume(double volume, bool muted)",
+          "anchor": "member-935d707a91b6"
+        },
+        {
+          "kind": "Methods",
+          "name": "DisposeAsync",
+          "signature": "ValueTask DisposeAsync()",
+          "anchor": "member-05b877b950be"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.Platforms.NativeAudioOutput.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.Rendering.Skia.SkiaVideoPresenter",
+      "name": "SkiaVideoPresenter",
+      "namespace": "AvaVideoPlayer.Rendering.Skia",
+      "assembly": "AvaVideoPlayer.Rendering.Skia",
+      "kind": "class",
+      "baseType": "Avalonia.Controls.Grid",
+      "members": [
+        {
+          "kind": "Constructors",
+          "name": "SkiaVideoPresenter",
+          "signature": "SkiaVideoPresenter(IVideoFrameSource source, VideoPresentationOptions options = default)",
+          "anchor": "member-76ddc8bc9e3f"
+        },
+        {
+          "kind": "Properties",
+          "name": "View",
+          "signature": "Control View { get; }",
+          "anchor": "member-6063c4a8b27f"
+        },
+        {
+          "kind": "Properties",
+          "name": "Diagnostics",
+          "signature": "VideoRenderDiagnostics Diagnostics { get; }",
+          "anchor": "member-22f629c814f6"
+        },
+        {
+          "kind": "Methods",
+          "name": "SetView",
+          "signature": "void SetView(bool spherical, StereoLayout stereo, OrbitCamera camera)",
+          "anchor": "member-577153f038ac"
+        },
+        {
+          "kind": "Methods",
+          "name": "Dispose",
+          "signature": "void Dispose()",
+          "anchor": "member-49db0e493c8b"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.Rendering.Skia.SkiaVideoPresenter.html"
+    },
+    {
+      "fullName": "AvaVideoPlayer.Rendering.Skia.VideoRenderDiagnostics",
+      "name": "VideoRenderDiagnostics",
+      "namespace": "AvaVideoPlayer.Rendering.Skia",
+      "assembly": "AvaVideoPlayer.Rendering.Skia",
+      "kind": "class",
+      "baseType": "System.Object",
+      "members": [
+        {
+          "kind": "Constructors",
+          "name": "VideoRenderDiagnostics",
+          "signature": "VideoRenderDiagnostics(string Renderer, long Version, double CpuSubmissionMilliseconds, string FallbackReason = default)",
+          "anchor": "member-ab96e3b8ea29"
+        },
+        {
+          "kind": "Properties",
+          "name": "Renderer",
+          "signature": "string Renderer { get; set; }",
+          "anchor": "member-24fd88666628"
+        },
+        {
+          "kind": "Properties",
+          "name": "Version",
+          "signature": "long Version { get; set; }",
+          "anchor": "member-b15b4ec1c977"
+        },
+        {
+          "kind": "Properties",
+          "name": "CpuSubmissionMilliseconds",
+          "signature": "double CpuSubmissionMilliseconds { get; set; }",
+          "anchor": "member-5fa674d146d7"
+        },
+        {
+          "kind": "Properties",
+          "name": "FallbackReason",
+          "signature": "string FallbackReason { get; set; }",
+          "anchor": "member-e3f8e0931986"
+        },
+        {
+          "kind": "Methods",
+          "name": "ToString",
+          "signature": "string ToString()",
+          "anchor": "member-5346dee2233a"
+        },
+        {
+          "kind": "Operators",
+          "name": "op_Inequality",
+          "signature": "static bool op_Inequality(VideoRenderDiagnostics left, VideoRenderDiagnostics right)",
+          "anchor": "member-e01e775602e7"
+        },
+        {
+          "kind": "Operators",
+          "name": "op_Equality",
+          "signature": "static bool op_Equality(VideoRenderDiagnostics left, VideoRenderDiagnostics right)",
+          "anchor": "member-8bf896d7af91"
+        },
+        {
+          "kind": "Methods",
+          "name": "GetHashCode",
+          "signature": "int GetHashCode()",
+          "anchor": "member-18d5ba4e3dcc"
+        },
+        {
+          "kind": "Methods",
+          "name": "Equals",
+          "signature": "bool Equals(object obj)",
+          "anchor": "member-6601f37efc3c"
+        },
+        {
+          "kind": "Methods",
+          "name": "Equals",
+          "signature": "bool Equals(VideoRenderDiagnostics other)",
+          "anchor": "member-d18960334844"
+        },
+        {
+          "kind": "Methods",
+          "name": "Deconstruct",
+          "signature": "void Deconstruct(out string Renderer, out long Version, out double CpuSubmissionMilliseconds, out string FallbackReason)",
+          "anchor": "member-77f6d25e992f"
+        }
+      ],
+      "url": "api/AvaVideoPlayer.Rendering.Skia.VideoRenderDiagnostics.html"
+    }
+  ]
+}

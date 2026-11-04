@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.NET.Sdk.WebAssembly">
+  <PropertyGroup><TargetFramework>net10.0-browser</TargetFramework><OutputType>Exe</OutputType></PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../AvaVideoPlayer.Sample/AvaVideoPlayer.Sample.csproj" />
+    <Content Update="wwwroot/**" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+  <PackageReference Include="AvaVideoPlayer" Version="0.1.0-preview.1" /><PackageReference Include="Avalonia.Browser" Version="$(AvaloniaVersion)" /></ItemGroup>
+</Project>

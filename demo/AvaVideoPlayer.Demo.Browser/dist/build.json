@@ -1,0 +1,76 @@
+{
+  "productionModuleSha256": "0d7d8bd19fa2c172e829c565c8ad13c682254740e64e5ec353018734163d7c72",
+  "demoSourceSha256": "1dea99c374ef43c94a14b332e92caaee5ae58c5284c238fad6309c32ebd3fd42",
+  "sourceSha256": {
+    "index.html": "5a9cf449754866636fcedbb6e7efb4a5f02cf1d0a47d97ae5a97546e42aaf0c2",
+    "style.css": "67d1b837f245832625c5c082d1c4cc49afd3f047dffeb1fc433dca35d7efe7f4",
+    "app.js": "8a6070d1492cbbb7f494f6d77be47db8fa8da9baa7d7529c2127baace6c12514",
+    "build.py": "8b39961515447f239a6ee5f856788483f61ac6421867e42fbb5f58234d80c3a7",
+    "media/manifest.json": "035adfa384a2c1d11aafa506982dfa8251e650a0cc2b87dab5a43a2e140e9b4c"
+  },
+  "outputSha256": "f3895ad7845738fd681b862f4501c68078889b8870137e76c488a007f7b5d2f4",
+  "outputBytes": 12265810,
+  "files": [
+    {
+      "file": "waterfall-360.mp4",
+      "sha256": "cde90f03a8b6f15134d79c6c185c62ffbfe76ed0613a28ec351309f901a2b475",
+      "bytes": 2875485,
+      "source": "waterfall.webm",
+      "sourceSha256": "e2e0d496646e81dcf95c41eb11058f2289290db895705fc35560da45bb18a9ca",
+      "spherical": true,
+      "duration": 10.1,
+      "videoCodec": "libx264",
+      "audioCodec": "aac",
+      "audioLevels": [
+        "[Parsed_volumedetect_0 @ 0x916838a80] mean_volume: -22.8 dB",
+        "[Parsed_volumedetect_0 @ 0x916838a80] max_volume: -8.4 dB"
+      ]
+    },
+    {
+      "file": "village-360.webm",
+      "sha256": "4e6b0099907d8765520128e1273433533ea83eaaf5ccbc798f1d0cfcfeb02774",
+      "bytes": 1433940,
+      "source": "esino.webm",
+      "sourceSha256": "d8697eefec0806fe04d208c0ed1d0deeefda305e778dcba097e63084cde71226",
+      "spherical": true,
+      "duration": 14.14,
+      "videoCodec": "libvpx-vp9",
+      "audioCodec": "libopus",
+      "audioLevels": [
+        "[Parsed_volumedetect_0 @ 0x9c3008fc0] mean_volume: -16.8 dB",
+        "[Parsed_volumedetect_0 @ 0x9c3008fc0] max_volume: -2.1 dB"
+      ]
+    },
+    {
+      "file": "waterfall-360.mov",
+      "sha256": "b9863ee9776621192fb82dd9fe90715e9e4e7ddeb536fb2568a10b524b7ae375",
+      "bytes": 2875551,
+      "source": "waterfall.webm",
+      "sourceSha256": "e2e0d496646e81dcf95c41eb11058f2289290db895705fc35560da45bb18a9ca",
+      "spherical": true,
+      "duration": 10.1,
+      "videoCodec": "libx264",
+      "audioCodec": "aac",
+      "audioLevels": [
+        "[Parsed_volumedetect_0 @ 0xa78c18b40] mean_volume: -22.8 dB",
+        "[Parsed_volumedetect_0 @ 0xa78c18b40] max_volume: -8.4 dB"
+      ]
+    },
+    {
+      "file": "village-360.mp4",
+      "sha256": "9ef8eb9c7532c5173be6b8cc67fbe530df8ffb93cdbd6feeaf16e9c40d4a20e9",
+      "bytes": 1764699,
+      "source": "esino.webm",
+      "sourceSha256": "d8697eefec0806fe04d208c0ed1d0deeefda305e778dcba097e63084cde71226",
+      "spherical": true,
+      "duration": 14.131667,
+      "videoCodec": "libx264",
+      "audioCodec": "aac",
+      "audioLevels": [
+        "[Parsed_volumedetect_0 @ 0xc98c28b40] mean_volume: -16.6 dB",
+        "[Parsed_volumedetect_0 @ 0xc98c28b40] max_volume: -2.1 dB"
+      ]
+    }
+  ],
+  "externalRuntimeRequests": 0
+}

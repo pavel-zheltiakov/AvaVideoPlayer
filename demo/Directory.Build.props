@@ -1,0 +1,1 @@
+<Project><PropertyGroup><TargetFramework>net10.0</TargetFramework><AvaloniaVersion>12.1.3</AvaloniaVersion><Nullable>enable</Nullable><ImplicitUsings>enable</ImplicitUsings><LangVersion>latest</LangVersion><AllowUnsafeBlocks>true</AllowUnsafeBlocks><RestoreIgnoreFailedSources>true</RestoreIgnoreFailedSources></PropertyGroup></Project>

@@ -1,0 +1,33 @@
+{
+  "version": "0.1.0-preview.1",
+  "distribution": "One AvaVideoPlayer NuGet package. Internal modules remain separate assemblies.",
+  "packages": [
+    {
+      "id": "AvaVideoPlayer",
+      "version": "0.1.0-preview.1",
+      "file": "AvaVideoPlayer.0.1.0-preview.1.nupkg",
+      "bytes": 165400163,
+      "sha256": "305acf5f7d39ef8fb35b621e34fe82840c4186dc2a15c90d41c359a5516ac6f6",
+      "payloadUnchanged": true,
+      "managedModules": [
+        "AvaVideoPlayer",
+        "AvaVideoPlayer.Engine",
+        "AvaVideoPlayer.NativeRuntime",
+        "AvaVideoPlayer.FFmpeg",
+        "AvaVideoPlayer.Platforms",
+        "AvaVideoPlayer.FFmpeg.Avalonia",
+        "AvaVideoPlayer.Rendering.Skia",
+        "AvaVideoPlayer.Browser"
+      ],
+      "nativeRuntimes": [
+        "osx-arm64",
+        "win-x64",
+        "win-arm64",
+        "linux-x64",
+        "linux-arm64"
+      ],
+      "correspondingSources": "Deduplicated archives with exact per-RID reconstruction index.",
+      "url": "https://github.com/pavel-zheltiakov/AvaVideoPlayer/releases/download/v0.1.0-preview.1/AvaVideoPlayer.0.1.0-preview.1.nupkg"
+    }
+  ]
+}
