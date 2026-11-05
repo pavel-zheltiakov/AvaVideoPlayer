@@ -1,4 +1,44 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>AvaVideoPlayer · Avalonia WebAssembly</title>
-<style>html,body,#out{margin:0;width:100%;height:100%;overflow:hidden;background:#11151d;color:white}#out{font:16px system-ui}</style></head>
-<body><div id="out">Loading Avalonia WebAssembly…</div><script type="module" src="./main.js"></script></body></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#11151d">
+  <title>AvaVideoPlayer · Avalonia WebAssembly</title>
+  <style>
+    :root { color-scheme: dark; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    html, body, #out { margin: 0; width: 100%; height: 100%; overflow: hidden; background: #11151d; color: #f0f3ec; }
+    .loading-screen { box-sizing: border-box; min-height: 100%; display: grid; place-items: center; padding: 28px; background: radial-gradient(ellipse at 50% 42%, #26332a55, transparent 58%); }
+    .loading-card { width: min(100%, 300px); text-align: center; }
+    .loading-mark { position: relative; display: grid; place-items: center; width: 76px; height: 76px; margin: 0 auto 26px; border: 1px solid #a9c89624; border-radius: 23px; background: linear-gradient(145deg, #a9c89614, #a9c89603); box-shadow: 0 12px 48px #00000020; }
+    .loading-mark svg { width: 31px; height: 31px; margin-left: 4px; fill: #b4cf9f; }
+    .loading-orbit { position: absolute; inset: -8px; border: 1px solid transparent; border-top-color: #a9c89680; border-right-color: #a9c89618; border-radius: 30px; animation: orbit 3s linear infinite; }
+    .loading-brand { margin: 0; font-size: 23px; font-weight: 650; letter-spacing: -.8px; }
+    .loading-brand span { color: #b4cf9f; font-weight: 450; }
+    .loading-caption { margin: 10px 0 27px; font-size: 13px; line-height: 1.6; color: #a4ada5; }
+    .loading-track { height: 3px; width: 160px; margin: 0 auto; overflow: hidden; border-radius: 3px; background: #a9c89615; }
+    .loading-track::after { content: ""; display: block; height: 100%; width: 45%; border-radius: inherit; background: linear-gradient(90deg, transparent, #b4cf9f, transparent); animation: travel 1.8s ease-in-out infinite; }
+    .loading-note { margin: 19px 0 0; font-size: 10px; letter-spacing: 1.8px; text-transform: uppercase; color: #717f75; }
+    @keyframes orbit { to { transform: rotate(360deg); } }
+    @keyframes travel { from { transform: translateX(-110%); } to { transform: translateX(330%); } }
+    @media (prefers-reduced-motion: reduce) { .loading-orbit, .loading-track::after { animation: none; } .loading-track::after { width: 100%; opacity: .6; } }
+  </style>
+</head>
+<body>
+  <div id="out">
+    <div class="loading-screen" role="status" aria-live="polite" aria-label="Loading AvaVideoPlayer">
+      <div class="loading-card">
+        <div class="loading-mark" aria-hidden="true">
+          <div class="loading-orbit"></div>
+          <svg viewBox="0 0 32 32"><path d="M8 5.7c0-1.3 1.4-2.1 2.5-1.4l17 10.3c1.1.6 1.1 2.2 0 2.8l-17 10.3C9.4 28.4 8 27.6 8 26.3z"/></svg>
+        </div>
+        <h1 class="loading-brand">AvaVideo<span>Player</span></h1>
+        <p class="loading-caption">Getting your screening room ready</p>
+        <div class="loading-track" aria-hidden="true"></div>
+        <p class="loading-note">A moment before play</p>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
