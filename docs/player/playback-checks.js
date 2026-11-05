@@ -9,7 +9,7 @@ export function monitor() {
   const watch = new MutationObserver(() => attach());
   watch.observe(document.getElementById('out'),{childList:true,subtree:true});
   function attach() {
-    const next=document.querySelector('#out video'); if(!next||next===video)return; video=next;
+    const next=document.querySelector('#out video'); if(!next||next===video)return; video=next; video.preload='auto';video.parentElement.style.borderRadius='16px 16px 0 0';
     for(const event of ['playing','waiting','stalled','pause','seeking','seeked','ended','emptied','error'])video.addEventListener(event,()=>{
       if(checks)report.events.push({event,wall:performance.now(),time:video.currentTime,ready:video.readyState,network:video.networkState,bufferAhead:bufferAhead()});
       if(event==='playing'){lastFrame=undefined;lastMedia=undefined;}
@@ -43,7 +43,7 @@ export function monitor() {
     summary:()=>`${report.frames} frames · ${report.events.filter(x=>x.event==='waiting').length} waits · ${report.frameGaps.length} gaps >300 ms`,
     openLink:url=>window.open(url,'_blank','noopener,noreferrer'),
     saveReport:()=>{
-      const data={...report,ended:new Date().toISOString(),quality:video?.getVideoPlaybackQuality?.(),position:video?.currentTime,bufferAhead:bufferAhead(),userAgent:navigator.userAgent};
+      const data={...report,ended:new Date().toISOString(),quality:video?.getVideoPlaybackQuality ? ((q)=>({totalVideoFrames:q.totalVideoFrames,droppedVideoFrames:q.droppedVideoFrames,corruptedVideoFrames:q.corruptedVideoFrames}))(video.getVideoPlaybackQuality()) : null,position:video?.currentTime,bufferAhead:bufferAhead(),userAgent:navigator.userAgent};
       const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));const link=document.createElement('a');link.href=url;link.download='avavideo-avalonia-playback.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
     }
   };

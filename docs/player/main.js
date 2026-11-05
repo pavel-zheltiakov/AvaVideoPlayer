@@ -1,12 +1,14 @@
 try {
   const runtimeUrl = new URL('./_framework/dotnet.js', import.meta.url);
   runtimeUrl.search = new URL(import.meta.url).search;
-  const { dotnet } = await import(runtimeUrl.href);
-  const runtime = await dotnet.withDiagnosticTracing(false).create();
   const checksUrl = new URL('./playback-checks.js', import.meta.url);
   checksUrl.search = new URL(import.meta.url).search;
-  const { monitor } = await import(checksUrl.href);
-  runtime.setModuleImports('AvaVideoPlayer.Demo', monitor());
+  const [{ dotnet }, { monitor }] = await Promise.all([import(runtimeUrl.href), import(checksUrl.href)]);
+  const diagnostics = monitor();
+  // Warm the first small fixture while the WebAssembly runtime is downloading.
+  diagnostics.prepareMedia(new URL('./media/waterfall-360.mp4', import.meta.url).href).catch(() => {});
+  const runtime = await dotnet.withDiagnosticTracing(false).create();
+  runtime.setModuleImports('AvaVideoPlayer.Demo', diagnostics);
   await runtime.runMain(runtime.getConfig().mainAssemblyName, []);
 } catch (error) {
   console.error('AvaVideoPlayer startup failed:', error);

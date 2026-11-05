@@ -55,7 +55,7 @@ public sealed class ScreeningRoom : UserControl
     private readonly TextBlock _diagnostic = Text("", 10, "#6d7973");
     private readonly SemaphoreSlim _loads = new(1, 1);
     private int _selected;
-    private bool _updating, _scrubbing, _checking, _loop = true;
+    private bool _updating, _scrubbing, _checking, _isLoading, _loop = true;
     private bool? _lastPlaying, _lastMuted;
     private readonly DispatcherTimer _clock;
 
@@ -139,6 +139,7 @@ public sealed class ScreeningRoom : UserControl
     {
         var narrow = Bounds.Width < 900;
         _layout.Margin = new Thickness(narrow ? 20 : Math.Clamp(Bounds.Width * .052, 24, 72), 24, narrow ? 20 : Math.Clamp(Bounds.Width * .052, 24, 72), 24);
+        _layout.Width = Math.Max(0, Math.Min(1450, Bounds.Width - _layout.Margin.Left - _layout.Margin.Right));
         _layout.ColumnDefinitions = new ColumnDefinitions(narrow ? "*" : "*,310"); _layout.RowDefinitions = new RowDefinitions(narrow ? "Auto,Auto" : "Auto");
         Grid.SetColumn(_catalog, narrow ? 0 : 1); Grid.SetRow(_catalog, narrow ? 1 : 0);
         var availableWidth = Math.Min(1450, Bounds.Width - _layout.Margin.Left - _layout.Margin.Right) - (narrow ? 0 : 345);
@@ -157,7 +158,9 @@ public sealed class ScreeningRoom : UserControl
         await _loads.WaitAsync();
         try
         {
+            _isLoading = true;
             _status.Text = "Preparing video…";
+            if (Player.Snapshot is not null) await Player.PauseAsync();
             // Match the HTML demo: fully downloaded local Blob, never a streaming Range request mid-play.
             var source = await BrowserDemoInterop.PrepareMedia(new Uri(BrowserDemoApp.BaseUri, "media/" + file).AbsoluteUri);
             Player.SetProjection(_view.SelectedIndex == 0 ? VideoProjection.Equirectangular : VideoProjection.Flat); Player.ResetCamera();
@@ -165,7 +168,7 @@ public sealed class ScreeningRoom : UserControl
             await Player.SetPlaybackSpeedAsync(new[] { .5, 1, 1.5, 2 }[Math.Max(0, _speed.SelectedIndex)]);
             await Player.SetVolumeAsync(_volume.Value, _checking);
         }
-        finally { _loads.Release(); }
+        finally { _isLoading = false; _loads.Release(); }
     }
     private void Refresh()
     {
@@ -176,9 +179,9 @@ public sealed class ScreeningRoom : UserControl
         if (_lastMuted != snapshot.IsMuted) { _mute.Content = Icon(snapshot.IsMuted ? "Muted" : "Volume"); _lastMuted = snapshot.IsMuted; }
         _seek.Maximum = Math.Max(1, snapshot.Duration.TotalSeconds); if (!_scrubbing) _seek.Value = Math.Clamp(snapshot.Position.TotalSeconds, 0, _seek.Maximum);
         _time.Text = $"{Time(snapshot.Position)} / {Time(snapshot.Duration)}";
-        _status.Text = snapshot.State == PlaybackState.Buffering ? "Buffering…" : Player.IsSpherical ? "360° · Drag to look around · Scroll to zoom" : "Flat video";
+        _status.Text = _isLoading ? "Preparing video…" : snapshot.State == PlaybackState.Buffering ? "Buffering…" : Player.IsSpherical ? "360° · Drag to look around · Scroll to zoom" : "Flat video";
         _updating = false;
-        if (_loop && snapshot.State == PlaybackState.Ended) _ = Run(async () => { await Player.SeekAsync(TimeSpan.Zero); await Player.PlayAsync(); });
+        if (!_isLoading && _loop && snapshot.State == PlaybackState.Ended) _ = Run(async () => { await Player.SeekAsync(TimeSpan.Zero); await Player.PlayAsync(); });
         if (BrowserDemoInterop.ChecksEnabled()) _diagnostic.Text = BrowserDemoInterop.Summary();
     }
     private async Task SmoothnessCheck()

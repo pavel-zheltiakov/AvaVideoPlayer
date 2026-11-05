@@ -21,3 +21,13 @@ that output's media/ directory. The site builder does this automatically.
 Click Play to start audible playback. The main website embeds this application.
 The separate JavaScript-only demo is a backend test harness.
 See ../AvaVideoPlayer.Demo.Browser/CREDITS.md for footage attribution and licenses.
+
+The screening-room chrome matches the standalone HTML demo with bundled Inter,
+thumbnail catalog and a compact green/lime player. The small bundled recordings
+are fully downloaded into cached Blob URLs before playback. This is a demo policy;
+the library still supports direct HTTP(S) streaming for consuming applications.
+
+Append `?checks=1&autocheck=1` to the website URL for a two-clip, muted playback
+diagnostic. It runs each recording for 20 seconds, loops when needed and downloads
+a JSON report with preload timings, media events, frame gaps and long tasks.
+The normal URL contains no diagnostic UI. See Assets/Inter-OFL.txt for font licensing.

@@ -25,18 +25,16 @@
   <Style Selector="Button.outline"><Setter Property="Foreground" Value="#526b5c" /><Setter Property="BorderBrush" Value="#cbd4c7" /><Setter Property="Padding" Value="10,7" /></Style>
   <Style Selector="Button.outline:pointerover"><Setter Property="Background" Value="#e4e8dc" /></Style>
   <Style Selector="ComboBox.room"><Setter Property="Background" Value="Transparent" /><Setter Property="Foreground" Value="#dbe5dd" /><Setter Property="BorderBrush" Value="#ffffff20" /><Setter Property="FontSize" Value="11" /><Setter Property="MinHeight" Value="30" /><Setter Property="Padding" Value="8,3" /><Setter Property="CornerRadius" Value="6" /></Style>
+  <Style Selector="ComboBox.room /template/ PathIcon#DropDownGlyph"><Setter Property="Foreground" Value="#dbe5dd" /></Style>
+  <Style Selector="ComboBox.room /template/ Border#HighlightBackground"><Setter Property="Background" Value="Transparent" /><Setter Property="BorderBrush" Value="#ffffff20" /></Style>
   <Style Selector="Slider.room">
+    <Setter Property="Foreground" Value="#d9ef81" />
+    <Setter Property="Background" Value="#718576" />
     <Setter Property="MinHeight" Value="20" />
-    <Setter Property="Template">
-      <ControlTemplate>
-        <Grid MinHeight="20">
-          <Track Name="PART_Track" Minimum="{TemplateBinding Minimum}" Maximum="{TemplateBinding Maximum}" Value="{TemplateBinding Value, Mode=TwoWay}" Orientation="Horizontal">
-            <Track.DecreaseButton><RepeatButton Background="#d9ef81" Height="3" VerticalAlignment="Center" Focusable="False"><RepeatButton.Template><ControlTemplate><Border Background="{TemplateBinding Background}" CornerRadius="2" /></ControlTemplate></RepeatButton.Template></RepeatButton></Track.DecreaseButton>
-            <Track.IncreaseButton><RepeatButton Background="#ffffff36" Height="3" VerticalAlignment="Center" Focusable="False"><RepeatButton.Template><ControlTemplate><Border Background="{TemplateBinding Background}" CornerRadius="2" /></ControlTemplate></RepeatButton.Template></RepeatButton></Track.IncreaseButton>
-            <Track.Thumb><Thumb Width="9" Height="9" VerticalAlignment="Center"><Thumb.Template><ControlTemplate><Ellipse Fill="#d9ef81" /></ControlTemplate></Thumb.Template></Thumb></Track.Thumb>
-          </Track>
-        </Grid>
-      </ControlTemplate>
-    </Setter>
+    <Setter Property="HorizontalAlignment" Value="Stretch" />
+  </Style>
+  <Style Selector="Slider.room /template/ Thumb">
+    <Setter Property="Width" Value="10" /><Setter Property="Height" Value="10" />
+    <Setter Property="Background" Value="#d9ef81" />
   </Style>
 </Styles>
