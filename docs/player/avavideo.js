@@ -36,18 +36,59 @@ export function create(changed) {
  const canvas=document.createElement('canvas');Object.assign(canvas.style,{width:'100%',height:'100%',display:'none'});
  const captions=document.createElement('div');
  Object.assign(captions.style,{position:'absolute',bottom:'5%',left:'5%',right:'5%',textAlign:'center',color:'white',font:'22px system-ui',whiteSpace:'pre-line',pointerEvents:'none',textShadow:'0 1px 3px black, 1px 0 3px black'});
- host.append(video,canvas,captions);
- const s={host,video,canvas,captions,changed,spherical:false,stereo:0,yaw:0,pitch:0,fov:80,dirty:true,
+ const hint=document.createElement('div');
+ Object.assign(hint.style,{position:'absolute',inset:'0',display:'none',alignItems:'center',justifyContent:'center',pointerEvents:'none'});
+ hint.innerHTML=`<div style="padding:16px 22px;border-radius:20px;background:#142522aa;color:white;text-align:center;font:12px system-ui"><svg viewBox="0 0 76 76" width="76" height="76" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><circle cx="38" cy="38" r="35"/><ellipse cx="38" cy="38" rx="16" ry="35"/><ellipse cx="38" cy="38" rx="35" ry="16"/><path d="M38 3v70M3 38h70"/></svg><div style="font-size:22px;font-weight:600;margin:5px 0">360°</div><div>Click to look around</div><div style="opacity:.7;font-size:11px;margin-top:5px">Double-click or Esc to release</div></div>`;
+ host.append(video,canvas,captions,hint);
+ host.tabIndex=0;host.setAttribute('aria-label','360° video. Click to look around; double-click or Escape to release.');
+ const s={host,video,canvas,captions,hint,changed,spherical:false,stereo:0,yaw:0,pitch:0,fov:80,dirty:true,
   disposed:false,error:null,subtitle:-1,delay:0,source:'',title:'No video loaded',stopped:false,urls:[],lastTime:-1,gl:null,contextLost:false,raf:0};
  players.set(host,s);
  video.addEventListener('error',()=>{fail(s,mediaError(s));});
  video.textTracks.addEventListener('addtrack',()=>{for(const t of video.textTracks)t.mode='hidden';});
- let drag=null;
- host.addEventListener('pointerdown',e=>{if(!s.spherical || e.button!==0)return;drag={x:e.clientX,y:e.clientY};host.setPointerCapture(e.pointerId);e.preventDefault();});
- host.addEventListener('pointermove',e=>{if(!drag)return;s.yaw-=(e.clientX-drag.x)*.22;s.pitch+=(e.clientY-drag.y)*.22;drag={x:e.clientX,y:e.clientY};normalize(s);s.dirty=true;s.changed(s.yaw,s.pitch,s.fov);});
- host.addEventListener('pointerup',e=>{drag=null;if(host.hasPointerCapture(e.pointerId))host.releasePointerCapture(e.pointerId);});
- host.addEventListener('lostpointercapture',()=>drag=null);
- host.addEventListener('wheel',e=>{if(!s.spherical)return;s.fov-=Math.sign(e.deltaY)*-5;normalize(s);s.dirty=true;s.changed(s.yaw,s.pitch,s.fov);e.preventDefault();},{passive:false});
+ let drag=null,active=false,pointer=null,lockPending=false;
+ function updateHint(){hint.style.display=s.spherical&&!active?'flex':'none';host.style.cursor=active?'grabbing':'grab';}
+ function release(){
+  active=false;drag=null;lockPending=false;
+  if(document.pointerLockElement===host)document.exitPointerLock();
+  if(pointer!==null&&host.hasPointerCapture(pointer))host.releasePointerCapture(pointer);
+  pointer=null;updateHint();
+ }
+ s.releaseOrbit=release;s.updateOrbitHint=updateHint;
+ function lockChanged(){
+  if(document.pointerLockElement===host){if(!active){document.exitPointerLock();return;}lockPending=false;}
+  else if(active&&!lockPending)release();
+ }
+ function key(e){if(e.key==='Escape')release();}
+ function lockError(){if(lockPending)release();}
+ document.addEventListener('pointerlockchange',lockChanged);
+ document.addEventListener('pointerlockerror',lockError);
+ document.addEventListener('keydown',key);
+ window.addEventListener('blur',release);
+ s.removeOrbitListeners=()=>{document.removeEventListener('pointerlockchange',lockChanged);document.removeEventListener('pointerlockerror',lockError);document.removeEventListener('keydown',key);window.removeEventListener('blur',release);};
+ host.addEventListener('pointerdown',e=>{
+  if(!s.spherical||e.button!==0)return;
+  if(e.detail===2){release();e.preventDefault();return;}
+  active=true;drag={x:e.clientX,y:e.clientY};pointer=e.pointerId;host.focus();updateHint();
+  host.setPointerCapture(e.pointerId);
+  if(e.pointerType==='mouse'&&document.pointerLockElement!==host&&host.requestPointerLock){
+   lockPending=true;
+   try{const request=host.requestPointerLock();request?.catch(()=>{lockPending=false;release();});}
+   catch{lockPending=false;release();}
+  }
+  e.preventDefault();
+ });
+ host.addEventListener('dblclick',e=>{release();e.preventDefault();});
+ host.addEventListener('pointermove',e=>{
+  if(!active||!drag)return;
+  const locked=document.pointerLockElement===host;
+  const dx=locked?e.movementX:e.clientX-drag.x,dy=locked?e.movementY:e.clientY-drag.y;
+  s.yaw-=dx*.22;s.pitch+=dy*.22;drag={x:e.clientX,y:e.clientY};normalize(s);s.dirty=true;s.changed(s.yaw,s.pitch,s.fov);
+ });
+ host.addEventListener('pointerup',e=>{if(e.pointerType!=='mouse')release();});
+ host.addEventListener('pointercancel',release);
+ host.addEventListener('lostpointercapture',()=>{if(active&&document.pointerLockElement!==host&&!lockPending)release();});
+ host.addEventListener('wheel',e=>{if(!s.spherical||!active)return;s.fov+=Math.sign(e.deltaY)*5;normalize(s);s.dirty=true;s.changed(s.yaw,s.pitch,s.fov);e.preventDefault();},{passive:false});
  canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();s.contextLost=true;s.gl=null;fail(s,'WebGL context lost. Waiting for the browser to restore it.');});
  canvas.addEventListener('webglcontextrestored',()=>{s.contextLost=false;s.gl=null;s.error=null;s.dirty=true;});
  s.observer=new ResizeObserver(()=>s.dirty=true);s.observer.observe(host);
@@ -92,6 +133,7 @@ function caption(s){
  if(s.captions.textContent!==text)s.captions.textContent=text;
 }
 function clearSource(s){
+ s.releaseOrbit();
  s.video.pause();s.video.removeAttribute('src');s.video.load();
  for(const track of s.video.querySelectorAll('track'))track.remove();
  for(const url of s.urls)URL.revokeObjectURL(url);s.urls=[];s.subtitle=-1;s.delay=0;s.captions.textContent='';
@@ -129,6 +171,7 @@ export function setView(host,spherical,stereo,yaw,pitch,fov){
  const s=state(host),changed=s.spherical!==spherical;
  if(s.spherical!==spherical||s.stereo!==stereo||s.yaw!==yaw||s.pitch!==pitch||s.fov!==fov)s.dirty=true;
  s.spherical=spherical;s.stereo=stereo;s.yaw=yaw;s.pitch=pitch;s.fov=fov;normalize(s);
+ if(changed)s.releaseOrbit();s.updateOrbitHint();
  s.canvas.style.display=spherical?'block':'none';s.video.style.display=spherical?'none':'block';
  // A cross-origin video loaded without CORS cannot subsequently become a WebGL texture.
  if(changed&&spherical&&s.source.startsWith('http')&&s.video.crossOrigin!=='anonymous'){
@@ -167,5 +210,5 @@ export async function fullscreen(host){if(document.fullscreenElement)await docum
 export function destroy(host){
  const s=players.get(host);if(!s||s.disposed)return;s.disposed=true;cancelAnimationFrame(s.raf);s.observer.disconnect();clearSource(s);
  if(s.gl){const g=s.gl;g.gl.deleteTexture(g.texture);g.gl.deleteBuffer(g.buffer);g.gl.deleteProgram(g.program);}
- s.changed=()=>{};host.replaceChildren();players.delete(host);
+ s.releaseOrbit();s.removeOrbitListeners();s.changed=()=>{};host.replaceChildren();players.delete(host);
 }
