@@ -1,14 +1,14 @@
 {
   "productionModuleSha256": "0d7d8bd19fa2c172e829c565c8ad13c682254740e64e5ec353018734163d7c72",
-  "demoSourceSha256": "1dea99c374ef43c94a14b332e92caaee5ae58c5284c238fad6309c32ebd3fd42",
+  "demoSourceSha256": "8f7250d912a77c8156a9624ec239cfe473339973155aefd44e60dced83e8becc",
   "sourceSha256": {
     "index.html": "5a9cf449754866636fcedbb6e7efb4a5f02cf1d0a47d97ae5a97546e42aaf0c2",
     "style.css": "67d1b837f245832625c5c082d1c4cc49afd3f047dffeb1fc433dca35d7efe7f4",
     "app.js": "8a6070d1492cbbb7f494f6d77be47db8fa8da9baa7d7529c2127baace6c12514",
-    "build.py": "8b39961515447f239a6ee5f856788483f61ac6421867e42fbb5f58234d80c3a7",
-    "media/manifest.json": "035adfa384a2c1d11aafa506982dfa8251e650a0cc2b87dab5a43a2e140e9b4c"
+    "build.py": "7cf1482297f1f49c43f5a7c167651cac6acda3009760e3685f1e3983f2143ea6",
+    "media/manifest.json": "31c113e71e0d3e4aec80ce9fae5dab729146c6d471e7a7de17b9efb7f36580ff"
   },
-  "outputSha256": "f3895ad7845738fd681b862f4501c68078889b8870137e76c488a007f7b5d2f4",
+  "outputSha256": "401ed0012f54bad25b6cb76433b315b6d79f43f0233d6b9547a5b21a7f2c7cef",
   "outputBytes": 12265810,
   "files": [
     {

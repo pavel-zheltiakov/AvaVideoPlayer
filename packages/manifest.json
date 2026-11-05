@@ -1,13 +1,13 @@
 {
-  "version": "0.1.0-preview.1",
+  "version": "0.1.0-preview.2",
   "distribution": "One AvaVideoPlayer NuGet package. Internal modules remain separate assemblies.",
   "packages": [
     {
       "id": "AvaVideoPlayer",
-      "version": "0.1.0-preview.1",
-      "file": "AvaVideoPlayer.0.1.0-preview.1.nupkg",
-      "bytes": 165400163,
-      "sha256": "305acf5f7d39ef8fb35b621e34fe82840c4186dc2a15c90d41c359a5516ac6f6",
+      "version": "0.1.0-preview.2",
+      "file": "AvaVideoPlayer.0.1.0-preview.2.nupkg",
+      "bytes": 165400312,
+      "sha256": "830c01a1598afba81b554059e603626ba84ffd5d49cdd514eea8051af0be1ee6",
       "payloadUnchanged": true,
       "managedModules": [
         "AvaVideoPlayer",
@@ -27,7 +27,7 @@
         "linux-arm64"
       ],
       "correspondingSources": "Deduplicated archives with exact per-RID reconstruction index.",
-      "url": "https://github.com/pavel-zheltiakov/AvaVideoPlayer/releases/download/v0.1.0-preview.1/AvaVideoPlayer.0.1.0-preview.1.nupkg"
+      "url": "https://github.com/pavel-zheltiakov/AvaVideoPlayer/releases/download/v0.1.0-preview.2/AvaVideoPlayer.0.1.0-preview.2.nupkg"
     }
   ]
 }

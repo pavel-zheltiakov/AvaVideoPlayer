@@ -14,6 +14,6 @@ internal static class Program
         // JSHost imports resolve relative paths against the runtime in _framework/.
         // Use the document base so subdirectory deployments resolve the public asset.
         await BrowserVideoBackend.RegisterAsync(new Uri(BrowserDemoApp.BaseUri, "avavideo.js").AbsoluteUri);
-        await AppBuilder.Configure<BrowserDemoApp>().StartBrowserAppAsync("out");
+        await AppBuilder.Configure<BrowserDemoApp>().WithInterFont().StartBrowserAppAsync("out");
     }
 }

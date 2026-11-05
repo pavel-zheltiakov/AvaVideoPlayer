@@ -1,0 +1,42 @@
+<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Style Selector="Button.room">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="Foreground" Value="#dbe5dd" />
+    <Setter Property="BorderBrush" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="CornerRadius" Value="7" />
+    <Setter Property="Padding" Value="7" />
+    <Setter Property="MinHeight" Value="32" />
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}" Padding="{TemplateBinding Padding}">
+          <ContentPresenter Content="{TemplateBinding Content}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="Center" />
+        </Border>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+  <Style Selector="Button.room:pointerover"><Setter Property="Background" Value="#ffffff17" /></Style>
+  <Style Selector="Button.room:pressed"><Setter Property="Background" Value="#ffffff28" /></Style>
+  <Style Selector="Button.room:focus-visible"><Setter Property="BorderBrush" Value="#d9ef81" /></Style>
+  <Style Selector="Button.room:disabled"><Setter Property="Opacity" Value="0.45" /></Style>
+  <Style Selector="Button.catalog"><Setter Property="Foreground" Value="#172e2b" /><Setter Property="Padding" Value="9" /><Setter Property="HorizontalContentAlignment" Value="Stretch" /></Style>
+  <Style Selector="Button.catalog:pointerover"><Setter Property="Background" Value="#e9ece2" /></Style>
+  <Style Selector="Button.catalog.selected"><Setter Property="Background" Value="#e6eade" /><Setter Property="BorderBrush" Value="#d5ddcb" /></Style>
+  <Style Selector="Button.outline"><Setter Property="Foreground" Value="#526b5c" /><Setter Property="BorderBrush" Value="#cbd4c7" /><Setter Property="Padding" Value="10,7" /></Style>
+  <Style Selector="Button.outline:pointerover"><Setter Property="Background" Value="#e4e8dc" /></Style>
+  <Style Selector="ComboBox.room"><Setter Property="Background" Value="Transparent" /><Setter Property="Foreground" Value="#dbe5dd" /><Setter Property="BorderBrush" Value="#ffffff20" /><Setter Property="FontSize" Value="11" /><Setter Property="MinHeight" Value="30" /><Setter Property="Padding" Value="8,3" /><Setter Property="CornerRadius" Value="6" /></Style>
+  <Style Selector="Slider.room">
+    <Setter Property="MinHeight" Value="20" />
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Grid MinHeight="20">
+          <Track Name="PART_Track" Minimum="{TemplateBinding Minimum}" Maximum="{TemplateBinding Maximum}" Value="{TemplateBinding Value, Mode=TwoWay}" Orientation="Horizontal">
+            <Track.DecreaseButton><RepeatButton Background="#d9ef81" Height="3" VerticalAlignment="Center" Focusable="False"><RepeatButton.Template><ControlTemplate><Border Background="{TemplateBinding Background}" CornerRadius="2" /></ControlTemplate></RepeatButton.Template></RepeatButton></Track.DecreaseButton>
+            <Track.IncreaseButton><RepeatButton Background="#ffffff36" Height="3" VerticalAlignment="Center" Focusable="False"><RepeatButton.Template><ControlTemplate><Border Background="{TemplateBinding Background}" CornerRadius="2" /></ControlTemplate></RepeatButton.Template></RepeatButton></Track.IncreaseButton>
+            <Track.Thumb><Thumb Width="9" Height="9" VerticalAlignment="Center"><Thumb.Template><ControlTemplate><Ellipse Fill="#d9ef81" /></ControlTemplate></Thumb.Template></Thumb></Track.Thumb>
+          </Track>
+        </Grid>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+</Styles>

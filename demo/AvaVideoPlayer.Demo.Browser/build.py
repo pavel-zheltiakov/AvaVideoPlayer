@@ -3,7 +3,7 @@
 import base64,hashlib,json,re,zipfile
 from pathlib import Path
 HERE=Path(__file__).resolve().parent
-PACKAGE=HERE.parents[1]/'packages/AvaVideoPlayer.0.1.0-preview.1.nupkg'
+PACKAGE=HERE.parents[1]/'packages/AvaVideoPlayer.0.1.0-preview.2.nupkg'
 with zipfile.ZipFile(PACKAGE) as archive: productionBytes=archive.read('browser/avavideo.js')
 manifest=json.loads((HERE/'media/manifest.json').read_text())
 assets={}

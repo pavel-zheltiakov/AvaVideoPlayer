@@ -7,5 +7,5 @@
   <ItemGroup>
     <ProjectReference Include="../AvaVideoPlayer.Sample/AvaVideoPlayer.Sample.csproj" />
     <PackageReference Include="Avalonia.Desktop" Version="$(AvaloniaVersion)" />
-  <PackageReference Include="AvaVideoPlayer" Version="0.1.0-preview.1" /></ItemGroup>
+  <PackageReference Include="AvaVideoPlayer" Version="0.1.0-preview.2" /></ItemGroup>
 </Project>

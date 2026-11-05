@@ -3,5 +3,5 @@
   <ItemGroup>
     <ProjectReference Include="../AvaVideoPlayer.Sample/AvaVideoPlayer.Sample.csproj" />
     <Content Update="wwwroot/**" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
-  <PackageReference Include="AvaVideoPlayer" Version="0.1.0-preview.1" /><PackageReference Include="Avalonia.Browser" Version="$(AvaloniaVersion)" /></ItemGroup>
+  <PackageReference Include="Avalonia.Fonts.Inter" Version="$(AvaloniaVersion)" /><AvaloniaResource Include="Assets/**" /><PackageReference Include="AvaVideoPlayer" Version="0.1.0-preview.2" /><PackageReference Include="Avalonia.Browser" Version="$(AvaloniaVersion)" /></ItemGroup>
 </Project>
