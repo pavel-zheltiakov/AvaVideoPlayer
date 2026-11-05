@@ -1,0 +1,3 @@
+# One reviewed release package
+
+`manifest.json` identifies the single AvaVideoPlayer NuGet by its exact SHA-256. The publishing workflow reuses the unchanged native/source payload from the existing preview.1 GitHub release and applies `release.delta`, which contains only changed packaged bytes. `assemble-release.py` verifies the base, delta and final package hashes. No private managed implementation source or publishing credential is included. This avoids committing the 158 MiB package to Git. The complete .nupkg is uploaded as a GitHub release asset and published to NuGet through OIDC trusted publishing.

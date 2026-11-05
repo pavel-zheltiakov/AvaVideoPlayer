@@ -182,7 +182,7 @@ public sealed class ScreeningRoom : UserControl, IAsyncDisposable
         if (_lastMuted != snapshot.IsMuted) { _mute.Content = Icon(snapshot.IsMuted ? "Muted" : "Volume"); _lastMuted = snapshot.IsMuted; }
         _seek.Maximum = Math.Max(1, snapshot.Duration.TotalSeconds); if (!_scrubbing) _seek.Value = Math.Clamp(snapshot.Position.TotalSeconds, 0, _seek.Maximum);
         _time.Text = $"{Time(snapshot.Position)} / {Time(snapshot.Duration)}";
-        _status.Text = _isLoading ? "Preparing video…" : snapshot.State == PlaybackState.Buffering ? "Buffering…" : Player.IsSpherical ? "360° · Drag to look around · Scroll to zoom" : "Flat video";
+        _status.Text = _isLoading ? "Preparing video…" : snapshot.State == PlaybackState.Buffering ? "Buffering…" : Player.IsSpherical ? "360° · Click to look around · Double-click / Esc to release" : "Flat video";
         _updating = false;
         if (!_isLoading && _loop && snapshot.State == PlaybackState.Ended) _ = Run(async () => { await Player.SeekAsync(TimeSpan.Zero); await Player.PlayAsync(); });
         if (_host.DiagnosticsEnabled) _diagnostic.Text = _host.DiagnosticSummary();

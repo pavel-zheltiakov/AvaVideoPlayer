@@ -1,0 +1,75 @@
+{
+  "baseVersion": "0.1.0-preview.1",
+  "baseFile": "AvaVideoPlayer.0.1.0-preview.1.nupkg",
+  "baseSha256": "305acf5f7d39ef8fb35b621e34fe82840c4186dc2a15c90d41c359a5516ac6f6",
+  "file": "AvaVideoPlayer.0.1.0-preview.2.nupkg",
+  "sha256": "d13e43022ba16dbb0a36d3e3785ce3b0a8325991e7e1eed9747a45aa46a7bd1f",
+  "deltaSha256": "2d51df23a89df8eb5fe781127f752db1f11b0eb268a3f275c62c681d2940ecf8",
+  "segments": [
+    [
+      "delta",
+      0,
+      531
+    ],
+    [
+      "base",
+      511,
+      3594
+    ],
+    [
+      "delta",
+      531,
+      772
+    ],
+    [
+      "base",
+      4876,
+      487
+    ],
+    [
+      "delta",
+      1303,
+      6311
+    ],
+    [
+      "base",
+      10753,
+      109798189
+    ],
+    [
+      "delta",
+      7614,
+      10824
+    ],
+    [
+      "base",
+      109819698,
+      53624
+    ],
+    [
+      "delta",
+      18438,
+      33409
+    ],
+    [
+      "base",
+      109905628,
+      104882
+    ],
+    [
+      "delta",
+      51847,
+      34895
+    ],
+    [
+      "base",
+      110044301,
+      55323559
+    ],
+    [
+      "delta",
+      86742,
+      32303
+    ]
+  ]
+}

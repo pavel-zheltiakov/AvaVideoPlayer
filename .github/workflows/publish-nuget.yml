@@ -1,61 +1,118 @@
 name: Publish AvaVideoPlayer to NuGet
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - packages/manifest.json
+      - packages/release-recipe.json
+      - packages/release.delta
+      - packages/assemble-release.py
+      - .github/workflows/publish-nuget.yml
   workflow_dispatch:
     inputs:
       version:
-        description: Existing GitHub preview release version (without v)
+        description: Reviewed package version (without v)
         required: true
         default: 0.1.0-preview.2
         type: string
 
 permissions:
   contents: read
-  id-token: write
+
+concurrency:
+  group: publish-nuget
+  cancel-in-progress: false
 
 jobs:
-  publish:
+  release:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    outputs:
+      version: ${{ steps.package.outputs.version }}
     steps:
       - uses: actions/checkout@v5
-      - uses: actions/setup-dotnet@v5
-        with:
-          dotnet-version: 10.0.x
-      - name: Download the single reviewed release package
+      - name: Validate the reviewed release identity
+        id: package
+        env:
+          REQUESTED_VERSION: ${{ inputs.version }}
+        run: |
+          python3 - <<'PY'
+          import json,os,re
+          from pathlib import Path
+          manifest=json.loads(Path('packages/manifest.json').read_text())
+          version=manifest['version']
+          assert re.fullmatch(r'\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?',version)
+          assert not os.environ['REQUESTED_VERSION'] or os.environ['REQUESTED_VERSION']==version
+          assert len(manifest['packages'])==1 and manifest['packages'][0]['id']=='AvaVideoPlayer'
+          with open(os.environ['GITHUB_OUTPUT'],'a') as output:output.write(f'version={version}\n')
+          PY
+      - name: Reconstruct the exact reviewed package
         env:
           GH_TOKEN: ${{ github.token }}
-          RELEASE_VERSION: ${{ inputs.version }}
         run: |
-          python3 - <<'PY'
-          import os,re
-          version=os.environ['RELEASE_VERSION']
-          if not re.fullmatch(r'\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?',version):
-              raise SystemExit('Invalid release version')
-          PY
-          mkdir -p release-package
-          gh release download "v$RELEASE_VERSION" --repo "$GITHUB_REPOSITORY" --pattern "AvaVideoPlayer.$RELEASE_VERSION.nupkg" --pattern SHA256SUMS --dir release-package
-          cd release-package
-          sha256sum --check --ignore-missing SHA256SUMS
-      - name: Verify package identity and exact reviewed hash
+          mkdir -p base-package
+          gh release download v0.1.0-preview.1 --repo "$GITHUB_REPOSITORY" --pattern AvaVideoPlayer.0.1.0-preview.1.nupkg --dir base-package
+          python3 packages/assemble-release.py base-package/AvaVideoPlayer.0.1.0-preview.1.nupkg release-package
+      - name: Verify NuGet metadata before publishing
         env:
-          RELEASE_VERSION: ${{ inputs.version }}
+          RELEASE_VERSION: ${{ steps.package.outputs.version }}
         run: |
           python3 - <<'PY'
-          import hashlib,json,os,zipfile,xml.etree.ElementTree as ET
+          import os,zipfile,xml.etree.ElementTree as ET
           from pathlib import Path
           version=os.environ['RELEASE_VERSION']
-          package=Path('release-package')/f'AvaVideoPlayer.{version}.nupkg'
-          manifest=json.loads(Path('packages/manifest.json').read_text())
-          assert len(manifest['packages'])==1
-          expected=manifest['packages'][0]
-          assert expected['id']=='AvaVideoPlayer' and expected['version']==version
-          assert hashlib.sha256(package.read_bytes()).hexdigest()==expected['sha256']
-          with zipfile.ZipFile(package) as z:
+          with zipfile.ZipFile(Path('release-package')/f'AvaVideoPlayer.{version}.nupkg') as z:
               spec=ET.fromstring(z.read('AvaVideoPlayer.nuspec'))
               fields={e.tag.split('}')[-1]:e.text for e in spec.iter()}
               assert fields['id']=='AvaVideoPlayer' and fields['version']==version
+              assert fields['licenseUrl']=='https://aka.ms/deprecateLicenseUrl'
+              assert fields['license'] in z.namelist()
               assert not any(e.get('id','').startswith('AvaVideoPlayer') for e in spec.iter() if e.tag.endswith('dependency'))
           PY
+      - name: Create release and upload without replacing existing assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_VERSION: ${{ steps.package.outputs.version }}
+        run: |
+          python3 - <<'PY'
+          import hashlib,json,os,subprocess,tempfile
+          from pathlib import Path
+          repo=os.environ['GITHUB_REPOSITORY'];version=os.environ['RELEASE_VERSION'];tag='v'+version
+          listing=json.loads(subprocess.check_output(['gh','api',f'repos/{repo}/releases','--paginate','--slurp']))
+          release=next((r for page in listing for r in page if r['tag_name']==tag),None)
+          if release is None:
+              subprocess.run(['gh','release','create',tag,'--repo',repo,'--target',os.environ['GITHUB_SHA'],'--prerelease','--title','AvaVideoPlayer '+version,'--notes','One package for desktop and browser. Shared Avalonia demo, 360° capture prompt, double-click/Escape to release orbit, and corrected NuGet license metadata.'],check=True)
+          existing={a['name'] for a in (release or {}).get('assets',[])}
+          for asset in Path('release-package').iterdir():
+              if asset.name in existing:
+                  with tempfile.TemporaryDirectory() as temp:
+                      subprocess.run(['gh','release','download',tag,'--repo',repo,'--pattern',asset.name,'--dir',temp],check=True)
+                      assert hashlib.sha256((Path(temp)/asset.name).read_bytes()).digest()==hashlib.sha256(asset.read_bytes()).digest(),'Existing asset differs; nothing was replaced'
+              else:subprocess.run(['gh','release','upload',tag,str(asset),'--repo',repo],check=True)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: reviewed-nuget
+          path: release-package/*
+          retention-days: 7
+  publish:
+    needs: release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: 10.0.x
+      - uses: actions/download-artifact@v4
+        with:
+          name: reviewed-nuget
+          path: release-package
+      - name: Verify transferred package checksum
+        run: cd release-package && sha256sum --check SHA256SUMS
       - name: NuGet login with trusted publishing
         uses: NuGet/login@v1
         id: login
@@ -64,5 +121,5 @@ jobs:
       - name: Publish the single package
         env:
           NUGET_API_KEY: ${{ steps.login.outputs.NUGET_API_KEY }}
-          RELEASE_VERSION: ${{ inputs.version }}
+          RELEASE_VERSION: ${{ needs.release.outputs.version }}
         run: dotnet nuget push "release-package/AvaVideoPlayer.$RELEASE_VERSION.nupkg" --api-key "$NUGET_API_KEY" --source https://api.nuget.org/v3/index.json --skip-duplicate

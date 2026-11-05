@@ -6,8 +6,8 @@
       "id": "AvaVideoPlayer",
       "version": "0.1.0-preview.2",
       "file": "AvaVideoPlayer.0.1.0-preview.2.nupkg",
-      "bytes": 165400312,
-      "sha256": "830c01a1598afba81b554059e603626ba84ffd5d49cdd514eea8051af0be1ee6",
+      "bytes": 165403380,
+      "sha256": "d13e43022ba16dbb0a36d3e3785ce3b0a8325991e7e1eed9747a45aa46a7bd1f",
       "payloadUnchanged": true,
       "managedModules": [
         "AvaVideoPlayer",
