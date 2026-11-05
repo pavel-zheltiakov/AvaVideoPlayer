@@ -4,26 +4,36 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Layout;
 using Avalonia.Media;
 using Avalonia.Styling;
-using Avalonia.Themes.Fluent;
+using Avalonia.Markup.Xaml;
 
 namespace AvaVideoPlayer.Sample;
 
-public sealed class App : Application
+public sealed partial class App : Application
 {
+    public static ScreeningRoomHost? DemoHost { get; set; }
     public static Uri? StartupSource { get; set; }
     public static bool Startup360 { get; set; }
-    public override void Initialize() { Styles.Add(new FluentTheme()); RequestedThemeVariant = ThemeVariant.Dark; }
+    public override void Initialize()
+    {
+        AvaloniaXamlLoader.Load(this);
+        RequestedThemeVariant = DemoHost is null ? ThemeVariant.Dark : ThemeVariant.Light;
+    }
     public override void OnFrameworkInitializationCompleted()
     {
-        var view = new SampleView();
+        UserControl view = DemoHost is { } host ? new ScreeningRoom(host) : new SampleView();
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            var window = new Window { Title = "Ava Video Player", Width = 1180, Height = 800, MinWidth = 500, MinHeight = 560, Content = view };
-            window.Closed += async (_, _) => await view.Player.DisposeAsync();
+            var window = new Window { Title = "AvaVideoPlayer · Screening room", Width = 1380, Height = 900, MinWidth = 620, MinHeight = 620, Content = view };
+            window.Closed += async (_, _) =>
+            {
+                if (view is ScreeningRoom room) await room.DisposeAsync();
+                else if (view is SampleView sample) await sample.Player.DisposeAsync();
+            };
             desktop.MainWindow = window;
         }
         else if (ApplicationLifetime is ISingleViewApplicationLifetime single) single.MainView = view;
         base.OnFrameworkInitializationCompleted();
+        DemoHost?.Ready();
     }
 }
 

@@ -1,33 +1,17 @@
-# Avalonia WebAssembly screening room
+# Browser host for the shared Avalonia app
 
-This is a full Avalonia application. `BrowserDemoApp.cs` composes the packaged
-`VideoPlayer` control with Avalonia buttons, sliders, ComboBoxes and a catalog.
-The browser backend embeds its media surface through NativeControlHost; .NET
-JavaScript interop sends playback commands to HTMLMediaElement and WebGL.
-Browser codec decoding and sound are provided by the browser.
+This entry point registers BrowserVideoBackend and supplies browser services to
+`AvaVideoPlayer.Sample.App`. The player UI, catalog, interaction logic and XAML
+theme are in ../AvaVideoPlayer.Sample, shared with the desktop host.
 
-The project consumes the single AvaVideoPlayer NuGet; no private source is needed.
-Download the preview package into ../../packages, then run from this directory:
+Publish with `dotnet publish -c Release` and serve the generated
+bin/Release/net10.0-browser/publish/wwwroot over HTTP(S). The four bundled media
+variants are included automatically. Double-clicking index.html cannot run WASM.
 
-```sh
-dotnet publish -c Release
-```
+The browser DOM contains Avalonia's canvas for all UI controls plus NativeControlHost's
+bounded video/WebGL surface. HTMLMediaElement provides media decoding and sound;
+it does not implement the buttons or catalog. The standalone JavaScript demo is
+only a separate backend test harness and a visual reference.
 
-Serve `bin/Release/net10.0-browser/publish/wwwroot` over HTTP(S). WebAssembly
-modules cannot be launched by double-clicking an HTML file. For the supplied
-catalog, copy the four video files from ../AvaVideoPlayer.Demo.Browser/media into
-that output's media/ directory. The site builder does this automatically.
-
-Click Play to start audible playback. The main website embeds this application.
-The separate JavaScript-only demo is a backend test harness.
-See ../AvaVideoPlayer.Demo.Browser/CREDITS.md for footage attribution and licenses.
-
-The screening-room chrome matches the standalone HTML demo with bundled Inter,
-thumbnail catalog and a compact green/lime player. The small bundled recordings
-are fully downloaded into cached Blob URLs before playback. This is a demo policy;
-the library still supports direct HTTP(S) streaming for consuming applications.
-
-Append `?checks=1&autocheck=1` to the website URL for a two-clip, muted playback
-diagnostic. It runs each recording for 20 seconds, loops when needed and downloads
-a JSON report with preload timings, media events, frame gaps and long tasks.
-The normal URL contains no diagnostic UI. See Assets/Inter-OFL.txt for font licensing.
+The small demo fixtures preload into Blob URLs. Append ?checks=1&autocheck=1 to
+the website URL for an explicit two-recording muted playback diagnostic report.

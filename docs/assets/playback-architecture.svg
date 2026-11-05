@@ -1,25 +1,52 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="870" viewBox="0 0 1200 870" role="img" aria-labelledby="title desc">
-<title id="title">How AvaVideoPlayer works</title><desc id="desc">The VideoPlayer API selects a browser backend using HTMLMediaElement and WebGL, or a desktop playback engine using the native FFmpeg bridge. Desktop output reaches Avalonia or Skia video presentation and operating-system audio APIs.</desc>
-<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="m0 0 10 5-10 5" fill="#78946c"/></marker><style>text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;fill:#20251f}.label{font-size:17px;font-weight:650}.small{font-size:13px;fill:#697066}.micro{font-size:11px;fill:#697066}.box{fill:#fff;stroke:#d9e2d3;stroke-width:1.5}.line{fill:none;stroke:#78946c;stroke-width:2;marker-end:url(#arrow)}.eyebrow{font-size:11px;letter-spacing:2px;fill:#527747;font-weight:650}</style></defs>
-<rect width="1200" height="870" rx="22" fill="#f4f6f1"/>
-<text x="42" y="46" class="eyebrow">ONE API · TWO PLAYBACK PATHS</text><text x="42" y="83" font-size="30" font-weight="650">From a play command to pixels and sound.</text>
-<rect class="box" x="300" y="114" width="600" height="86" rx="13"/><text class="label" x="600" y="146" text-anchor="middle">Avalonia app → VideoPlayer / IVideoBackend</text><text class="small" x="600" y="173" text-anchor="middle">Open · Play · Pause · Seek · Volume · Tracks · 360° camera</text>
-<path class="line" d="M480 201v27H290v28"/><path class="line" d="M720 201v27h190v28"/>
-<rect class="box" x="42" y="260" width="492" height="81" rx="12"/><text class="eyebrow" x="65" y="283">BROWSER · AVALONIA + .NET WASM</text><text class="label" x="65" y="312">NativeControlHost → .NET / JS interop</text>
-<rect class="box" x="666" y="260" width="492" height="81" rx="12"/><text class="eyebrow" x="689" y="283">DESKTOP</text><text class="label" x="689" y="312">FFmpegVideoBackend + PlaybackEngine</text>
-<path class="line" d="M288 342v25"/><path class="line" d="M912 342v25"/>
-<rect class="box" x="42" y="373" width="492" height="105" rx="12"/><text class="label" x="65" y="405">HTMLMediaElement</text><text class="small" x="65" y="432">BrowserVideoBackend + avavideo.js → browser decoding</text><text class="small" x="65" y="455">File / Blob URLs · browser codec support · CORS</text>
-<rect class="box" x="666" y="373" width="492" height="105" rx="12"/><text class="label" x="689" y="405">Clock, bounded queues and native FFmpeg</text><text class="small" x="689" y="432">.NET interop → avavideo C ABI → libavformat / libavcodec</text><text class="small" x="689" y="455">libswscale · libswresample · libavfilter · libass subtitles</text>
-<path class="line" d="M184 479v28H164v25"/><path class="line" d="M392 479v28h20v25"/>
-<path class="line" d="M800 479v28h-25v25"/><path class="line" d="M1025 479v28h18v25"/>
-<rect class="box" x="42" y="538" width="238" height="102" rx="12"/><text class="label" x="63" y="570">Browser video</text><text class="small" x="63" y="595">Flat: native video element</text><text class="small" x="63" y="618">360°: WebGL video texture</text>
-<rect class="box" x="298" y="538" width="236" height="102" rx="12"/><text class="label" x="318" y="570">Browser audio</text><text class="small" x="318" y="595">Media element output</text><text class="small" x="318" y="618">Web Audio for demo checks</text>
-<rect class="box" x="666" y="538" width="236" height="102" rx="12"/><text class="label" x="688" y="570">Decoded video</text><text class="small" x="688" y="595">BGRA → Avalonia presenter</text><text class="small" x="688" y="618">Optional Skia presenter</text>
-<rect class="box" x="920" y="538" width="238" height="102" rx="12"/><text class="label" x="941" y="570">Decoded audio</text><text class="small" x="941" y="595">PCM → NativeAudioOutput</text><text class="small" x="941" y="618">Device clock and buffering</text>
-<path class="line" d="M1040 641v26"/>
-<rect x="42" y="680" width="1116" height="140" rx="13" fill="#eaf1e4" stroke="#d1ddc8"/>
-<text class="eyebrow" x="66" y="707">SYSTEM APIS UNDER DESKTOP AUDIO OUTPUT</text>
-<text class="label" x="66" y="741">macOS ARM64</text><text class="small" x="66" y="769">Core Audio / AudioToolbox</text><text class="micro" x="66" y="792">AudioQueueNewOutput · AudioQueueEnqueueBuffer</text>
-<text class="label" x="452" y="741">Windows x64 / ARM64</text><text class="small" x="452" y="769">WASAPI (shared, event driven)</text><text class="micro" x="452" y="792">IAudioClient · IAudioRenderClient · IAudioClock</text>
-<text class="label" x="862" y="741">Linux x64 / ARM64</text><text class="small" x="862" y="769">PulseAudio / ALSA fallback</text><text class="micro" x="862" y="792">libpulse · snd_pcm_* · PipeWire Pulse compatibility</text>
-<text class="micro" x="42" y="846">Architecture describes the implemented paths. Hardware/device execution coverage is documented separately.</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1050" viewBox="0 0 1200 1050" role="img" aria-labelledby="title desc">
+<title id="title">One Avalonia application, desktop and browser hosts</title><desc id="desc">The shared App, ScreeningRoom, Avalonia controls and XAML control templates run on desktop and in browser WebAssembly. VideoPlayer selects a backend. Browser HTMLMediaElement and WebGL are only the embedded video surface, while Avalonia draws the buttons and catalog. Desktop uses the FFmpeg engine and system audio APIs.</desc>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="m0 0 10 5-10 5" fill="#78946c"/></marker><style>text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;fill:#20251f}.h{font-size:19px;font-weight:650}.s{font-size:14px;fill:#697066}.micro{font-size:12px;fill:#697066}.tag{font-size:11px;letter-spacing:1.6px;fill:#527747;font-weight:650}.box{fill:#fff;stroke:#d9e2d3;stroke-width:1.5}.line{fill:none;stroke:#78946c;stroke-width:2;marker-end:url(#a)}</style></defs>
+<rect width="1200" height="1050" rx="22" fill="#f4f6f1"/>
+<text x="42" y="44" class="tag">ONE SHARED AVALONIA APPLICATION · TWO PLATFORM HOSTS</text>
+<text x="42" y="84" font-size="29" font-weight="650">The same UI, theme and playback logic.</text>
+<rect x="42" y="114" width="1116" height="158" rx="14" fill="#eaf1e4" stroke="#cbdac0"/>
+<text x="66" y="144" class="tag">SHARED PROJECT · AvaVideoPlayer.Sample</text>
+<text x="66" y="177" class="h">App + ScreeningRoom + VideoPlayer (Avalonia UserControl)</text>
+<text x="66" y="207" class="s">Avalonia Grid · Button · Slider · ComboBox · Image catalog · same event handlers and commands</text>
+<text x="66" y="235" class="s">App.axaml + ScreeningRoomTheme.axaml: Avalonia control templates styled like the HTML reference</text>
+<text x="66" y="255" class="micro">No separate browser UI implementation. Platform hosts only supply backend registration, media URLs and optional diagnostics.</text>
+<path class="line" d="M600 273v29"/>
+<rect class="box" x="300" y="310" width="600" height="77" rx="12"/>
+<text x="600" y="340" text-anchor="middle" class="h">VideoPlayer → IVideoBackend</text>
+<text x="600" y="365" text-anchor="middle" class="s">Open · Play · Pause · Seek · Volume · Tracks · 360° camera</text>
+<path class="line" d="M450 388v26H290v26"/><path class="line" d="M750 388v26h160v26"/>
+<rect class="box" x="42" y="447" width="500" height="112" rx="12"/>
+<text x="66" y="474" class="tag">BROWSER HOST · .NET WEBASSEMBLY + AVALONIA</text>
+<text x="66" y="504" class="h">Same Avalonia controls → Avalonia UI canvas</text>
+<text x="66" y="532" class="s">BrowserVideoBackend → NativeControlHost video viewport</text>
+<rect class="box" x="658" y="447" width="500" height="112" rx="12"/>
+<text x="682" y="474" class="tag">DESKTOP HOST · .NET + AVALONIA</text>
+<text x="682" y="504" class="h">Same Avalonia controls → desktop window</text>
+<text x="682" y="532" class="s">FFmpegVideoBackend → PlaybackEngine</text>
+<path class="line" d="M292 560v28"/><path class="line" d="M908 560v28"/>
+<rect class="box" x="42" y="594" width="500" height="148" rx="12"/>
+<text x="66" y="625" class="h">Embedded media surface only</text>
+<text x="66" y="654" class="s">.NET / JS interop → avavideo.js → HTMLMediaElement</text>
+<text x="66" y="680" class="s">Browser codec decoding, seeking and sound output</text>
+<text x="66" y="706" class="s">Flat: video element · 360°: WebGL video texture</text>
+<text x="66" y="728" class="micro">DevTools shows this native media host; the buttons are on the Avalonia canvas.</text>
+<rect class="box" x="658" y="594" width="500" height="148" rx="12"/>
+<text x="682" y="625" class="h">Native media engine</text>
+<text x="682" y="654" class="s">Clock + bounded queues → avavideo C ABI → FFmpeg</text>
+<text x="682" y="680" class="s">libavformat / libavcodec · swscale / swresample · libass</text>
+<text x="682" y="706" class="s">Video → Avalonia / Skia presenter · PCM → system audio</text>
+<text x="682" y="728" class="micro">No HTML video element in the desktop playback path.</text>
+<rect x="42" y="774" width="500" height="195" rx="13" fill="#eaf1e4" stroke="#d1ddc8"/>
+<text x="66" y="805" class="tag">BROWSER DOM: TWO DIFFERENT CANVASES</text>
+<text x="66" y="838" class="h">Avalonia canvas</text><text x="66" y="863" class="s">Buttons, sliders, selectors, catalog and text</text>
+<text x="66" y="903" class="h">Native media host: video + WebGL canvas</text><text x="66" y="928" class="s">Only video pixels inside the player’s layout bounds</text>
+<text x="66" y="951" class="micro">HTMLMediaElement is a decoder/output backend, not an HTML player UI.</text>
+<path class="line" d="M908 743v24"/>
+<rect x="658" y="774" width="500" height="195" rx="13" fill="#eaf1e4" stroke="#d1ddc8"/>
+<text x="682" y="805" class="tag">DESKTOP SYSTEM AUDIO APIS</text>
+<text x="682" y="838" class="h">macOS · Core Audio / AudioToolbox</text><text x="682" y="861" class="micro">AudioQueueNewOutput · AudioQueueEnqueueBuffer</text>
+<text x="682" y="896" class="h">Windows · WASAPI</text><text x="682" y="919" class="micro">IAudioClient · IAudioRenderClient · IAudioClock</text>
+<text x="682" y="950" class="s">Linux · PulseAudio / ALSA · PipeWire Pulse compatibility</text>
+<text x="42" y="1008" class="micro">One public AvaVideoPlayer NuGet. The shared demo references it; owned library implementation stays in the private development repository.</text>
+<text x="42" y="1030" class="micro">Architecture shows implemented paths. Browser and desktop execution evidence are documented separately.</text>
+</svg>

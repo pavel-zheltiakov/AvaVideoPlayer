@@ -1,35 +1,20 @@
-using System.Runtime.InteropServices.JavaScript;
 using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Controls.Primitives;
 using Avalonia.Layout;
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
-using Avalonia.Styling;
-using Avalonia.Themes.Fluent;
-using Avalonia.Markup.Xaml;
 using Avalonia.Threading;
 using AvaVideoPlayer;
 
-namespace AvaVideoPlayer.Sample.Browser;
-
-public sealed partial class BrowserDemoApp : Application
-{
-    public static Uri BaseUri { get; set; } = null!;
-    public override void Initialize() => AvaloniaXamlLoader.Load(this);
-    public override void OnFrameworkInitializationCompleted()
-    {
-        if (ApplicationLifetime is ISingleViewApplicationLifetime single) single.MainView = new ScreeningRoom();
-        base.OnFrameworkInitializationCompleted();
-        BrowserDemoInterop.Ready();
-    }
-}
+namespace AvaVideoPlayer.Sample;
 
 // The entire application chrome is Avalonia. Only the media surface belongs to the browser.
-public sealed class ScreeningRoom : UserControl
+public sealed class ScreeningRoom : UserControl, IAsyncDisposable
 {
+    private readonly ScreeningRoomHost _host;
+    private bool _started;
     private sealed record Recording(string Name, string Place, string Poster, string[] Files, string[] Formats);
     private readonly Recording[] _recordings = [
         new("The waterfall", "Northern Ireland", "waterfall.jpg", ["waterfall-360.mp4", "waterfall-360.mov"], ["MP4", "MOV"]),
@@ -59,8 +44,9 @@ public sealed class ScreeningRoom : UserControl
     private bool? _lastPlaying, _lastMuted;
     private readonly DispatcherTimer _clock;
 
-    public ScreeningRoom()
+    public ScreeningRoom(ScreeningRoomHost host)
     {
+        _host = host;
         Background = Brush("#f3f2ed"); FontFamily = new FontFamily("avares://Avalonia.Fonts.Inter/Assets#Inter");
         var stage = new StackPanel { Spacing = 0 };
         _videoFrame = new Border { Background = Brush("#0c1714"), Child = Player, ClipToBounds = true };
@@ -101,7 +87,7 @@ public sealed class ScreeningRoom : UserControl
         {
             var index = i; var clip = _recordings[i];
             var row = new Grid { ColumnDefinitions = new("100,*"), ColumnSpacing = 12 };
-            using var stream = AssetLoader.Open(new Uri("avares://AvaVideoPlayer.Sample.Browser/Assets/" + clip.Poster));
+            using var stream = AssetLoader.Open(new Uri("avares://AvaVideoPlayer.Sample/Assets/" + clip.Poster));
             row.Children.Add(new Border { Width = 100, Height = 64, CornerRadius = new CornerRadius(5), ClipToBounds = true, Child = new Image { Source = new Bitmap(stream), Stretch = Stretch.UniformToFill } });
             var copy = new StackPanel { Spacing = 5, VerticalAlignment = VerticalAlignment.Center };
             copy.Children.Add(Text("360° · " + string.Join(" / ", clip.Formats), 8, "#6d8368"));
@@ -111,11 +97,11 @@ public sealed class ScreeningRoom : UserControl
         }
         var credits = Text("Ess-Na-Crub Waterfall — Bernard Ladenthin · CC BY 4.0\nEsino Lario 360 — Jan Ainali · CC BY-SA 4.0\nWikimedia Commons. Transcoded, scaled & sound normalized. Village derivatives remain CC BY-SA 4.0.", 10, "#718576"); credits.TextWrapping = TextWrapping.Wrap; credits.LineHeight = 18; _credits.Children.Add(credits);
         foreach (var (label, url) in new[] { ("Waterfall source ↗", "https://commons.wikimedia.org/wiki/File:20180407_132600_Ess-Na-Crub_Waterfall.webm"), ("Village source ↗", "https://commons.wikimedia.org/wiki/File:Esino_Lario_360.webm") })
-        { var link = RoomButton("", label, label); link.Classes.Add("outline"); link.Click += (_, _) => BrowserDemoInterop.OpenLink(url); _credits.Children.Add(link); }
+        { var link = RoomButton("", label, label); link.Classes.Add("outline"); link.Click += (_, _) => _host.OpenLink(new Uri(url)); _credits.Children.Add(link); }
         library.Children.Add(_credits);
-        if (BrowserDemoInterop.ChecksEnabled())
+        if (_host.DiagnosticsEnabled)
         {
-            var save = RoomButton("", "Save playback diagnostic report", "Save playback report"); save.Classes.Add("outline"); save.Click += (_, _) => BrowserDemoInterop.SaveReport(); library.Children.Add(save); library.Children.Add(_diagnostic);
+            var save = RoomButton("", "Save playback diagnostic report", "Save playback report"); save.Classes.Add("outline"); save.Click += (_, _) => _host.SaveDiagnosticReport(); library.Children.Add(save); library.Children.Add(_diagnostic);
         }
         _catalog = new Border { Child = library }; Grid.SetColumn(_catalog, 1); _layout.Children.Add(_catalog);
         Content = new ScrollViewer { Content = _layout, HorizontalScrollBarVisibility = ScrollBarVisibility.Disabled };
@@ -129,9 +115,26 @@ public sealed class ScreeningRoom : UserControl
         _seek.AddHandler(PointerReleasedEvent, async (_, _) => { if (_scrubbing) { _scrubbing = false; await Run(() => Player.SeekAsync(TimeSpan.FromSeconds(_seek.Value))); } }, Avalonia.Interactivity.RoutingStrategies.Bubble, true);
         _seek.PointerCaptureLost += (_, _) => _scrubbing = false;
         _seek.KeyUp += async (_, _) => await Run(() => Player.SeekAsync(TimeSpan.FromSeconds(_seek.Value)));
+        Player.PlaybackChanged += (_, snapshot) => _host.ObservePlayback(snapshot);
         Player.PlaybackError += (_, message) => { if (!message.Contains("user gesture")) { _error.Text = message; _error.IsVisible = true; } };
         _clock = new DispatcherTimer(TimeSpan.FromMilliseconds(200), DispatcherPriority.Background, (_, _) => Refresh());
-        AttachedToVisualTree += async (_, _) => { _clock.Start(); await Run(() => SelectRecording(0)); if (BrowserDemoInterop.AutoCheck()) await Run(SmoothnessCheck); };
+        AttachedToVisualTree += async (_, _) =>
+        {
+            _clock.Start();
+            if (_started) return;
+            _started = true;
+            await Run(async () =>
+            {
+                if (App.StartupSource is { } source)
+                {
+                    _title.Text = Path.GetFileName(source.LocalPath);
+                    Player.SetProjection(App.Startup360 ? VideoProjection.Equirectangular : VideoProjection.Auto);
+                    await Player.OpenAsync(await _host.PrepareMedia(source));
+                }
+                else await SelectRecording(0);
+                if (_host.AutomaticCheck) await SmoothnessCheck();
+            });
+        };
         DetachedFromVisualTree += (_, _) => _clock.Stop();
         SizeChanged += (_, _) => LayoutRoom();
     }
@@ -161,10 +164,10 @@ public sealed class ScreeningRoom : UserControl
             _isLoading = true;
             _status.Text = "Preparing video…";
             if (Player.Snapshot is not null) await Player.PauseAsync();
-            // Match the HTML demo: fully downloaded local Blob, never a streaming Range request mid-play.
-            var source = await BrowserDemoInterop.PrepareMedia(new Uri(BrowserDemoApp.BaseUri, "media/" + file).AbsoluteUri);
+            // The host resolves media delivery; playback and all controls stay in this shared view.
+            var source = await _host.PrepareMedia(new Uri(_host.BaseUri, "media/" + file));
             Player.SetProjection(_view.SelectedIndex == 0 ? VideoProjection.Equirectangular : VideoProjection.Flat); Player.ResetCamera();
-            await Player.OpenAsync(new Uri(source));
+            await Player.OpenAsync(source);
             await Player.SetPlaybackSpeedAsync(new[] { .5, 1, 1.5, 2 }[Math.Max(0, _speed.SelectedIndex)]);
             await Player.SetVolumeAsync(_volume.Value, _checking);
         }
@@ -182,7 +185,7 @@ public sealed class ScreeningRoom : UserControl
         _status.Text = _isLoading ? "Preparing video…" : snapshot.State == PlaybackState.Buffering ? "Buffering…" : Player.IsSpherical ? "360° · Drag to look around · Scroll to zoom" : "Flat video";
         _updating = false;
         if (!_isLoading && _loop && snapshot.State == PlaybackState.Ended) _ = Run(async () => { await Player.SeekAsync(TimeSpan.Zero); await Player.PlayAsync(); });
-        if (BrowserDemoInterop.ChecksEnabled()) _diagnostic.Text = BrowserDemoInterop.Summary();
+        if (_host.DiagnosticsEnabled) _diagnostic.Text = _host.DiagnosticSummary();
     }
     private async Task SmoothnessCheck()
     {
@@ -193,14 +196,19 @@ public sealed class ScreeningRoom : UserControl
             {
                 await SelectRecording(i);
                 await Player.SetVolumeAsync(.8, muted: true); // Explicit diagnostic run avoids autoplay blocking.
-                BrowserDemoInterop.Segment(_recordings[i].Name);
+                _host.BeginSegment(_recordings[i].Name);
                 await Player.PlayAsync();
                 await Task.Delay(TimeSpan.FromSeconds(20));
             }
             await Player.PauseAsync();
-            BrowserDemoInterop.SaveReport();
+            _host.SaveDiagnosticReport();
         }
         finally { _checking = false; }
+    }
+    public async ValueTask DisposeAsync()
+    {
+        _clock.Stop();
+        await Player.DisposeAsync();
     }
     private async Task Run(Func<Task> command)
     { try { _error.IsVisible = false; await command(); } catch (Exception error) { _error.Text = error.Message; _error.IsVisible = true; } }
@@ -210,6 +218,7 @@ public sealed class ScreeningRoom : UserControl
     {
         var button = new Button { VerticalContentAlignment = VerticalAlignment.Center, HorizontalContentAlignment = HorizontalAlignment.Center };
         button.Classes.Add("room"); ToolTip.SetTip(button, tooltip);
+        Avalonia.Automation.AutomationProperties.SetName(button, tooltip);
         var row = new StackPanel { Orientation = Orientation.Horizontal, Spacing = 6, VerticalAlignment = VerticalAlignment.Center };
         if (icon.Length > 0) row.Children.Add(Icon(icon)); if (label != null) row.Children.Add(Text(label, 11, "#526b5c"));
         button.Content = row; return button;
@@ -236,14 +245,3 @@ public sealed class ScreeningRoom : UserControl
     private static void Add(Panel panel, params Control[] controls) { foreach (var control in controls) panel.Children.Add(control); }
 }
 
-internal static partial class BrowserDemoInterop
-{
-    [JSImport("ready", "AvaVideoPlayer.Demo")] internal static partial void Ready();
-    [JSImport("prepareMedia", "AvaVideoPlayer.Demo")] internal static partial Task<string> PrepareMedia(string url);
-    [JSImport("openLink", "AvaVideoPlayer.Demo")] internal static partial void OpenLink(string url);
-    [JSImport("checksEnabled", "AvaVideoPlayer.Demo")] internal static partial bool ChecksEnabled();
-    [JSImport("autoCheck", "AvaVideoPlayer.Demo")] internal static partial bool AutoCheck();
-    [JSImport("segment", "AvaVideoPlayer.Demo")] internal static partial void Segment(string name);
-    [JSImport("summary", "AvaVideoPlayer.Demo")] internal static partial string Summary();
-    [JSImport("saveReport", "AvaVideoPlayer.Demo")] internal static partial void SaveReport();
-}

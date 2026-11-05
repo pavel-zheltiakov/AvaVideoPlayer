@@ -7,5 +7,5 @@
   <ItemGroup>
     <ProjectReference Include="../AvaVideoPlayer.Sample/AvaVideoPlayer.Sample.csproj" />
     <PackageReference Include="Avalonia.Desktop" Version="$(AvaloniaVersion)" />
-  <PackageReference Include="AvaVideoPlayer" Version="0.1.0-preview.2" /></ItemGroup>
+  <Content Include="../AvaVideoPlayer.Demo.Browser/media/*-360.mp4;../AvaVideoPlayer.Demo.Browser/media/*-360.mov;../AvaVideoPlayer.Demo.Browser/media/*-360.webm" Link="media/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" /><PackageReference Include="AvaVideoPlayer" Version="0.1.0-preview.2" /></ItemGroup>
 </Project>

@@ -1,6 +1,7 @@
 using Avalonia;
 using Avalonia.Browser;
 using AvaVideoPlayer.Browser;
+using AvaVideoPlayer.Sample;
 using AvaVideoPlayer.Sample.Browser;
 using System.Runtime.InteropServices.JavaScript;
 
@@ -10,10 +11,20 @@ internal static class Program
     {
         using var document = JSHost.GlobalThis.GetPropertyAsJSObject("document")
             ?? throw new InvalidOperationException("Browser document is unavailable.");
-        BrowserDemoApp.BaseUri = new Uri(document.GetPropertyAsString("baseURI")!);
-        // JSHost imports resolve relative paths against the runtime in _framework/.
-        // Use the document base so subdirectory deployments resolve the public asset.
-        await BrowserVideoBackend.RegisterAsync(new Uri(BrowserDemoApp.BaseUri, "avavideo.js").AbsoluteUri);
-        await AppBuilder.Configure<BrowserDemoApp>().WithInterFont().StartBrowserAppAsync("out");
+        var baseUri = new Uri(document.GetPropertyAsString("baseURI")!);
+        await BrowserVideoBackend.RegisterAsync(new Uri(baseUri, "avavideo.js").AbsoluteUri);
+        App.DemoHost = new ScreeningRoomHost
+        {
+            BaseUri = baseUri,
+            PrepareMedia = async uri => new Uri(await BrowserDemoInterop.PrepareMedia(uri.AbsoluteUri)),
+            OpenLink = uri => BrowserDemoInterop.OpenLink(uri.AbsoluteUri),
+            Ready = BrowserDemoInterop.Ready,
+            DiagnosticsEnabled = BrowserDemoInterop.ChecksEnabled(),
+            AutomaticCheck = BrowserDemoInterop.AutoCheck(),
+            DiagnosticSummary = BrowserDemoInterop.Summary,
+            BeginSegment = BrowserDemoInterop.Segment,
+            SaveDiagnosticReport = BrowserDemoInterop.SaveReport
+        };
+        await AppBuilder.Configure<App>().WithInterFont().StartBrowserAppAsync("out");
     }
 }
