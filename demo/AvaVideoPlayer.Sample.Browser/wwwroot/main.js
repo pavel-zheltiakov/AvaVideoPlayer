@@ -1,5 +1,7 @@
 try {
-  const { dotnet } = await import('./_framework/dotnet.js');
+  const runtimeUrl = new URL('./_framework/dotnet.js', import.meta.url);
+  runtimeUrl.search = new URL(import.meta.url).search;
+  const { dotnet } = await import(runtimeUrl.href);
   const runtime = await dotnet.withDiagnosticTracing(false).create();
   runtime.setModuleImports('AvaVideoPlayer.Demo', {
     ready: () => requestAnimationFrame(() => document.querySelector('.loading-screen')?.remove())
