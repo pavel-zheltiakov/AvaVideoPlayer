@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices.JavaScript;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
@@ -25,6 +26,7 @@ public sealed class BrowserDemoApp : Application
         if (ApplicationLifetime is ISingleViewApplicationLifetime single)
             single.MainView = new ScreeningRoom();
         base.OnFrameworkInitializationCompleted();
+        BrowserDemoInterop.Ready();
     }
 }
 
@@ -154,4 +156,10 @@ public sealed class ScreeningRoom : UserControl
     private static string Time(TimeSpan time) => $"{(int)time.TotalMinutes:00}:{time.Seconds:00}";
     private static void Add(Panel panel, params Control[] controls)
     { foreach (var control in controls) { control.Margin = new Thickness(0, 0, 10, 5); panel.Children.Add(control); } }
+}
+
+internal static partial class BrowserDemoInterop
+{
+    [JSImport("ready", "AvaVideoPlayer.Demo")]
+    internal static partial void Ready();
 }

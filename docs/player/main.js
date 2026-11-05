@@ -1,6 +1,9 @@
 try {
   const { dotnet } = await import('./_framework/dotnet.js');
   const runtime = await dotnet.withDiagnosticTracing(false).create();
+  runtime.setModuleImports('AvaVideoPlayer.Demo', {
+    ready: () => requestAnimationFrame(() => document.querySelector('.loading-screen')?.remove())
+  });
   await runtime.runMain(runtime.getConfig().mainAssemblyName, []);
 } catch (error) {
   console.error('AvaVideoPlayer startup failed:', error);
