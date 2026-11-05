@@ -1,8 +1,10 @@
 // Optional diagnostics exercise the actual Avalonia-hosted media element.
 export function monitor() {
   let parentChecks=false;try{parentChecks=new URL(parent.location.href).searchParams.has('checks');}catch{}
-  const checks = new URL(location.href).searchParams.has('checks') || parentChecks;
-  const report = {started:new Date().toISOString(),preloads:[],events:[],frames:0,frameGaps:[],longTasks:[],source:'',maxBufferAhead:0};
+  const local=new URL(location.href).searchParams;let parentAuto=false;try{parentAuto=new URL(parent.location.href).searchParams.has('autocheck');}catch{}
+  const checks = local.has('checks') || parentChecks;
+  const automatic=checks && (local.has('autocheck') || parentAuto);
+  const report = {started:new Date().toISOString(),preloads:[],events:[],frames:0,frameGaps:[],longTasks:[],source:'',segments:[],maxBufferAhead:0,mutedDiagnosticRun:automatic};
   let video, lastFrame, lastMedia, session = 0;
   const watch = new MutationObserver(() => attach());
   watch.observe(document.getElementById('out'),{childList:true,subtree:true});
@@ -36,7 +38,8 @@ export function monitor() {
   };
   return {
     ready:()=>requestAnimationFrame(()=>document.querySelector('.loading-screen')?.remove()),
-    prepareMedia,checksEnabled:()=>checks,
+    prepareMedia,checksEnabled:()=>checks,autoCheck:()=>automatic,
+    segment:name=>report.segments.push({name,wall:performance.now()}),
     summary:()=>`${report.frames} frames · ${report.events.filter(x=>x.event==='waiting').length} waits · ${report.frameGaps.length} gaps >300 ms`,
     openLink:url=>window.open(url,'_blank','noopener,noreferrer'),
     saveReport:()=>{

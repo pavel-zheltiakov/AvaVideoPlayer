@@ -55,7 +55,7 @@ public sealed class ScreeningRoom : UserControl
     private readonly TextBlock _diagnostic = Text("", 10, "#6d7973");
     private readonly SemaphoreSlim _loads = new(1, 1);
     private int _selected;
-    private bool _updating, _scrubbing, _loop = true;
+    private bool _updating, _scrubbing, _checking, _loop = true;
     private bool? _lastPlaying, _lastMuted;
     private readonly DispatcherTimer _clock;
 
@@ -131,7 +131,7 @@ public sealed class ScreeningRoom : UserControl
         _seek.KeyUp += async (_, _) => await Run(() => Player.SeekAsync(TimeSpan.FromSeconds(_seek.Value)));
         Player.PlaybackError += (_, message) => { if (!message.Contains("user gesture")) { _error.Text = message; _error.IsVisible = true; } };
         _clock = new DispatcherTimer(TimeSpan.FromMilliseconds(200), DispatcherPriority.Background, (_, _) => Refresh());
-        AttachedToVisualTree += async (_, _) => { _clock.Start(); await Run(() => SelectRecording(0)); };
+        AttachedToVisualTree += async (_, _) => { _clock.Start(); await Run(() => SelectRecording(0)); if (BrowserDemoInterop.AutoCheck()) await Run(SmoothnessCheck); };
         DetachedFromVisualTree += (_, _) => _clock.Stop();
         SizeChanged += (_, _) => LayoutRoom();
     }
@@ -163,7 +163,7 @@ public sealed class ScreeningRoom : UserControl
             Player.SetProjection(_view.SelectedIndex == 0 ? VideoProjection.Equirectangular : VideoProjection.Flat); Player.ResetCamera();
             await Player.OpenAsync(new Uri(source));
             await Player.SetPlaybackSpeedAsync(new[] { .5, 1, 1.5, 2 }[Math.Max(0, _speed.SelectedIndex)]);
-            await Player.SetVolumeAsync(_volume.Value);
+            await Player.SetVolumeAsync(_volume.Value, _checking);
         }
         finally { _loads.Release(); }
     }
@@ -180,6 +180,24 @@ public sealed class ScreeningRoom : UserControl
         _updating = false;
         if (_loop && snapshot.State == PlaybackState.Ended) _ = Run(async () => { await Player.SeekAsync(TimeSpan.Zero); await Player.PlayAsync(); });
         if (BrowserDemoInterop.ChecksEnabled()) _diagnostic.Text = BrowserDemoInterop.Summary();
+    }
+    private async Task SmoothnessCheck()
+    {
+        _checking = true;
+        try
+        {
+            for (int i = 0; i < _recordings.Length; i++)
+            {
+                await SelectRecording(i);
+                await Player.SetVolumeAsync(.8, muted: true); // Explicit diagnostic run avoids autoplay blocking.
+                BrowserDemoInterop.Segment(_recordings[i].Name);
+                await Player.PlayAsync();
+                await Task.Delay(TimeSpan.FromSeconds(20));
+            }
+            await Player.PauseAsync();
+            BrowserDemoInterop.SaveReport();
+        }
+        finally { _checking = false; }
     }
     private async Task Run(Func<Task> command)
     { try { _error.IsVisible = false; await command(); } catch (Exception error) { _error.Text = error.Message; _error.IsVisible = true; } }
@@ -221,6 +239,8 @@ internal static partial class BrowserDemoInterop
     [JSImport("prepareMedia", "AvaVideoPlayer.Demo")] internal static partial Task<string> PrepareMedia(string url);
     [JSImport("openLink", "AvaVideoPlayer.Demo")] internal static partial void OpenLink(string url);
     [JSImport("checksEnabled", "AvaVideoPlayer.Demo")] internal static partial bool ChecksEnabled();
+    [JSImport("autoCheck", "AvaVideoPlayer.Demo")] internal static partial bool AutoCheck();
+    [JSImport("segment", "AvaVideoPlayer.Demo")] internal static partial void Segment(string name);
     [JSImport("summary", "AvaVideoPlayer.Demo")] internal static partial string Summary();
     [JSImport("saveReport", "AvaVideoPlayer.Demo")] internal static partial void SaveReport();
 }
